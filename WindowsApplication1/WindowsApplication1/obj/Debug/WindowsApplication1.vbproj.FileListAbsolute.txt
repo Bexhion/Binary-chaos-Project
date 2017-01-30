@@ -1,0 +1,2 @@
+C:\Users\hugo_\AppData\Local\Temporary Projects\WindowsApplication1\bin\Debug\WindowsApplication1.exe.config
+C:\Users\hugo_\Documents\Project_CODE\Visual Studio 2015\Github repos\WindowsApplication1\WindowsApplication1\bin\Debug\WindowsApplication1.exe.config
