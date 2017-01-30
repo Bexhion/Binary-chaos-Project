@@ -1,0 +1,2 @@
+C:\Users\hugo_\Documents\Project_CODE\Visual Studio 2015\Github repos\src\src\bin\Debug\src.exe.config
+C:\Users\hugo_\Documents\Project_CODE\Visual Studio 2015\Github repos\binary-chaos\src\bin\Debug\src.exe.config
