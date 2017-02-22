@@ -14,3 +14,7 @@ C:\Users\User\Downloads\Visual Basic\Projeto de 2º Período\binary-chaos\src\ob
 C:\Users\User\Downloads\Visual Basic\Projeto de 2º Período\binary-chaos\src\obj\Debug\WindowsApplication1.Form3.resources
 C:\Users\User\Downloads\Visual Basic\Projeto de 2º Período\binary-chaos\src\obj\Debug\WindowsApplication1.RecoverPassword.resources
 C:\Users\User\Downloads\Visual Basic\Projeto de 2º Período\binary-chaos\src\obj\Debug\WindowsApplication1.RegistryPage.resources
+C:\Users\User\Documents\GitHub\binary-chaos\src\bin\Debug\src.exe.config
+C:\Users\User\Documents\GitHub\binary-chaos\src\obj\Debug\src.exe
+C:\Users\User\Documents\GitHub\binary-chaos\src\obj\Debug\src.xml
+C:\Users\User\Documents\GitHub\binary-chaos\src\obj\Debug\src.pdb
