@@ -1,49 +1,20 @@
 C:\Users\hugo_\Documents\Project_CODE\Visual Studio 2015\Github repos\src\src\bin\Debug\src.exe.config
 C:\Users\hugo_\Documents\Project_CODE\Visual Studio 2015\Github repos\binary-chaos\src\bin\Debug\src.exe.config
-C:\Users\hugo_\Documents\Project_CODE\Visual Studio 2015\Github repos\binary-chaos\src\bin\Debug\src.exe
-C:\Users\hugo_\Documents\Project_CODE\Visual Studio 2015\Github repos\binary-chaos\src\bin\Debug\src.pdb
-C:\Users\hugo_\Documents\Project_CODE\Visual Studio 2015\Github repos\binary-chaos\src\bin\Debug\src.xml
-C:\Users\hugo_\Documents\Project_CODE\Visual Studio 2015\Github repos\binary-chaos\src\obj\Debug\src.vbprojResolveAssemblyReference.cache
-C:\Users\hugo_\Documents\Project_CODE\Visual Studio 2015\Github repos\binary-chaos\src\obj\Debug\WindowsApplication1.Resources.resources
-C:\Users\hugo_\Documents\Project_CODE\Visual Studio 2015\Github repos\binary-chaos\src\obj\Debug\src.vbproj.GenerateResource.Cache
-C:\Users\hugo_\Documents\Project_CODE\Visual Studio 2015\Github repos\binary-chaos\src\obj\Debug\src.exe
-C:\Users\hugo_\Documents\Project_CODE\Visual Studio 2015\Github repos\binary-chaos\src\obj\Debug\src.xml
-C:\Users\hugo_\Documents\Project_CODE\Visual Studio 2015\Github repos\binary-chaos\src\obj\Debug\src.pdb
-C:\Users\hugo_\Documents\Project_CODE\Visual Studio 2015\Github repos\binary-chaos\src\obj\Debug\WindowsApplication1.Window_main.resources
-C:\Users\hugo_\Documents\Project_CODE\Visual Studio 2015\Github repos\binary-chaos\src\bin\Debug\CircularProgressBar.dll
-C:\Users\hugo_\Documents\Project_CODE\Visual Studio 2015\Github repos\binary-chaos\src\bin\Debug\WinFormAnimation.dll
-C:\Users\hugo_\Documents\Project_CODE\Visual Studio 2015\Github repos\binary-chaos\src\bin\Debug\CircularProgressBar.xml
-C:\Users\hugo_\Documents\Project_CODE\Visual Studio 2015\Github repos\binary-chaos\src\bin\Debug\WinFormAnimation.xml
-C:\Users\hugo_\Documents\Project_CODE\Visual Studio 2015\Github repos\binary-chaos\src\obj\Debug\Interop.WMPLib.dll
-C:\Users\hugo_\Documents\Project_CODE\Visual Studio 2015\Github repos\binary-chaos\src\obj\Debug\AxInterop.WMPLib.dll
-C:\Users\hugo_\Documents\Project_CODE\Visual Studio 2015\Github repos\binary-chaos\src\obj\Debug\src.vbproj.ResolveComReference.cache
-C:\Users\hugo_\Documents\Project_CODE\Visual Studio 2015\Github repos\binary-chaos\src\bin\Debug\Interop.WMPLib.dll
-C:\Users\hugo_\Documents\Project_CODE\Visual Studio 2015\Github repos\binary-chaos\src\bin\Debug\AxInterop.WMPLib.dll
-C:\Users\hugo_\Documents\Project_CODE\Visual Studio 2015\Github repos\Binary-chaos-Project\binary-chaos\src\bin\Debug\src.exe.config
-C:\Users\hugo_\Documents\Project_CODE\Visual Studio 2015\Github repos\Binary-chaos-Project\binary-chaos\src\obj\Debug\Interop.WMPLib.dll
-C:\Users\hugo_\Documents\Project_CODE\Visual Studio 2015\Github repos\Binary-chaos-Project\binary-chaos\src\obj\Debug\AxInterop.WMPLib.dll
-C:\Users\hugo_\Documents\Project_CODE\Visual Studio 2015\Github repos\Binary-chaos-Project\binary-chaos\src\obj\Debug\src.vbproj.ResolveComReference.cache
-C:\Users\hugo_\Documents\Project_CODE\Visual Studio 2015\Github repos\Binary-chaos-Project\binary-chaos\src\obj\Debug\src.exe
-C:\Users\hugo_\Documents\Project_CODE\Visual Studio 2015\Github repos\Binary-chaos-Project\binary-chaos\src\obj\Debug\src.xml
-C:\Users\hugo_\Documents\Project_CODE\Visual Studio 2015\Github repos\Binary-chaos-Project\binary-chaos\src\obj\Debug\src.pdb
-C:\Users\hugo_\Documents\Project_CODE\Visual Studio 2015\Binary-chaos-Project\binary-chaos\src\bin\Debug\src.exe.config
-C:\Users\hugo_\Documents\Project_CODE\Visual Studio 2015\Binary-chaos-Project\binary-chaos\src\obj\Debug\Interop.WMPLib.dll
-C:\Users\hugo_\Documents\Project_CODE\Visual Studio 2015\Binary-chaos-Project\binary-chaos\src\obj\Debug\AxInterop.WMPLib.dll
-C:\Users\hugo_\Documents\Project_CODE\Visual Studio 2015\Binary-chaos-Project\binary-chaos\src\obj\Debug\src.vbproj.ResolveComReference.cache
-C:\Users\hugo_\Documents\Project_CODE\Visual Studio 2015\Binary-chaos-Project\binary-chaos\src\obj\Debug\src.exe
-C:\Users\hugo_\Documents\Project_CODE\Visual Studio 2015\Binary-chaos-Project\binary-chaos\src\obj\Debug\src.xml
-C:\Users\hugo_\Documents\Project_CODE\Visual Studio 2015\Binary-chaos-Project\binary-chaos\src\obj\Debug\src.pdb
-C:\Users\hugo_\Documents\Project_CODE\Visual Studio 2015\Binary-chaos-Project\binary-chaos\src\bin\Debug\src.exe
-C:\Users\hugo_\Documents\Project_CODE\Visual Studio 2015\Binary-chaos-Project\binary-chaos\src\bin\Debug\src.pdb
-C:\Users\hugo_\Documents\Project_CODE\Visual Studio 2015\Binary-chaos-Project\binary-chaos\src\bin\Debug\src.xml
-C:\Users\hugo_\Documents\Project_CODE\Visual Studio 2015\Binary-chaos-Project\binary-chaos\src\bin\Debug\CircularProgressBar.dll
-C:\Users\hugo_\Documents\Project_CODE\Visual Studio 2015\Binary-chaos-Project\binary-chaos\src\bin\Debug\WinFormAnimation.dll
-C:\Users\hugo_\Documents\Project_CODE\Visual Studio 2015\Binary-chaos-Project\binary-chaos\src\bin\Debug\CircularProgressBar.xml
-C:\Users\hugo_\Documents\Project_CODE\Visual Studio 2015\Binary-chaos-Project\binary-chaos\src\bin\Debug\WinFormAnimation.xml
-C:\Users\hugo_\Documents\Project_CODE\Visual Studio 2015\Binary-chaos-Project\binary-chaos\src\bin\Debug\Interop.WMPLib.dll
-C:\Users\hugo_\Documents\Project_CODE\Visual Studio 2015\Binary-chaos-Project\binary-chaos\src\bin\Debug\AxInterop.WMPLib.dll
-C:\Users\hugo_\Documents\Project_CODE\Visual Studio 2015\Binary-chaos-Project\binary-chaos\src\obj\Debug\src.vbprojResolveAssemblyReference.cache
-C:\Users\hugo_\Documents\Project_CODE\Visual Studio 2015\Binary-chaos-Project\binary-chaos\src\obj\Debug\WindowsApplication1.Window_main.resources
-C:\Users\hugo_\Documents\Project_CODE\Visual Studio 2015\Binary-chaos-Project\binary-chaos\src\obj\Debug\WindowsApplication1.Resources.resources
-C:\Users\hugo_\Documents\Project_CODE\Visual Studio 2015\Binary-chaos-Project\binary-chaos\src\obj\Debug\WindowsApplication1.ListControl.resources
-C:\Users\hugo_\Documents\Project_CODE\Visual Studio 2015\Binary-chaos-Project\binary-chaos\src\obj\Debug\src.vbproj.GenerateResource.Cache
+C:\Users\User\Downloads\Visual Basic\Projeto de 2º Período\binary-chaos\src\bin\Debug\src.exe.config
+C:\Users\User\Downloads\Visual Basic\Projeto de 2º Período\binary-chaos\src\bin\Debug\src.exe
+C:\Users\User\Downloads\Visual Basic\Projeto de 2º Período\binary-chaos\src\bin\Debug\src.pdb
+C:\Users\User\Downloads\Visual Basic\Projeto de 2º Período\binary-chaos\src\bin\Debug\src.xml
+C:\Users\User\Downloads\Visual Basic\Projeto de 2º Período\binary-chaos\src\obj\Debug\src.vbprojResolveAssemblyReference.cache
+C:\Users\User\Downloads\Visual Basic\Projeto de 2º Período\binary-chaos\src\obj\Debug\WindowsApplication1.Form1.resources
+C:\Users\User\Downloads\Visual Basic\Projeto de 2º Período\binary-chaos\src\obj\Debug\WindowsApplication1.Resources.resources
+C:\Users\User\Downloads\Visual Basic\Projeto de 2º Período\binary-chaos\src\obj\Debug\src.vbproj.GenerateResource.Cache
+C:\Users\User\Downloads\Visual Basic\Projeto de 2º Período\binary-chaos\src\obj\Debug\src.exe
+C:\Users\User\Downloads\Visual Basic\Projeto de 2º Período\binary-chaos\src\obj\Debug\src.xml
+C:\Users\User\Downloads\Visual Basic\Projeto de 2º Período\binary-chaos\src\obj\Debug\src.pdb
+C:\Users\User\Downloads\Visual Basic\Projeto de 2º Período\binary-chaos\src\obj\Debug\WindowsApplication1.Form3.resources
+C:\Users\User\Downloads\Visual Basic\Projeto de 2º Período\binary-chaos\src\obj\Debug\WindowsApplication1.RecoverPassword.resources
+C:\Users\User\Downloads\Visual Basic\Projeto de 2º Período\binary-chaos\src\obj\Debug\WindowsApplication1.RegistryPage.resources
+C:\Users\User\Documents\GitHub\binary-chaos\src\bin\Debug\src.exe.config
+C:\Users\User\Documents\GitHub\binary-chaos\src\obj\Debug\src.exe
+C:\Users\User\Documents\GitHub\binary-chaos\src\obj\Debug\src.xml
+C:\Users\User\Documents\GitHub\binary-chaos\src\obj\Debug\src.pdb
