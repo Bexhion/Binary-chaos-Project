@@ -30,6 +30,7 @@ Partial Class Form1
         Me.Button2 = New System.Windows.Forms.Button()
         Me.Button3 = New System.Windows.Forms.Button()
         Me.CustomListBox1 = New WindowsApplication1.CustomListBox()
+        Me.Panel1 = New System.Windows.Forms.Panel()
         Me.SuspendLayout()
         '
         'Button1
@@ -67,7 +68,7 @@ Partial Class Form1
         '
         'Planificação
         '
-        Me.Planificação.Location = New System.Drawing.Point(360, 149)
+        Me.Planificação.Location = New System.Drawing.Point(419, 110)
         Me.Planificação.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.Planificação.Name = "Planificação"
         Me.Planificação.Size = New System.Drawing.Size(91, 37)
@@ -102,17 +103,26 @@ Partial Class Form1
         'CustomListBox1
         '
         Me.CustomListBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.CustomListBox1.Location = New System.Drawing.Point(51, 12)
+        Me.CustomListBox1.Location = New System.Drawing.Point(51, 45)
         Me.CustomListBox1.Name = "CustomListBox1"
         Me.CustomListBox1.Size = New System.Drawing.Size(272, 275)
         Me.CustomListBox1.TabIndex = 13
+        '
+        'Panel1
+        '
+        Me.Panel1.Dock = System.Windows.Forms.DockStyle.Top
+        Me.Panel1.Location = New System.Drawing.Point(0, 0)
+        Me.Panel1.Name = "Panel1"
+        Me.Panel1.Size = New System.Drawing.Size(728, 28)
+        Me.Panel1.TabIndex = 14
         '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.ControlLightLight
-        Me.ClientSize = New System.Drawing.Size(692, 304)
+        Me.ClientSize = New System.Drawing.Size(728, 354)
+        Me.Controls.Add(Me.Panel1)
         Me.Controls.Add(Me.CustomListBox1)
         Me.Controls.Add(Me.Button3)
         Me.Controls.Add(Me.Button2)
@@ -121,6 +131,7 @@ Partial Class Form1
         Me.Controls.Add(Me.segurança)
         Me.Controls.Add(Me.Button1)
         Me.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
+        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
         Me.Name = "Form1"
         Me.Text = "Form1"
         Me.TransparencyKey = System.Drawing.Color.Gray
@@ -134,4 +145,5 @@ Partial Class Form1
     Friend WithEvents Button2 As Button
     Friend WithEvents Button3 As Button
     Friend WithEvents CustomListBox1 As CustomListBox
+    Friend WithEvents Panel1 As Panel
 End Class
