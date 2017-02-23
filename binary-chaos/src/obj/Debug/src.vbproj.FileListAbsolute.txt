@@ -44,3 +44,4 @@ C:\Users\User\Documents\GitHub\binary-chaos\src\obj\Debug\WindowsApplication1.Re
 C:\Users\User\Documents\GitHub\binary-chaos\src\obj\Debug\WindowsApplication1.CustomListBox.resources
 C:\Users\User\Documents\GitHub\binary-chaos\src\obj\Debug\WindowsApplication1.Resources.resources
 C:\Users\User\Documents\GitHub\binary-chaos\src\obj\Debug\src.vbproj.GenerateResource.Cache
+C:\Users\hugo_\Documents\Project_CODE\Visual Studio 2015\Binary-chaos-Project\binary-chaos\src\obj\Debug\WindowsApplication1.ItemCustomListBox.resources
