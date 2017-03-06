@@ -2,9 +2,11 @@
 
     'The amount space screen our program is going to occupy
     Dim windowRelativeSize As Double = 0.85
-
     Private Sub StartUp(sender As Object, e As EventArgs) Handles Me.Load
         'Check if our relative size isn't inferior to 0% or superior to 100%
+        ItemCLBColors.CreateBrushes(True)
+        ItemCLBColors.CreateColors(True)
+        ItemCLBColors.CreateOverlayBrushes(True)
         If windowRelativeSize > 1 Then
             windowRelativeSize = 1
         End If
@@ -25,6 +27,18 @@
         'Setting the properties
         Me.Size = size
         Me.Location = location
+        'Dim time As New TimeMarker(Date.Now, 19, TimeMarker.State.STATE_INACTIVE)
+        'Dim list As New List(Of String)
+        'list.Add("this")
+        'list.Add("that")
+        'list.Add("everything")
+        'CustomListBox1.Add(time, "Xixi", "Urina", list, CustomListBox.Priority.LOW)
+        'CustomListBox1.Add(time, "Xixi", "Urina", list, CustomListBox.Priority.MEDIUM)
+        'CustomListBox1.Add(time, "Xixi", "Urina", list, CustomListBox.Priority.MEDIUM)
+        'CustomListBox1.Add(time, "Xixi", "Urina", list, CustomListBox.Priority.HIGH)
+        'CustomListBox1.Add(time, "Xixi", "Urina", list, CustomListBox.Priority.HIGH)
+        'CustomListBox1.Add(time, "Xixi", "Urina", list, CustomListBox.Priority.LOW)
+        'Label1.Text = CustomListBox1.ActualList.Controls.Count
     End Sub
 
     Private Sub Planificação_Click(sender As Object, e As EventArgs) Handles Planificação.Click
@@ -38,7 +52,14 @@
         Form3.Show()
     End Sub
 
-    Private Sub Button4_Click(sender As Object, e As EventArgs) Handles Button4.Click
-
-    End Sub
+    'Magical code
+    'For Each c As Control In Me.Controls
+    '    If TypeOf c Is TextBox Then
+    '        With CType(c, TextBox)
+    '            Dim g As Graphics = CreateGraphics()
+    '            Dim sz As SizeF = g.MeasureString(.Text, .Font, .ClientSize.Width)
+    '            .Height = CType(sz.Height, Integer)
+    '        End With
+    '    End If
+    'Next
 End Class

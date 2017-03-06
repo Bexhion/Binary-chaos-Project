@@ -19,7 +19,6 @@ C:\Users\User\Documents\GitHub\binary-chaos\src\obj\Debug\src.exe
 C:\Users\User\Documents\GitHub\binary-chaos\src\obj\Debug\src.xml
 C:\Users\User\Documents\GitHub\binary-chaos\src\obj\Debug\src.pdb
 C:\Users\hugo_\Documents\Project_CODE\Visual Studio 2015\Binary-chaos-Project\binary-chaos\src\bin\Debug\src.exe.config
-C:\Users\hugo_\Documents\Project_CODE\Visual Studio 2015\Binary-chaos-Project\binary-chaos\src\obj\Debug\src.exe
 C:\Users\hugo_\Documents\Project_CODE\Visual Studio 2015\Binary-chaos-Project\binary-chaos\src\obj\Debug\src.xml
 C:\Users\hugo_\Documents\Project_CODE\Visual Studio 2015\Binary-chaos-Project\binary-chaos\src\obj\Debug\src.pdb
 C:\Users\hugo_\Documents\Project_CODE\Visual Studio 2015\Binary-chaos-Project\binary-chaos\src\bin\Debug\src.exe
@@ -44,4 +43,12 @@ C:\Users\User\Documents\GitHub\binary-chaos\src\obj\Debug\WindowsApplication1.Re
 C:\Users\User\Documents\GitHub\binary-chaos\src\obj\Debug\WindowsApplication1.CustomListBox.resources
 C:\Users\User\Documents\GitHub\binary-chaos\src\obj\Debug\WindowsApplication1.Resources.resources
 C:\Users\User\Documents\GitHub\binary-chaos\src\obj\Debug\src.vbproj.GenerateResource.Cache
-C:\Users\hugo_\Documents\Project_CODE\Visual Studio 2015\Binary-chaos-Project\binary-chaos\src\obj\Debug\WindowsApplication1.ItemCustomListBox.resources
+C:\Users\hugo_\Documents\Project_CODE\Visual Studio 2015\Binary-chaos-Project\binary-chaos\src\obj\Debug\WindowsApplication1.TimeMarkerDescription.resources
+C:\Users\hugo_\Documents\Project_CODE\Visual Studio 2015\Binary-chaos-Project\binary-chaos\src\obj\Debug\WindowsApplication1.TimeMarkerItemCLB.resources
+C:\Users\hugo_\Documents\Project_CODE\Visual Studio 2015\Binary-chaos-Project\binary-chaos\src\obj\Debug\WindowsApplication1.FullDate.resources
+C:\Users\hugo_\Documents\Project_CODE\Visual Studio 2015\Binary-chaos-Project\binary-chaos\src\obj\Debug\WindowsApplication1.Points.resources
+C:\Users\hugo_\Documents\Project_CODE\Visual Studio 2015\Binary-chaos-Project\binary-chaos\src\obj\Debug\src.exe
+C:\Users\hugo_\Documents\Project_CODE\Visual Studio 2015\Testing\src\bin\Debug\src.exe.config
+C:\Users\hugo_\Documents\Project_CODE\Visual Studio 2015\Testing\src\obj\Debug\src.exe
+C:\Users\hugo_\Documents\Project_CODE\Visual Studio 2015\Testing\src\obj\Debug\src.xml
+C:\Users\hugo_\Documents\Project_CODE\Visual Studio 2015\Testing\src\obj\Debug\src.pdb

@@ -22,20 +22,17 @@ Partial Class Form1
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
-        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Form1))
         Me.Button1 = New System.Windows.Forms.Button()
         Me.segurança = New System.Windows.Forms.Button()
         Me.Button4 = New System.Windows.Forms.Button()
         Me.Planificação = New System.Windows.Forms.Button()
         Me.Button2 = New System.Windows.Forms.Button()
         Me.Button3 = New System.Windows.Forms.Button()
-        Me.CustomListBox1 = New WindowsApplication1.CustomListBox()
-        Me.Label1 = New System.Windows.Forms.Label()
         Me.SuspendLayout()
         '
         'Button1
         '
-        Me.Button1.Location = New System.Drawing.Point(375, 256)
+        Me.Button1.Location = New System.Drawing.Point(853, 274)
         Me.Button1.Margin = New System.Windows.Forms.Padding(2)
         Me.Button1.Name = "Button1"
         Me.Button1.Size = New System.Drawing.Size(91, 37)
@@ -45,7 +42,7 @@ Partial Class Form1
         '
         'segurança
         '
-        Me.segurança.Location = New System.Drawing.Point(419, 190)
+        Me.segurança.Location = New System.Drawing.Point(867, 143)
         Me.segurança.Margin = New System.Windows.Forms.Padding(2)
         Me.segurança.Name = "segurança"
         Me.segurança.Size = New System.Drawing.Size(91, 37)
@@ -60,9 +57,8 @@ Partial Class Form1
         Me.Button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.Button4.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Button4.ForeColor = System.Drawing.Color.DodgerBlue
-        Me.Button4.Image = CType(resources.GetObject("Button4.Image"), System.Drawing.Image)
         Me.Button4.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.Button4.Location = New System.Drawing.Point(600, 167)
+        Me.Button4.Location = New System.Drawing.Point(833, 198)
         Me.Button4.Margin = New System.Windows.Forms.Padding(2)
         Me.Button4.Name = "Button4"
         Me.Button4.Size = New System.Drawing.Size(85, 38)
@@ -73,7 +69,7 @@ Partial Class Form1
         '
         'Planificação
         '
-        Me.Planificação.Location = New System.Drawing.Point(419, 110)
+        Me.Planificação.Location = New System.Drawing.Point(867, 27)
         Me.Planificação.Margin = New System.Windows.Forms.Padding(2)
         Me.Planificação.Name = "Planificação"
         Me.Planificação.Size = New System.Drawing.Size(91, 37)
@@ -87,7 +83,7 @@ Partial Class Form1
         Me.Button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.Button2.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Button2.ForeColor = System.Drawing.Color.DodgerBlue
-        Me.Button2.Location = New System.Drawing.Point(406, 44)
+        Me.Button2.Location = New System.Drawing.Point(766, 205)
         Me.Button2.Margin = New System.Windows.Forms.Padding(2)
         Me.Button2.Name = "Button2"
         Me.Button2.Size = New System.Drawing.Size(49, 20)
@@ -102,7 +98,7 @@ Partial Class Form1
         Me.Button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.Button3.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Button3.ForeColor = System.Drawing.Color.DodgerBlue
-        Me.Button3.Location = New System.Drawing.Point(430, 68)
+        Me.Button3.Location = New System.Drawing.Point(785, 84)
         Me.Button3.Margin = New System.Windows.Forms.Padding(2)
         Me.Button3.Name = "Button3"
         Me.Button3.Size = New System.Drawing.Size(64, 20)
@@ -111,32 +107,12 @@ Partial Class Form1
         Me.Button3.TextAlign = System.Drawing.ContentAlignment.TopCenter
         Me.Button3.UseVisualStyleBackColor = True
         '
-        'CustomListBox1
-        '
-        Me.CustomListBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.CustomListBox1.Location = New System.Drawing.Point(114, 53)
-        Me.CustomListBox1.Margin = New System.Windows.Forms.Padding(4)
-        Me.CustomListBox1.Name = "CustomListBox1"
-        Me.CustomListBox1.Size = New System.Drawing.Size(272, 275)
-        Me.CustomListBox1.TabIndex = 13
-        '
-        'Label1
-        '
-        Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(561, 279)
-        Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(39, 13)
-        Me.Label1.TabIndex = 14
-        Me.Label1.Text = "Label1"
-        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(96.0!, 96.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi
-        Me.BackColor = System.Drawing.SystemColors.ControlLightLight
-        Me.ClientSize = New System.Drawing.Size(728, 354)
-        Me.Controls.Add(Me.Label1)
-        Me.Controls.Add(Me.CustomListBox1)
+        Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(48, Byte), Integer), CType(CType(48, Byte), Integer), CType(CType(48, Byte), Integer))
+        Me.ClientSize = New System.Drawing.Size(1161, 653)
         Me.Controls.Add(Me.Button3)
         Me.Controls.Add(Me.Button2)
         Me.Controls.Add(Me.Planificação)
@@ -148,10 +124,9 @@ Partial Class Form1
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
         Me.Name = "Form1"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
-        Me.Text = "Form1"
+        Me.Text = "Time Keeper"
         Me.TransparencyKey = System.Drawing.Color.Gray
         Me.ResumeLayout(False)
-        Me.PerformLayout()
 
     End Sub
     Friend WithEvents Button1 As Button
@@ -160,6 +135,4 @@ Partial Class Form1
     Friend WithEvents Planificação As Button
     Friend WithEvents Button2 As Button
     Friend WithEvents Button3 As Button
-    Friend WithEvents CustomListBox1 As CustomListBox
-    Friend WithEvents Label1 As Label
 End Class

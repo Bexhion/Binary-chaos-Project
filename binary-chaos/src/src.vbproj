@@ -47,6 +47,9 @@
     <OptionInfer>On</OptionInfer>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="src">
+      <HintPath>obj\Debug\src.exe</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Deployment" />
@@ -72,11 +75,10 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Client\Form1.vb">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="Client\Form1.Designer.vb">
       <DependentUpon>Form1.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Client\Form1.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Client\Form2.Designer.vb">
@@ -97,20 +99,39 @@
     <Compile Include="Client\Form4.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Common\Mechanics\TimeMarker.vb" />
-    <Compile Include="Common\SpecialCOM\CustomListBox.Designer.vb">
+    <Compile Include="Client\SpecialCOM\ItemCLBColors.vb" />
+    <Compile Include="Client\SpecialCOM\TimeMarkerItem\FullDate.Designer.vb">
+      <DependentUpon>FullDate.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Client\SpecialCOM\TimeMarkerItem\FullDate.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Client\SpecialCOM\TimeMarkerItem\Points.Designer.vb">
+      <DependentUpon>Points.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Client\SpecialCOM\TimeMarkerItem\Points.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Common\Mechanics\Core\Marker\TimeMarker.vb" />
+    <Compile Include="Client\SpecialCOM\CustomListBox.Designer.vb">
       <DependentUpon>CustomListBox.vb</DependentUpon>
     </Compile>
-    <Compile Include="Common\SpecialCOM\CustomListBox.vb">
+    <Compile Include="Client\SpecialCOM\CustomListBox.vb">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Common\SpecialCOM\ItemCustomListBox.Designer.vb">
-      <DependentUpon>ItemCustomListBox.vb</DependentUpon>
+    <Compile Include="Client\SpecialCOM\TimeMarkerItemCLB.Designer.vb">
+      <DependentUpon>TimeMarkerItemCLB.vb</DependentUpon>
     </Compile>
-    <Compile Include="Common\SpecialCOM\ItemCustomListBox.vb">
+    <Compile Include="Client\SpecialCOM\TimeMarkerItemCLB.vb">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Common\Mechanics\[EXP]ProgramTerminator.vb" />
+    <Compile Include="Common\Mechanics\Core\ProgramTerminator.vb" />
+    <Compile Include="Client\SpecialCOM\TimeMarkerDescription.Designer.vb">
+      <DependentUpon>TimeMarkerDescription.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Client\SpecialCOM\TimeMarkerDescription.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>
@@ -140,11 +161,20 @@
     <EmbeddedResource Include="Client\Form4.resx">
       <DependentUpon>Form4.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Common\SpecialCOM\CustomListBox.resx">
+    <EmbeddedResource Include="Client\SpecialCOM\CustomListBox.resx">
       <DependentUpon>CustomListBox.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Common\SpecialCOM\ItemCustomListBox.resx">
-      <DependentUpon>ItemCustomListBox.vb</DependentUpon>
+    <EmbeddedResource Include="Client\SpecialCOM\TimeMarkerDescription.resx">
+      <DependentUpon>TimeMarkerDescription.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Client\SpecialCOM\TimeMarkerItemCLB.resx">
+      <DependentUpon>TimeMarkerItemCLB.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Client\SpecialCOM\TimeMarkerItem\FullDate.resx">
+      <DependentUpon>FullDate.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Client\SpecialCOM\TimeMarkerItem\Points.resx">
+      <DependentUpon>Points.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
@@ -165,6 +195,7 @@
     </None>
     <None Include="Common\App.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
