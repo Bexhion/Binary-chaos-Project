@@ -33,9 +33,10 @@ Partial Class TimeMarkerDescription
         Me.Label4 = New System.Windows.Forms.Label()
         Me.Label5 = New System.Windows.Forms.Label()
         Me.Label3 = New System.Windows.Forms.Label()
-        Me.ProgressPanel = New System.Windows.Forms.Panel()
         Me.TitlePanel = New System.Windows.Forms.Panel()
         Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.Label6 = New System.Windows.Forms.Label()
+        Me.Label7 = New System.Windows.Forms.Label()
         Me.DescriptionPanel.SuspendLayout()
         Me.PointsPanel.SuspendLayout()
         Me.DetailsPanel.SuspendLayout()
@@ -89,12 +90,13 @@ Partial Class TimeMarkerDescription
         'PointsPanel
         '
         Me.PointsPanel.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.PointsPanel.Controls.Add(Me.Label7)
         Me.PointsPanel.Controls.Add(Me.CheckBox1)
         Me.PointsPanel.Controls.Add(Me.Label2)
         Me.PointsPanel.Location = New System.Drawing.Point(0, 159)
         Me.PointsPanel.Margin = New System.Windows.Forms.Padding(0)
         Me.PointsPanel.Name = "PointsPanel"
-        Me.PointsPanel.Size = New System.Drawing.Size(276, 75)
+        Me.PointsPanel.Size = New System.Drawing.Size(276, 74)
         Me.PointsPanel.TabIndex = 4
         '
         'CheckBox1
@@ -120,6 +122,7 @@ Partial Class TimeMarkerDescription
         'DetailsPanel
         '
         Me.DetailsPanel.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.DetailsPanel.Controls.Add(Me.Label6)
         Me.DetailsPanel.Controls.Add(Me.Label4)
         Me.DetailsPanel.Controls.Add(Me.Label5)
         Me.DetailsPanel.Controls.Add(Me.Label3)
@@ -158,17 +161,6 @@ Partial Class TimeMarkerDescription
         Me.Label3.TabIndex = 2
         Me.Label3.Text = "Details"
         '
-        'ProgressPanel
-        '
-        Me.ProgressPanel.Anchor = CType(((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.ProgressPanel.BackColor = System.Drawing.Color.FromArgb(CType(CType(38, Byte), Integer), CType(CType(38, Byte), Integer), CType(CType(38, Byte), Integer))
-        Me.ProgressPanel.Location = New System.Drawing.Point(0, 234)
-        Me.ProgressPanel.Margin = New System.Windows.Forms.Padding(0)
-        Me.ProgressPanel.Name = "ProgressPanel"
-        Me.ProgressPanel.Size = New System.Drawing.Size(276, 50)
-        Me.ProgressPanel.TabIndex = 5
-        '
         'TitlePanel
         '
         Me.TitlePanel.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
@@ -188,13 +180,31 @@ Partial Class TimeMarkerDescription
         Me.Panel1.Size = New System.Drawing.Size(34, 45)
         Me.Panel1.TabIndex = 1
         '
+        'Label6
+        '
+        Me.Label6.AutoSize = True
+        Me.Label6.Location = New System.Drawing.Point(162, 25)
+        Me.Label6.Name = "Label6"
+        Me.Label6.Size = New System.Drawing.Size(39, 13)
+        Me.Label6.TabIndex = 7
+        Me.Label6.Text = "Label6"
+        '
+        'Label7
+        '
+        Me.Label7.AutoSize = True
+        Me.Label7.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(112, Byte), Integer), CType(CType(192, Byte), Integer))
+        Me.Label7.Location = New System.Drawing.Point(108, 58)
+        Me.Label7.Name = "Label7"
+        Me.Label7.Size = New System.Drawing.Size(60, 13)
+        Me.Label7.TabIndex = 4
+        Me.Label7.Text = "Show more"
+        '
         'TimeMarkerDescription
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(89, Byte), Integer), CType(CType(89, Byte), Integer), CType(CType(89, Byte), Integer))
         Me.Controls.Add(Me.TitlePanel)
-        Me.Controls.Add(Me.ProgressPanel)
         Me.Controls.Add(Me.DetailsPanel)
         Me.Controls.Add(Me.PointsPanel)
         Me.Controls.Add(Me.DescriptionPanel)
@@ -223,7 +233,8 @@ Partial Class TimeMarkerDescription
     Friend WithEvents Label4 As Label
     Friend WithEvents Label5 As Label
     Friend WithEvents Label3 As Label
-    Friend WithEvents ProgressPanel As Panel
     Friend WithEvents TitlePanel As Panel
     Friend WithEvents Panel1 As Panel
+    Friend WithEvents Label6 As Label
+    Friend WithEvents Label7 As Label
 End Class

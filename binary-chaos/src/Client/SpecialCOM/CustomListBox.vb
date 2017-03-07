@@ -1,11 +1,14 @@
 ﻿Public Class CustomListBox
 
+    Public Event UpdateDescriptorInformation()
     Public Event EditorModeChanged(mode As CustomListBox.EditorMode)
     Public Event SelectionChange(sender As TimeMarkerItemCLB)
     Public Event ItemClick(sender As CustomListBox, subObject As TimeMarkerItemCLB)
     'Internal
     Public Event CheckForScrollbar()
+
     Dim hasScrollBar As Boolean = False
+    Dim internalMode As EditorMode = EditorMode.FIXED
 
     Public Enum Priority
         HIGH
@@ -37,7 +40,7 @@
 
     Public listToDelete As New List(Of TimeMarkerItemCLB)
 
-    Public descriptor As TimeMarkerDescription
+    Public WithEvents descriptor As TimeMarkerDescription
     Public currentActiveControl As TimeMarkerItemCLB
 
     Public Sub New()
@@ -45,25 +48,35 @@
         BackColor = Color.FromArgb(38, 38, 38)
     End Sub
 
+    'Call this before anything else
+    Public Sub SetDescriptor(descriptor As TimeMarkerDescription)
+        Me.descriptor = descriptor
+        AddHandler Me.UpdateDescriptorInformation, AddressOf descriptor.HandleInformationUpdate
+    End Sub
+
     Public Sub Add(timeMarker As TimeMarker, title As String, description As String, points As List(Of String), priority As Priority)
         Dim marker As New TimeMarkerItemCLB
         With marker
+            .Name = Guid.NewGuid().ToString("N")
             .Title = title
             .Description = description
             .FullDate = timeMarker.startingDate
             .Points = points
             .Priority = priority
             .timeMarker = timeMarker
+            .EditorMode = internalMode
         End With
 
         AddHandler marker.Click, AddressOf ItemClicked
         AddHandler marker.SelectionChanged, AddressOf SetActiveControl
         AddHandler marker.MarkerSetForDeletion, AddressOf OnSetForDeletion
         AddHandler marker.TimeMarkerEnd, AddressOf OnTimeMarkerEnd
+        AddHandler marker.PushInformation, AddressOf PushInformationToDescriptor
 
         ActualList.Controls.Add(marker)
         RaiseEvent CheckForScrollbar()
         SetupAnchors()
+        Refresh()
     End Sub
 
     Public Sub Remove(index As Integer)
@@ -74,16 +87,21 @@
 
     Public Sub Remove(name As String)
         Dim marker As TimeMarkerItemCLB = ActualList.Controls(name)
-        If IsNothing(marker) Then Exit Sub
+        If IsNothing(marker) Then
+            Beep()
+            Exit Sub
+        End If
         ActualList.Controls.Remove(marker)
-
+        Console.Beep()
         RemoveHandler marker.Click, AddressOf ItemClicked
         RemoveHandler marker.SelectionChanged, AddressOf SetActiveControl
         RemoveHandler marker.MarkerSetForDeletion, AddressOf OnSetForDeletion
         RemoveHandler marker.TimeMarkerEnd, AddressOf OnTimeMarkerEnd
+        RemoveHandler marker.PushInformation, AddressOf PushInformationToDescriptor
 
         marker.Dispose()
         SetupAnchors()
+        Refresh()
     End Sub
 
     Private Sub SetupAnchors()
@@ -116,14 +134,23 @@
                     Remove(item.Name)
                 End If
             Next
+            For Each item As TimeMarkerItemCLB In list
+                MsgBox("Item object: " & item.ToString & "; Item Date: " & item.FullDate.ToString)
+            Next
+            list.Clear()
         End If
+        Refresh()
     End Sub
 
     Public Sub ChangeEditorMode(mode As CustomListBox.EditorMode)
+        internalMode = mode
         RaiseEvent EditorModeChanged(mode)
     End Sub
 
 #Region "Events"
+
+#Region "TimeMarkerItem"
+#End Region
     Private Sub ResizeMe(sender As Object, e As EventArgs) Handles Me.Resize
         If ActualList.Controls.Count Then
             For i = 0 To ActualList.Controls.Count - 1
@@ -138,6 +165,9 @@
 
     Public Sub SetActiveControl(marker As TimeMarkerItemCLB)
         If Not IsNothing(currentActiveControl) And marker IsNot currentActiveControl Then
+            If currentActiveControl.ShowProgress Then
+                currentActiveControl._updateTimer.Start()
+            End If
             currentActiveControl.SelectMe = False
             currentActiveControl.FullDate1.BackgroundColor = Color.FromArgb(38, 38, 38)
             currentActiveControl.Points1.BackgroundColor = Color.FromArgb(38, 38, 38)
@@ -146,6 +176,7 @@
         If currentActiveControl IsNot marker Then
             currentActiveControl = marker
         End If
+        marker.PushMarker(marker)
     End Sub
 
     Private Sub ChangeMode(newMode As EditorMode) Handles Me.EditorModeChanged
@@ -155,6 +186,7 @@
                 control.EditorMode = newMode
             Next
         End If
+        descriptor.EditorMode = newMode
     End Sub
 
     Private Sub ItemClicked(sender As Object, e As EventArgs)
@@ -189,8 +221,24 @@
             hasScrollBar = False
         End If
     End Sub
+
+    Private Sub PushInformationToDescriptor(information As TimeMarkerItemCLB)
+        descriptor.marker = information
+        descriptor._showMore = False
+        descriptor.Title = information.Title
+        descriptor.Description = information.Description
+        descriptor.FullDate = information.FullDate
+        descriptor.Priority = descriptor.Priority
+        descriptor.Points = information.Points
+        descriptor.AccomplishedPoints = information.AccomplishedPoints
+        descriptor.PointNumber = information.Points.Count
+        descriptor.RenderProgress = information.ShowProgress
+        descriptor.Progress = information.Progress
+        RaiseEvent UpdateDescriptorInformation()
+    End Sub
 #End Region
 
+#Region "Rendering"
     Private Sub PaintMe(sender As Object, e As PaintEventArgs) Handles Me.Paint
         If ActualList.Controls.Count = 0 Then
             Dim graphics As Graphics = e.Graphics
@@ -217,4 +265,5 @@
         Dim layoutRectangle As New RectangleF(point, size)
         graphics.DrawString(str, font, brush, layoutRectangle)
     End Sub
+#End Region
 End Class

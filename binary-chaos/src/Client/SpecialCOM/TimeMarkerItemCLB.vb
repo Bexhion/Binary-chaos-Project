@@ -5,22 +5,25 @@ Public Class TimeMarkerItemCLB
     Public Event SelectionChanged(sender As TimeMarkerItemCLB)
     Public Event MarkerSetForDeletion(sender As TimeMarkerItemCLB)
     Public Event TimeMarkerEnd(sender As TimeMarkerItemCLB)
+    Public Event PushInformation(information As TimeMarkerItemCLB)
 
     Public WithEvents timeMarker As TimeMarker
 
-    Public _title As String = "This is a title!"
-    Public _description As String = "And this is a description used to describe the title!"
-    Public _points As List(Of String)
-    Public _pointNumber As Integer
-    Public accomplishedPointsNumber As Integer = 0
-    Public _accomplishedPoints As List(Of String)
-    Public _priority As CustomListBox.Priority
+    Dim information As New Dictionary(Of String, Object)
+    Dim _title As String = "This is a title!"
+    Dim _description As String = "And this is a description used to describe the title!"
+    Dim _points As List(Of String)
+    Dim _pointNumber As Integer
+    Dim accomplishedPointsNumber As Integer = 0
+    Dim _accomplishedPoints As List(Of String)
+    Dim _priority As CustomListBox.Priority
     Dim priorityBrush As SolidBrush
-    Public _thisDate As Date
-    Public _mode As CustomListBox.EditorMode = CustomListBox.EditorMode.FIXED
-    Public _progress As Double
-    Public _renderProgress As Boolean = False
-    Public _selectedForDeletion As Boolean = False
+    Dim _thisDate As Date
+    Dim _mode As CustomListBox.EditorMode = CustomListBox.EditorMode.FIXED
+    Dim _progress As Double
+    Dim _renderProgress As Boolean = False
+    Dim _selectedForDeletion As Boolean = False
+    Public WithEvents _updateTimer As New Timer With {.Interval = 1000}
 
     Dim _backColor As Color = Color.FromArgb(38, 38, 38)
     Dim _renderOutline As Boolean = True
@@ -70,6 +73,7 @@ Public Class TimeMarkerItemCLB
         End Get
         Set(value As Date)
             _thisDate = value
+            FullDate1.FullDate = _thisDate
             Refresh()
         End Set
     End Property
@@ -180,6 +184,15 @@ Public Class TimeMarkerItemCLB
         End Set
     End Property
 
+    Public Property UpdateTimerRate() As Integer
+        Get
+            Return _updateTimer.Interval
+        End Get
+        Set(value As Integer)
+            _updateTimer.Interval = value
+        End Set
+    End Property
+
     Private Function GetPriorityBrush(priority As CustomListBox.Priority) As SolidBrush
         Dim brush As SolidBrush
         Select Case priority
@@ -227,13 +240,13 @@ Public Class TimeMarkerItemCLB
 #End Region
 #Region "Click"
     Private Sub MouseClickEvent(sender As Object, e As MouseEventArgs) Handles Me.MouseClick, Label_Title.MouseClick, Label_Desc.MouseClick, Points1.MouseClick
+        RaiseEvent SelectionChanged(Me)
         If Not SelectMe Then
             SelectMe = True
             FullDate1.BackgroundColor = Color.FromArgb(63, 63, 63)
             Points1.BackgroundColor = Color.FromArgb(63, 63, 63)
             BackgroundColor = Color.FromArgb(63, 63, 63)
         End If
-        RaiseEvent SelectionChanged(Me)
     End Sub
 #End Region
 #Region "Date"
@@ -264,7 +277,12 @@ Public Class TimeMarkerItemCLB
     End Sub
 
     Private Sub TimeMarkerFinished(marker As TimeMarker) Handles timeMarker.TimerEnd
+        ShowProgress = False
         RaiseEvent TimeMarkerEnd(Me)
+    End Sub
+
+    Private Sub TimeMarkerTickHandler(sender As Object, e As EventArgs) Handles _updateTimer.Tick
+        PushMarker(Me)
     End Sub
 #End Region
 #Region "Renderers"
@@ -274,6 +292,9 @@ Public Class TimeMarkerItemCLB
         graphics.FillRectangle(brush, rectangle)
     End Sub
 #End Region
+    Public Sub PushMarker(info As TimeMarkerItemCLB)
+        RaiseEvent PushInformation(info)
+    End Sub
 #End Region
 
     Public Overrides Sub Refresh()
@@ -287,7 +308,7 @@ Public Class TimeMarkerItemCLB
         Dim graphics As Graphics = e.Graphics
         RenderPriority(graphics)
         If DoRenderOutline Then
-            RenderOutline(graphics, _outlineColor)
+            RenderOutline(graphics, OutlineColor)
         End If
         If ShowProgress Then
             RenderProgress(graphics)

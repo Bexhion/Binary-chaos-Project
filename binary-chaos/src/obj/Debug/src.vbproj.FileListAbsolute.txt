@@ -47,8 +47,10 @@ C:\Users\hugo_\Documents\Project_CODE\Visual Studio 2015\Binary-chaos-Project\bi
 C:\Users\hugo_\Documents\Project_CODE\Visual Studio 2015\Binary-chaos-Project\binary-chaos\src\obj\Debug\WindowsApplication1.TimeMarkerItemCLB.resources
 C:\Users\hugo_\Documents\Project_CODE\Visual Studio 2015\Binary-chaos-Project\binary-chaos\src\obj\Debug\WindowsApplication1.FullDate.resources
 C:\Users\hugo_\Documents\Project_CODE\Visual Studio 2015\Binary-chaos-Project\binary-chaos\src\obj\Debug\WindowsApplication1.Points.resources
-C:\Users\hugo_\Documents\Project_CODE\Visual Studio 2015\Binary-chaos-Project\binary-chaos\src\obj\Debug\src.exe
 C:\Users\hugo_\Documents\Project_CODE\Visual Studio 2015\Testing\src\bin\Debug\src.exe.config
 C:\Users\hugo_\Documents\Project_CODE\Visual Studio 2015\Testing\src\obj\Debug\src.exe
 C:\Users\hugo_\Documents\Project_CODE\Visual Studio 2015\Testing\src\obj\Debug\src.xml
 C:\Users\hugo_\Documents\Project_CODE\Visual Studio 2015\Testing\src\obj\Debug\src.pdb
+C:\Users\hugo_\Documents\Project_CODE\Visual Studio 2015\Binary-chaos-Project\binary-chaos\src\bin\Debug\aa-DJ\src.resources.dll
+C:\Users\hugo_\Documents\Project_CODE\Visual Studio 2015\Binary-chaos-Project\binary-chaos\src\bin\Debug\en-GB\src.resources.dll
+C:\Users\hugo_\Documents\Project_CODE\Visual Studio 2015\Binary-chaos-Project\binary-chaos\src\obj\Debug\src.exe
