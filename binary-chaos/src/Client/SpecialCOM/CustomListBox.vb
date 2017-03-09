@@ -51,7 +51,7 @@
     'Call this before anything else
     Public Sub SetDescriptor(descriptor As TimeMarkerDescription)
         Me.descriptor = descriptor
-        AddHandler Me.UpdateDescriptorInformation, AddressOf descriptor.HandleInformationUpdate
+        'AddHandler Me.UpdateDescriptorInformation, AddressOf descriptor.HandleInformationUpdate
     End Sub
 
     Public Sub Add(timeMarker As TimeMarker, title As String, description As String, points As List(Of String), priority As Priority)
@@ -135,7 +135,6 @@
                 End If
             Next
             For Each item As TimeMarkerItemCLB In list
-                MsgBox("Item object: " & item.ToString & "; Item Date: " & item.FullDate.ToString)
             Next
             list.Clear()
         End If
@@ -145,6 +144,10 @@
     Public Sub ChangeEditorMode(mode As CustomListBox.EditorMode)
         internalMode = mode
         RaiseEvent EditorModeChanged(mode)
+    End Sub
+
+    Private Sub OrganizeListBox()
+
     End Sub
 
 #Region "Events"
@@ -164,19 +167,14 @@
     End Sub
 
     Public Sub SetActiveControl(marker As TimeMarkerItemCLB)
-        If Not IsNothing(currentActiveControl) And marker IsNot currentActiveControl Then
-            If currentActiveControl.ShowProgress Then
-                currentActiveControl._updateTimer.Start()
-            End If
+        If Not IsNothing(currentActiveControl) And currentActiveControl IsNot marker Then
             currentActiveControl.SelectMe = False
             currentActiveControl.FullDate1.BackgroundColor = Color.FromArgb(38, 38, 38)
             currentActiveControl.Points1.BackgroundColor = Color.FromArgb(38, 38, 38)
             currentActiveControl.BackgroundColor = Color.FromArgb(38, 38, 38)
-        End If
-        If currentActiveControl IsNot marker Then
             currentActiveControl = marker
+            marker.PushMarker(currentActiveControl)
         End If
-        marker.PushMarker(marker)
     End Sub
 
     Private Sub ChangeMode(newMode As EditorMode) Handles Me.EditorModeChanged
@@ -186,7 +184,7 @@
                 control.EditorMode = newMode
             Next
         End If
-        descriptor.EditorMode = newMode
+        'descriptor.RaiseEditorModeEvent(newMode)
     End Sub
 
     Private Sub ItemClicked(sender As Object, e As EventArgs)
@@ -223,17 +221,6 @@
     End Sub
 
     Private Sub PushInformationToDescriptor(information As TimeMarkerItemCLB)
-        descriptor.marker = information
-        descriptor._showMore = False
-        descriptor.Title = information.Title
-        descriptor.Description = information.Description
-        descriptor.FullDate = information.FullDate
-        descriptor.Priority = descriptor.Priority
-        descriptor.Points = information.Points
-        descriptor.AccomplishedPoints = information.AccomplishedPoints
-        descriptor.PointNumber = information.Points.Count
-        descriptor.RenderProgress = information.ShowProgress
-        descriptor.Progress = information.Progress
         RaiseEvent UpdateDescriptorInformation()
     End Sub
 #End Region

@@ -22,93 +22,133 @@ Partial Class Form3
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Me.TextBox1 = New System.Windows.Forms.TextBox()
         Me.TextBox2 = New System.Windows.Forms.TextBox()
-        Me.Label1 = New System.Windows.Forms.Label()
-        Me.Label2 = New System.Windows.Forms.Label()
-        Me.SignUp = New System.Windows.Forms.Label()
+        Me.SignIn = New System.Windows.Forms.Label()
         Me.RecoverPassword = New System.Windows.Forms.Label()
+        Me.Login = New System.Windows.Forms.Button()
+        Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.Label3 = New System.Windows.Forms.Label()
+        Me.CheckBox1 = New System.Windows.Forms.CheckBox()
+        Me.TextBox1 = New System.Windows.Forms.TextBox()
+        Me.Panel1.SuspendLayout()
         Me.SuspendLayout()
-        '
-        'TextBox1
-        '
-        Me.TextBox1.Location = New System.Drawing.Point(124, 198)
-        Me.TextBox1.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
-        Me.TextBox1.Name = "TextBox1"
-        Me.TextBox1.Size = New System.Drawing.Size(100, 22)
-        Me.TextBox1.TabIndex = 1
         '
         'TextBox2
         '
-        Me.TextBox2.Location = New System.Drawing.Point(124, 116)
+        Me.TextBox2.ForeColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
+        Me.TextBox2.Location = New System.Drawing.Point(95, 129)
         Me.TextBox2.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.TextBox2.Name = "TextBox2"
-        Me.TextBox2.Size = New System.Drawing.Size(100, 22)
+        Me.TextBox2.Size = New System.Drawing.Size(123, 22)
         Me.TextBox2.TabIndex = 2
+        Me.TextBox2.Text = "USERNAME"
         '
-        'Label1
+        'SignIn
         '
-        Me.Label1.AutoSize = True
-        Me.Label1.Font = New System.Drawing.Font("Modern No. 20", 10.2!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.ForeColor = System.Drawing.Color.Red
-        Me.Label1.Location = New System.Drawing.Point(97, 94)
-        Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(141, 20)
-        Me.Label1.TabIndex = 3
-        Me.Label1.Text = "Nome de usuário"
-        '
-        'Label2
-        '
-        Me.Label2.AutoSize = True
-        Me.Label2.Font = New System.Drawing.Font("Modern No. 20", 10.2!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label2.ForeColor = System.Drawing.Color.Red
-        Me.Label2.Location = New System.Drawing.Point(132, 176)
-        Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(82, 20)
-        Me.Label2.TabIndex = 4
-        Me.Label2.Text = "Password"
-        '
-        'SignUp
-        '
-        Me.SignUp.AutoSize = True
-        Me.SignUp.Location = New System.Drawing.Point(121, 289)
-        Me.SignUp.Name = "SignUp"
-        Me.SignUp.Size = New System.Drawing.Size(58, 17)
-        Me.SignUp.TabIndex = 6
-        Me.SignUp.Text = "Sign Up"
+        Me.SignIn.AutoSize = True
+        Me.SignIn.Location = New System.Drawing.Point(45, 401)
+        Me.SignIn.Name = "SignIn"
+        Me.SignIn.Size = New System.Drawing.Size(58, 17)
+        Me.SignIn.TabIndex = 6
+        Me.SignIn.Text = "Sign Up"
         '
         'RecoverPassword
         '
         Me.RecoverPassword.AutoSize = True
-        Me.RecoverPassword.Location = New System.Drawing.Point(121, 319)
+        Me.RecoverPassword.Location = New System.Drawing.Point(45, 427)
         Me.RecoverPassword.Name = "RecoverPassword"
         Me.RecoverPassword.Size = New System.Drawing.Size(126, 17)
         Me.RecoverPassword.TabIndex = 7
         Me.RecoverPassword.Text = "Recover Password"
         '
+        'Login
+        '
+        Me.Login.BackColor = System.Drawing.Color.White
+        Me.Login.FlatAppearance.BorderColor = System.Drawing.Color.White
+        Me.Login.FlatAppearance.BorderSize = 0
+        Me.Login.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(192, Byte), Integer))
+        Me.Login.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Blue
+        Me.Login.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Login.Font = New System.Drawing.Font("Arial Narrow", 10.2!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Login.ForeColor = System.Drawing.Color.Black
+        Me.Login.Location = New System.Drawing.Point(95, 311)
+        Me.Login.Name = "Login"
+        Me.Login.Size = New System.Drawing.Size(123, 35)
+        Me.Login.TabIndex = 8
+        Me.Login.Text = "Login"
+        Me.Login.UseVisualStyleBackColor = False
+        '
+        'Panel1
+        '
+        Me.Panel1.Controls.Add(Me.Label3)
+        Me.Panel1.Location = New System.Drawing.Point(1, 1)
+        Me.Panel1.Name = "Panel1"
+        Me.Panel1.Size = New System.Drawing.Size(340, 76)
+        Me.Panel1.TabIndex = 1
+        '
+        'Label3
+        '
+        Me.Label3.AutoSize = True
+        Me.Label3.BackColor = System.Drawing.Color.FromArgb(CType(CType(40, Byte), Integer), CType(CType(40, Byte), Integer), CType(CType(40, Byte), Integer))
+        Me.Label3.Font = New System.Drawing.Font("Arial", 22.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label3.ForeColor = System.Drawing.Color.WhiteSmoke
+        Me.Label3.Location = New System.Drawing.Point(95, 19)
+        Me.Label3.Name = "Label3"
+        Me.Label3.Size = New System.Drawing.Size(112, 43)
+        Me.Label3.TabIndex = 1
+        Me.Label3.Text = "Login"
+        '
+        'CheckBox1
+        '
+        Me.CheckBox1.AutoSize = True
+        Me.CheckBox1.Location = New System.Drawing.Point(48, 259)
+        Me.CheckBox1.Name = "CheckBox1"
+        Me.CheckBox1.Size = New System.Drawing.Size(122, 21)
+        Me.CheckBox1.TabIndex = 13
+        Me.CheckBox1.Text = "Remember me"
+        Me.CheckBox1.UseVisualStyleBackColor = True
+        '
+        'TextBox1
+        '
+        Me.TextBox1.ForeColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
+        Me.TextBox1.Location = New System.Drawing.Point(95, 188)
+        Me.TextBox1.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
+        Me.TextBox1.Name = "TextBox1"
+        Me.TextBox1.Size = New System.Drawing.Size(123, 22)
+        Me.TextBox1.TabIndex = 3
+        Me.TextBox1.Text = "PASSWORD"
+        '
         'Form3
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.BackColor = System.Drawing.Color.White
+        Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(40, Byte), Integer), CType(CType(40, Byte), Integer), CType(CType(40, Byte), Integer))
         Me.ClientSize = New System.Drawing.Size(340, 453)
-        Me.Controls.Add(Me.RecoverPassword)
-        Me.Controls.Add(Me.SignUp)
-        Me.Controls.Add(Me.Label2)
-        Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.TextBox2)
         Me.Controls.Add(Me.TextBox1)
+        Me.Controls.Add(Me.CheckBox1)
+        Me.Controls.Add(Me.Panel1)
+        Me.Controls.Add(Me.Login)
+        Me.Controls.Add(Me.RecoverPassword)
+        Me.Controls.Add(Me.SignIn)
+        Me.ForeColor = System.Drawing.Color.Gray
+        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
         Me.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.Name = "Form3"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Login"
+        Me.Panel1.ResumeLayout(False)
+        Me.Panel1.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
     End Sub
-    Friend WithEvents TextBox1 As TextBox
     Friend WithEvents TextBox2 As TextBox
-    Friend WithEvents Label1 As Label
-    Friend WithEvents Label2 As Label
-    Friend WithEvents SignUp As Label
+    Friend WithEvents SignIn As Label
     Friend WithEvents RecoverPassword As Label
+    Friend WithEvents Login As Button
+    Friend WithEvents Panel1 As Panel
+    Friend WithEvents Label3 As Label
+    Friend WithEvents CheckBox1 As CheckBox
+    Friend WithEvents TextBox1 As TextBox
 End Class

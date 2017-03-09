@@ -96,7 +96,6 @@ Public Class FullDate
     Sub New()
         InitializeComponent()
         BackgroundColor = Color.FromArgb(38, 38, 38)
-        FullDate = Date.Now
         GetPath()
     End Sub
 

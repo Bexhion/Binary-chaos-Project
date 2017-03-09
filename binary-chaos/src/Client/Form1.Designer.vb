@@ -22,165 +22,130 @@ Partial Class Form1
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
-        Me.Button1 = New System.Windows.Forms.Button()
-        Me.segurança = New System.Windows.Forms.Button()
-        Me.Button4 = New System.Windows.Forms.Button()
+        Me.components = New System.ComponentModel.Container()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Form1))
+        Me.user = New System.Windows.Forms.Button()
+        Me.MainPage = New System.Windows.Forms.Button()
+        Me.Edit = New System.Windows.Forms.Button()
         Me.Planificação = New System.Windows.Forms.Button()
-        Me.Button2 = New System.Windows.Forms.Button()
-        Me.Button3 = New System.Windows.Forms.Button()
-        Me.Button5 = New System.Windows.Forms.Button()
-        Me.Button6 = New System.Windows.Forms.Button()
-        Me.Button7 = New System.Windows.Forms.Button()
-        Me.Button8 = New System.Windows.Forms.Button()
+        Me.Add = New System.Windows.Forms.Button()
+        Me.Remove = New System.Windows.Forms.Button()
+        Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.Help = New System.Windows.Forms.Button()
+        Me.ToolTip1 = New System.Windows.Forms.ToolTip(Me.components)
+        Me.Label1 = New System.Windows.Forms.Label()
+        Me.UsernameLabel = New System.Windows.Forms.Label()
+        Me.Panel1.SuspendLayout()
         Me.SuspendLayout()
         '
-        'Button1
+        'user
         '
-        Me.Button1.Location = New System.Drawing.Point(853, 274)
-        Me.Button1.Margin = New System.Windows.Forms.Padding(2)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(91, 37)
-        Me.Button1.TabIndex = 5
-        Me.Button1.Text = "Button1"
-        Me.Button1.UseVisualStyleBackColor = True
+        Me.user.BackColor = System.Drawing.SystemColors.ControlText
+        Me.user.BackgroundImage = Global.WindowsApplication1.My.Resources.Resources.user
+        resources.ApplyResources(Me.user, "user")
+        Me.user.FlatAppearance.BorderSize = 0
+        Me.user.Name = "user"
+        Me.user.UseVisualStyleBackColor = False
         '
-        'segurança
+        'MainPage
         '
-        Me.segurança.Location = New System.Drawing.Point(867, 143)
-        Me.segurança.Margin = New System.Windows.Forms.Padding(2)
-        Me.segurança.Name = "segurança"
-        Me.segurança.Size = New System.Drawing.Size(91, 37)
-        Me.segurança.TabIndex = 7
-        Me.segurança.Text = "Segurança"
-        Me.segurança.UseVisualStyleBackColor = True
+        Me.MainPage.BackgroundImage = Global.WindowsApplication1.My.Resources.Resources.clog
+        resources.ApplyResources(Me.MainPage, "MainPage")
+        Me.MainPage.FlatAppearance.BorderSize = 0
+        Me.MainPage.Name = "MainPage"
+        Me.MainPage.UseVisualStyleBackColor = True
         '
-        'Button4
+        'Edit
         '
-        Me.Button4.BackColor = System.Drawing.Color.Transparent
-        Me.Button4.FlatAppearance.BorderSize = 0
-        Me.Button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Button4.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button4.ForeColor = System.Drawing.Color.DodgerBlue
-        Me.Button4.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.Button4.Location = New System.Drawing.Point(833, 198)
-        Me.Button4.Margin = New System.Windows.Forms.Padding(2)
-        Me.Button4.Name = "Button4"
-        Me.Button4.Size = New System.Drawing.Size(85, 38)
-        Me.Button4.TabIndex = 8
-        Me.Button4.Text = "Edit"
-        Me.Button4.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
-        Me.Button4.UseVisualStyleBackColor = False
+        Me.Edit.BackColor = System.Drawing.Color.Transparent
+        resources.ApplyResources(Me.Edit, "Edit")
+        Me.Edit.FlatAppearance.BorderSize = 0
+        Me.Edit.ForeColor = System.Drawing.Color.DodgerBlue
+        Me.Edit.Name = "Edit"
+        Me.Edit.UseVisualStyleBackColor = False
         '
         'Planificação
         '
-        Me.Planificação.Location = New System.Drawing.Point(867, 27)
-        Me.Planificação.Margin = New System.Windows.Forms.Padding(2)
+        resources.ApplyResources(Me.Planificação, "Planificação")
         Me.Planificação.Name = "Planificação"
-        Me.Planificação.Size = New System.Drawing.Size(91, 37)
-        Me.Planificação.TabIndex = 9
-        Me.Planificação.Text = "Planificação"
         Me.Planificação.UseVisualStyleBackColor = True
         '
-        'Button2
+        'Add
         '
-        Me.Button2.FlatAppearance.BorderSize = 0
-        Me.Button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Button2.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button2.ForeColor = System.Drawing.Color.DodgerBlue
-        Me.Button2.Location = New System.Drawing.Point(766, 205)
-        Me.Button2.Margin = New System.Windows.Forms.Padding(2)
-        Me.Button2.Name = "Button2"
-        Me.Button2.Size = New System.Drawing.Size(49, 20)
-        Me.Button2.TabIndex = 10
-        Me.Button2.Text = "+ Add"
-        Me.Button2.TextAlign = System.Drawing.ContentAlignment.TopCenter
-        Me.Button2.UseVisualStyleBackColor = True
+        Me.Add.BackColor = System.Drawing.Color.Transparent
+        Me.Add.FlatAppearance.BorderSize = 0
+        resources.ApplyResources(Me.Add, "Add")
+        Me.Add.ForeColor = System.Drawing.Color.DodgerBlue
+        Me.Add.Name = "Add"
+        Me.Add.UseVisualStyleBackColor = False
         '
-        'Button3
+        'Remove
         '
-        Me.Button3.FlatAppearance.BorderSize = 0
-        Me.Button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Button3.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button3.ForeColor = System.Drawing.Color.DodgerBlue
-        Me.Button3.Location = New System.Drawing.Point(785, 84)
-        Me.Button3.Margin = New System.Windows.Forms.Padding(2)
-        Me.Button3.Name = "Button3"
-        Me.Button3.Size = New System.Drawing.Size(64, 20)
-        Me.Button3.TabIndex = 11
-        Me.Button3.Text = "- Remove"
-        Me.Button3.TextAlign = System.Drawing.ContentAlignment.TopCenter
-        Me.Button3.UseVisualStyleBackColor = True
+        Me.Remove.FlatAppearance.BorderSize = 0
+        resources.ApplyResources(Me.Remove, "Remove")
+        Me.Remove.ForeColor = System.Drawing.Color.DodgerBlue
+        Me.Remove.Name = "Remove"
+        Me.Remove.UseVisualStyleBackColor = True
         '
-        'Button5
+        'Panel1
         '
-        Me.Button5.Location = New System.Drawing.Point(766, 41)
-        Me.Button5.Name = "Button5"
-        Me.Button5.Size = New System.Drawing.Size(75, 23)
-        Me.Button5.TabIndex = 12
-        Me.Button5.Text = "Button5"
-        Me.Button5.UseVisualStyleBackColor = True
+        Me.Panel1.BackColor = System.Drawing.Color.DarkGray
+        Me.Panel1.Controls.Add(Me.Help)
+        Me.Panel1.Controls.Add(Me.Planificação)
+        Me.Panel1.Controls.Add(Me.MainPage)
+        Me.Panel1.Controls.Add(Me.user)
+        resources.ApplyResources(Me.Panel1, "Panel1")
+        Me.Panel1.Name = "Panel1"
         '
-        'Button6
+        'Help
         '
-        Me.Button6.Location = New System.Drawing.Point(766, 81)
-        Me.Button6.Name = "Button6"
-        Me.Button6.Size = New System.Drawing.Size(75, 23)
-        Me.Button6.TabIndex = 13
-        Me.Button6.Text = "Button6"
-        Me.Button6.UseVisualStyleBackColor = True
+        Me.Help.BackgroundImage = Global.WindowsApplication1.My.Resources.Resources.help
+        resources.ApplyResources(Me.Help, "Help")
+        Me.Help.Name = "Help"
+        Me.Help.UseVisualStyleBackColor = True
         '
-        'Button7
+        'Label1
         '
-        Me.Button7.Location = New System.Drawing.Point(766, 110)
-        Me.Button7.Name = "Button7"
-        Me.Button7.Size = New System.Drawing.Size(75, 23)
-        Me.Button7.TabIndex = 14
-        Me.Button7.Text = "Button7"
-        Me.Button7.UseVisualStyleBackColor = True
+        resources.ApplyResources(Me.Label1, "Label1")
+        Me.Label1.ForeColor = System.Drawing.SystemColors.ActiveCaption
+        Me.Label1.Name = "Label1"
         '
-        'Button8
+        'UsernameLabel
         '
-        Me.Button8.Location = New System.Drawing.Point(755, 157)
-        Me.Button8.Name = "Button8"
-        Me.Button8.Size = New System.Drawing.Size(75, 23)
-        Me.Button8.TabIndex = 15
-        Me.Button8.Text = "Button8"
-        Me.Button8.UseVisualStyleBackColor = True
+        resources.ApplyResources(Me.UsernameLabel, "UsernameLabel")
+        Me.UsernameLabel.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.UsernameLabel.ForeColor = System.Drawing.SystemColors.ActiveCaption
+        Me.UsernameLabel.Name = "UsernameLabel"
         '
         'Form1
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(96.0!, 96.0!)
-        Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi
-        Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(48, Byte), Integer), CType(CType(48, Byte), Integer), CType(CType(48, Byte), Integer))
-        Me.ClientSize = New System.Drawing.Size(1161, 653)
-        Me.Controls.Add(Me.Button8)
-        Me.Controls.Add(Me.Button7)
-        Me.Controls.Add(Me.Button6)
-        Me.Controls.Add(Me.Button5)
-        Me.Controls.Add(Me.Button3)
-        Me.Controls.Add(Me.Button2)
-        Me.Controls.Add(Me.Planificação)
-        Me.Controls.Add(Me.Button4)
-        Me.Controls.Add(Me.segurança)
-        Me.Controls.Add(Me.Button1)
-        Me.DoubleBuffered = True
+        resources.ApplyResources(Me, "$this")
+        Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
+        Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(40, Byte), Integer), CType(CType(40, Byte), Integer), CType(CType(40, Byte), Integer))
+        Me.Controls.Add(Me.UsernameLabel)
+        Me.Controls.Add(Me.Label1)
+        Me.Controls.Add(Me.Panel1)
+        Me.Controls.Add(Me.Remove)
+        Me.Controls.Add(Me.Add)
+        Me.Controls.Add(Me.Edit)
         Me.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
-        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
+        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
         Me.Name = "Form1"
-        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
-        Me.Text = "Time Keeper"
         Me.TransparencyKey = System.Drawing.Color.Gray
+        Me.Panel1.ResumeLayout(False)
         Me.ResumeLayout(False)
+        Me.PerformLayout()
 
     End Sub
-    Friend WithEvents Button1 As Button
-    Friend WithEvents segurança As Button
-    Friend WithEvents Button4 As Button
+    Friend WithEvents user As Button
+    Friend WithEvents MainPage As Button
+    Friend WithEvents Edit As Button
     Friend WithEvents Planificação As Button
-    Friend WithEvents Button2 As Button
-    Friend WithEvents Button3 As Button
-    Friend WithEvents Button5 As Button
-    Friend WithEvents Button6 As Button
-    Friend WithEvents Button7 As Button
-    Friend WithEvents Button8 As Button
+    Friend WithEvents Add As Button
+    Friend WithEvents Remove As Button
+    Friend WithEvents Panel1 As Panel
+    Friend WithEvents Help As Button
+    Friend WithEvents ToolTip1 As ToolTip
+    Friend WithEvents Label1 As Label
+    Friend WithEvents UsernameLabel As Label
 End Class

@@ -1,9 +1,9 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class TimeMarkerDescription
     Inherits System.Windows.Forms.UserControl
 
     'UserControl overrides dispose to clean up the component list.
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
             If disposing AndAlso components IsNot Nothing Then
@@ -20,221 +20,331 @@ Partial Class TimeMarkerDescription
     'NOTE: The following procedure is required by the Windows Form Designer
     'It can be modified using the Windows Form Designer.  
     'Do not modify it using the code editor.
-    <System.Diagnostics.DebuggerStepThrough()> _
+    <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
-        Me.Txt_Title = New System.Windows.Forms.TextBox()
-        Me.Txt_Description = New System.Windows.Forms.TextBox()
-        Me.Label1 = New System.Windows.Forms.Label()
-        Me.DescriptionPanel = New System.Windows.Forms.Panel()
-        Me.PointsPanel = New System.Windows.Forms.Panel()
-        Me.CheckBox1 = New System.Windows.Forms.CheckBox()
-        Me.Label2 = New System.Windows.Forms.Label()
-        Me.DetailsPanel = New System.Windows.Forms.Panel()
-        Me.Label4 = New System.Windows.Forms.Label()
-        Me.Label5 = New System.Windows.Forms.Label()
-        Me.Label3 = New System.Windows.Forms.Label()
-        Me.TitlePanel = New System.Windows.Forms.Panel()
-        Me.Panel1 = New System.Windows.Forms.Panel()
-        Me.Label6 = New System.Windows.Forms.Label()
-        Me.Label7 = New System.Windows.Forms.Label()
-        Me.DescriptionPanel.SuspendLayout()
-        Me.PointsPanel.SuspendLayout()
-        Me.DetailsPanel.SuspendLayout()
-        Me.TitlePanel.SuspendLayout()
+        Me.Descriptor = New System.Windows.Forms.FlowLayoutPanel()
+        Me.PanelTitle = New System.Windows.Forms.Panel()
+        Me.TxtboxTitle = New System.Windows.Forms.RichTextBox()
+        Me.PanelDescription = New System.Windows.Forms.Panel()
+        Me.LabelDesc = New System.Windows.Forms.Label()
+        Me.TxtboxDesc = New System.Windows.Forms.RichTextBox()
+        Me.PanelDetails = New System.Windows.Forms.Panel()
+        Me.ButtonPriority = New System.Windows.Forms.Button()
+        Me.ButtonEndDate = New System.Windows.Forms.Button()
+        Me.PanelStart = New System.Windows.Forms.Panel()
+        Me.LabelPriority = New System.Windows.Forms.Label()
+        Me.LabelEndDate = New System.Windows.Forms.Label()
+        Me.LabelStartDate = New System.Windows.Forms.Label()
+        Me.ButtonStartDate = New System.Windows.Forms.Button()
+        Me.LabelDetails = New System.Windows.Forms.Label()
+        Me.PanelPoints = New System.Windows.Forms.Panel()
+        Me.ButtonRemovePoint = New System.Windows.Forms.Button()
+        Me.ButtonAddPoint = New System.Windows.Forms.Button()
+        Me.LabelPoints = New System.Windows.Forms.Label()
+        Me.ScrollBar = New System.Windows.Forms.Panel()
+        Me.Descriptor.SuspendLayout()
+        Me.PanelTitle.SuspendLayout()
+        Me.PanelDescription.SuspendLayout()
+        Me.PanelDetails.SuspendLayout()
+        Me.PanelPoints.SuspendLayout()
         Me.SuspendLayout()
         '
-        'Txt_Title
+        'Descriptor
         '
-        Me.Txt_Title.BackColor = System.Drawing.Color.FromArgb(CType(CType(89, Byte), Integer), CType(CType(89, Byte), Integer), CType(CType(89, Byte), Integer))
-        Me.Txt_Title.BorderStyle = System.Windows.Forms.BorderStyle.None
-        Me.Txt_Title.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Txt_Title.Location = New System.Drawing.Point(10, 9)
-        Me.Txt_Title.Name = "Txt_Title"
-        Me.Txt_Title.Size = New System.Drawing.Size(254, 22)
-        Me.Txt_Title.TabIndex = 0
-        Me.Txt_Title.Text = "Title"
+        Me.Descriptor.AutoScroll = True
+        Me.Descriptor.BackColor = System.Drawing.Color.FromArgb(CType(CType(55, Byte), Integer), CType(CType(55, Byte), Integer), CType(CType(55, Byte), Integer))
+        Me.Descriptor.Controls.Add(Me.PanelTitle)
+        Me.Descriptor.Controls.Add(Me.PanelDescription)
+        Me.Descriptor.Controls.Add(Me.PanelDetails)
+        Me.Descriptor.Controls.Add(Me.PanelPoints)
+        Me.Descriptor.Dock = System.Windows.Forms.DockStyle.Left
+        Me.Descriptor.FlowDirection = System.Windows.Forms.FlowDirection.TopDown
+        Me.Descriptor.Location = New System.Drawing.Point(0, 0)
+        Me.Descriptor.Name = "Descriptor"
+        Me.Descriptor.Size = New System.Drawing.Size(437, 487)
+        Me.Descriptor.TabIndex = 0
+        Me.Descriptor.WrapContents = False
         '
-        'Txt_Description
+        'PanelTitle
         '
-        Me.Txt_Description.BackColor = System.Drawing.Color.FromArgb(CType(CType(89, Byte), Integer), CType(CType(89, Byte), Integer), CType(CType(89, Byte), Integer))
-        Me.Txt_Description.BorderStyle = System.Windows.Forms.BorderStyle.None
-        Me.Txt_Description.Location = New System.Drawing.Point(9, 33)
-        Me.Txt_Description.Multiline = True
-        Me.Txt_Description.Name = "Txt_Description"
-        Me.Txt_Description.Size = New System.Drawing.Size(256, 20)
-        Me.Txt_Description.TabIndex = 1
-        Me.Txt_Description.Text = "Description"
+        Me.PanelTitle.Controls.Add(Me.TxtboxTitle)
+        Me.PanelTitle.Location = New System.Drawing.Point(0, 0)
+        Me.PanelTitle.Margin = New System.Windows.Forms.Padding(0)
+        Me.PanelTitle.Name = "PanelTitle"
+        Me.PanelTitle.Size = New System.Drawing.Size(420, 44)
+        Me.PanelTitle.TabIndex = 0
         '
-        'Label1
+        'TxtboxTitle
         '
-        Me.Label1.AutoSize = True
-        Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.Location = New System.Drawing.Point(5, 7)
-        Me.Label1.Margin = New System.Windows.Forms.Padding(0)
-        Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(94, 18)
-        Me.Label1.TabIndex = 2
-        Me.Label1.Text = "Description"
+        Me.TxtboxTitle.BackColor = System.Drawing.Color.FromArgb(CType(CType(89, Byte), Integer), CType(CType(89, Byte), Integer), CType(CType(89, Byte), Integer))
+        Me.TxtboxTitle.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.TxtboxTitle.Cursor = System.Windows.Forms.Cursors.IBeam
+        Me.TxtboxTitle.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TxtboxTitle.ForeColor = System.Drawing.Color.FromArgb(CType(CType(240, Byte), Integer), CType(CType(240, Byte), Integer), CType(CType(240, Byte), Integer))
+        Me.TxtboxTitle.Location = New System.Drawing.Point(9, 10)
+        Me.TxtboxTitle.Margin = New System.Windows.Forms.Padding(0)
+        Me.TxtboxTitle.Name = "TxtboxTitle"
+        Me.TxtboxTitle.ReadOnly = True
+        Me.TxtboxTitle.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.None
+        Me.TxtboxTitle.Size = New System.Drawing.Size(402, 25)
+        Me.TxtboxTitle.TabIndex = 0
+        Me.TxtboxTitle.Text = "Title"
         '
-        'DescriptionPanel
+        'PanelDescription
         '
-        Me.DescriptionPanel.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.DescriptionPanel.Controls.Add(Me.Label1)
-        Me.DescriptionPanel.Controls.Add(Me.Txt_Description)
-        Me.DescriptionPanel.Location = New System.Drawing.Point(0, 45)
-        Me.DescriptionPanel.Margin = New System.Windows.Forms.Padding(0)
-        Me.DescriptionPanel.Name = "DescriptionPanel"
-        Me.DescriptionPanel.Size = New System.Drawing.Size(276, 56)
-        Me.DescriptionPanel.TabIndex = 3
+        Me.PanelDescription.Controls.Add(Me.LabelDesc)
+        Me.PanelDescription.Controls.Add(Me.TxtboxDesc)
+        Me.PanelDescription.Location = New System.Drawing.Point(0, 44)
+        Me.PanelDescription.Margin = New System.Windows.Forms.Padding(0)
+        Me.PanelDescription.Name = "PanelDescription"
+        Me.PanelDescription.Size = New System.Drawing.Size(420, 58)
+        Me.PanelDescription.TabIndex = 2
         '
-        'PointsPanel
+        'LabelDesc
         '
-        Me.PointsPanel.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.PointsPanel.Controls.Add(Me.Label7)
-        Me.PointsPanel.Controls.Add(Me.CheckBox1)
-        Me.PointsPanel.Controls.Add(Me.Label2)
-        Me.PointsPanel.Location = New System.Drawing.Point(0, 159)
-        Me.PointsPanel.Margin = New System.Windows.Forms.Padding(0)
-        Me.PointsPanel.Name = "PointsPanel"
-        Me.PointsPanel.Size = New System.Drawing.Size(276, 74)
-        Me.PointsPanel.TabIndex = 4
+        Me.LabelDesc.AutoSize = True
+        Me.LabelDesc.BackColor = System.Drawing.Color.Transparent
+        Me.LabelDesc.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LabelDesc.Location = New System.Drawing.Point(5, 2)
+        Me.LabelDesc.Margin = New System.Windows.Forms.Padding(0)
+        Me.LabelDesc.Name = "LabelDesc"
+        Me.LabelDesc.Size = New System.Drawing.Size(104, 24)
+        Me.LabelDesc.TabIndex = 1
+        Me.LabelDesc.Text = "Description"
         '
-        'CheckBox1
+        'TxtboxDesc
         '
-        Me.CheckBox1.Location = New System.Drawing.Point(20, 33)
-        Me.CheckBox1.Name = "CheckBox1"
-        Me.CheckBox1.Size = New System.Drawing.Size(237, 26)
-        Me.CheckBox1.TabIndex = 3
-        Me.CheckBox1.Text = "CheckBox1"
-        Me.CheckBox1.UseVisualStyleBackColor = True
+        Me.TxtboxDesc.BackColor = System.Drawing.Color.FromArgb(CType(CType(89, Byte), Integer), CType(CType(89, Byte), Integer), CType(CType(89, Byte), Integer))
+        Me.TxtboxDesc.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.TxtboxDesc.Cursor = System.Windows.Forms.Cursors.IBeam
+        Me.TxtboxDesc.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TxtboxDesc.ForeColor = System.Drawing.Color.FromArgb(CType(CType(240, Byte), Integer), CType(CType(240, Byte), Integer), CType(CType(240, Byte), Integer))
+        Me.TxtboxDesc.Location = New System.Drawing.Point(9, 29)
+        Me.TxtboxDesc.Margin = New System.Windows.Forms.Padding(0)
+        Me.TxtboxDesc.Name = "TxtboxDesc"
+        Me.TxtboxDesc.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.None
+        Me.TxtboxDesc.Size = New System.Drawing.Size(402, 18)
+        Me.TxtboxDesc.TabIndex = 0
+        Me.TxtboxDesc.Text = "Description"
         '
-        'Label2
+        'PanelDetails
         '
-        Me.Label2.AutoSize = True
-        Me.Label2.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label2.Location = New System.Drawing.Point(5, 12)
-        Me.Label2.Margin = New System.Windows.Forms.Padding(0)
-        Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(167, 18)
-        Me.Label2.TabIndex = 2
-        Me.Label2.Text = "Points to accomplish"
+        Me.PanelDetails.Controls.Add(Me.ButtonPriority)
+        Me.PanelDetails.Controls.Add(Me.ButtonEndDate)
+        Me.PanelDetails.Controls.Add(Me.PanelStart)
+        Me.PanelDetails.Controls.Add(Me.LabelPriority)
+        Me.PanelDetails.Controls.Add(Me.LabelEndDate)
+        Me.PanelDetails.Controls.Add(Me.LabelStartDate)
+        Me.PanelDetails.Controls.Add(Me.ButtonStartDate)
+        Me.PanelDetails.Controls.Add(Me.LabelDetails)
+        Me.PanelDetails.Location = New System.Drawing.Point(0, 102)
+        Me.PanelDetails.Margin = New System.Windows.Forms.Padding(0)
+        Me.PanelDetails.Name = "PanelDetails"
+        Me.PanelDetails.Size = New System.Drawing.Size(420, 95)
+        Me.PanelDetails.TabIndex = 3
         '
-        'DetailsPanel
+        'ButtonPriority
         '
-        Me.DetailsPanel.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.DetailsPanel.Controls.Add(Me.Label6)
-        Me.DetailsPanel.Controls.Add(Me.Label4)
-        Me.DetailsPanel.Controls.Add(Me.Label5)
-        Me.DetailsPanel.Controls.Add(Me.Label3)
-        Me.DetailsPanel.Location = New System.Drawing.Point(0, 101)
-        Me.DetailsPanel.Margin = New System.Windows.Forms.Padding(0)
-        Me.DetailsPanel.Name = "DetailsPanel"
-        Me.DetailsPanel.Size = New System.Drawing.Size(276, 58)
-        Me.DetailsPanel.TabIndex = 4
+        Me.ButtonPriority.BackColor = System.Drawing.Color.FromArgb(CType(CType(55, Byte), Integer), CType(CType(55, Byte), Integer), CType(CType(55, Byte), Integer))
+        Me.ButtonPriority.FlatAppearance.BorderSize = 0
+        Me.ButtonPriority.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.ButtonPriority.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ButtonPriority.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(112, Byte), Integer), CType(CType(192, Byte), Integer))
+        Me.ButtonPriority.Location = New System.Drawing.Point(74, 67)
+        Me.ButtonPriority.Name = "ButtonPriority"
+        Me.ButtonPriority.Size = New System.Drawing.Size(32, 20)
+        Me.ButtonPriority.TabIndex = 8
+        Me.ButtonPriority.Text = "Set"
+        Me.ButtonPriority.UseVisualStyleBackColor = False
         '
-        'Label4
+        'ButtonEndDate
         '
-        Me.Label4.AutoSize = True
-        Me.Label4.Location = New System.Drawing.Point(7, 25)
-        Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(39, 13)
-        Me.Label4.TabIndex = 5
-        Me.Label4.Text = "Label4"
+        Me.ButtonEndDate.BackColor = System.Drawing.Color.FromArgb(CType(CType(55, Byte), Integer), CType(CType(55, Byte), Integer), CType(CType(55, Byte), Integer))
+        Me.ButtonEndDate.FlatAppearance.BorderSize = 0
+        Me.ButtonEndDate.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.ButtonEndDate.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ButtonEndDate.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(112, Byte), Integer), CType(CType(192, Byte), Integer))
+        Me.ButtonEndDate.Location = New System.Drawing.Point(97, 45)
+        Me.ButtonEndDate.Name = "ButtonEndDate"
+        Me.ButtonEndDate.Size = New System.Drawing.Size(32, 20)
+        Me.ButtonEndDate.TabIndex = 7
+        Me.ButtonEndDate.Text = "Set"
+        Me.ButtonEndDate.UseVisualStyleBackColor = False
         '
-        'Label5
+        'PanelStart
         '
-        Me.Label5.AutoSize = True
-        Me.Label5.Location = New System.Drawing.Point(7, 38)
-        Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(39, 13)
-        Me.Label5.TabIndex = 6
-        Me.Label5.Text = "Label5"
+        Me.PanelStart.Location = New System.Drawing.Point(320, 17)
+        Me.PanelStart.Name = "PanelStart"
+        Me.PanelStart.Size = New System.Drawing.Size(60, 60)
+        Me.PanelStart.TabIndex = 5
         '
-        'Label3
+        'LabelPriority
         '
-        Me.Label3.AutoSize = True
-        Me.Label3.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label3.Location = New System.Drawing.Point(5, 7)
-        Me.Label3.Margin = New System.Windows.Forms.Padding(0)
-        Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(60, 18)
-        Me.Label3.TabIndex = 2
-        Me.Label3.Text = "Details"
+        Me.LabelPriority.AutoSize = True
+        Me.LabelPriority.BackColor = System.Drawing.Color.Transparent
+        Me.LabelPriority.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LabelPriority.ForeColor = System.Drawing.Color.Silver
+        Me.LabelPriority.Location = New System.Drawing.Point(24, 69)
+        Me.LabelPriority.Margin = New System.Windows.Forms.Padding(0)
+        Me.LabelPriority.Name = "LabelPriority"
+        Me.LabelPriority.Size = New System.Drawing.Size(47, 15)
+        Me.LabelPriority.TabIndex = 4
+        Me.LabelPriority.Text = "Priority:"
         '
-        'TitlePanel
+        'LabelEndDate
         '
-        Me.TitlePanel.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.TitlePanel.Controls.Add(Me.Panel1)
-        Me.TitlePanel.Controls.Add(Me.Txt_Title)
-        Me.TitlePanel.Location = New System.Drawing.Point(0, 0)
-        Me.TitlePanel.Margin = New System.Windows.Forms.Padding(0)
-        Me.TitlePanel.Name = "TitlePanel"
-        Me.TitlePanel.Size = New System.Drawing.Size(275, 45)
-        Me.TitlePanel.TabIndex = 6
+        Me.LabelEndDate.AutoSize = True
+        Me.LabelEndDate.BackColor = System.Drawing.Color.Transparent
+        Me.LabelEndDate.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LabelEndDate.ForeColor = System.Drawing.Color.Silver
+        Me.LabelEndDate.Location = New System.Drawing.Point(24, 47)
+        Me.LabelEndDate.Margin = New System.Windows.Forms.Padding(0)
+        Me.LabelEndDate.Name = "LabelEndDate"
+        Me.LabelEndDate.Size = New System.Drawing.Size(70, 15)
+        Me.LabelEndDate.TabIndex = 3
+        Me.LabelEndDate.Text = "Finish date:"
         '
-        'Panel1
+        'LabelStartDate
         '
-        Me.Panel1.Location = New System.Drawing.Point(0, 0)
-        Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(34, 45)
-        Me.Panel1.TabIndex = 1
+        Me.LabelStartDate.AutoSize = True
+        Me.LabelStartDate.BackColor = System.Drawing.Color.Transparent
+        Me.LabelStartDate.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LabelStartDate.ForeColor = System.Drawing.Color.Silver
+        Me.LabelStartDate.Location = New System.Drawing.Point(24, 25)
+        Me.LabelStartDate.Margin = New System.Windows.Forms.Padding(0)
+        Me.LabelStartDate.Name = "LabelStartDate"
+        Me.LabelStartDate.Size = New System.Drawing.Size(95, 15)
+        Me.LabelStartDate.TabIndex = 2
+        Me.LabelStartDate.Text = "Beginning Date:"
         '
-        'Label6
+        'ButtonStartDate
         '
-        Me.Label6.AutoSize = True
-        Me.Label6.Location = New System.Drawing.Point(162, 25)
-        Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(39, 13)
-        Me.Label6.TabIndex = 7
-        Me.Label6.Text = "Label6"
+        Me.ButtonStartDate.BackColor = System.Drawing.Color.FromArgb(CType(CType(55, Byte), Integer), CType(CType(55, Byte), Integer), CType(CType(55, Byte), Integer))
+        Me.ButtonStartDate.FlatAppearance.BorderSize = 0
+        Me.ButtonStartDate.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.ButtonStartDate.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ButtonStartDate.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(112, Byte), Integer), CType(CType(192, Byte), Integer))
+        Me.ButtonStartDate.Location = New System.Drawing.Point(122, 23)
+        Me.ButtonStartDate.Name = "ButtonStartDate"
+        Me.ButtonStartDate.Size = New System.Drawing.Size(32, 20)
+        Me.ButtonStartDate.TabIndex = 6
+        Me.ButtonStartDate.Text = "Set"
+        Me.ButtonStartDate.UseVisualStyleBackColor = False
         '
-        'Label7
+        'LabelDetails
         '
-        Me.Label7.AutoSize = True
-        Me.Label7.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(112, Byte), Integer), CType(CType(192, Byte), Integer))
-        Me.Label7.Location = New System.Drawing.Point(108, 58)
-        Me.Label7.Name = "Label7"
-        Me.Label7.Size = New System.Drawing.Size(60, 13)
-        Me.Label7.TabIndex = 4
-        Me.Label7.Text = "Show more"
+        Me.LabelDetails.AutoSize = True
+        Me.LabelDetails.BackColor = System.Drawing.Color.Transparent
+        Me.LabelDetails.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LabelDetails.ForeColor = System.Drawing.Color.Silver
+        Me.LabelDetails.Location = New System.Drawing.Point(24, 5)
+        Me.LabelDetails.Margin = New System.Windows.Forms.Padding(0)
+        Me.LabelDetails.Name = "LabelDetails"
+        Me.LabelDetails.Size = New System.Drawing.Size(57, 16)
+        Me.LabelDetails.TabIndex = 1
+        Me.LabelDetails.Text = "Details"
+        '
+        'PanelPoints
+        '
+        Me.PanelPoints.BackColor = System.Drawing.Color.FromArgb(CType(CType(55, Byte), Integer), CType(CType(55, Byte), Integer), CType(CType(55, Byte), Integer))
+        Me.PanelPoints.Controls.Add(Me.ButtonRemovePoint)
+        Me.PanelPoints.Controls.Add(Me.ButtonAddPoint)
+        Me.PanelPoints.Controls.Add(Me.LabelPoints)
+        Me.PanelPoints.Location = New System.Drawing.Point(0, 197)
+        Me.PanelPoints.Margin = New System.Windows.Forms.Padding(0)
+        Me.PanelPoints.Name = "PanelPoints"
+        Me.PanelPoints.Size = New System.Drawing.Size(420, 33)
+        Me.PanelPoints.TabIndex = 5
+        '
+        'ButtonRemovePoint
+        '
+        Me.ButtonRemovePoint.BackColor = System.Drawing.Color.FromArgb(CType(CType(55, Byte), Integer), CType(CType(55, Byte), Integer), CType(CType(55, Byte), Integer))
+        Me.ButtonRemovePoint.FlatAppearance.BorderSize = 0
+        Me.ButtonRemovePoint.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.ButtonRemovePoint.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ButtonRemovePoint.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(112, Byte), Integer), CType(CType(192, Byte), Integer))
+        Me.ButtonRemovePoint.Location = New System.Drawing.Point(232, 6)
+        Me.ButtonRemovePoint.Name = "ButtonRemovePoint"
+        Me.ButtonRemovePoint.Size = New System.Drawing.Size(58, 20)
+        Me.ButtonRemovePoint.TabIndex = 10
+        Me.ButtonRemovePoint.Text = "Remove"
+        Me.ButtonRemovePoint.UseVisualStyleBackColor = False
+        '
+        'ButtonAddPoint
+        '
+        Me.ButtonAddPoint.BackColor = System.Drawing.Color.FromArgb(CType(CType(55, Byte), Integer), CType(CType(55, Byte), Integer), CType(CType(55, Byte), Integer))
+        Me.ButtonAddPoint.FlatAppearance.BorderSize = 0
+        Me.ButtonAddPoint.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.ButtonAddPoint.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ButtonAddPoint.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(112, Byte), Integer), CType(CType(192, Byte), Integer))
+        Me.ButtonAddPoint.Location = New System.Drawing.Point(190, 6)
+        Me.ButtonAddPoint.Name = "ButtonAddPoint"
+        Me.ButtonAddPoint.Size = New System.Drawing.Size(36, 20)
+        Me.ButtonAddPoint.TabIndex = 9
+        Me.ButtonAddPoint.Text = "Add"
+        Me.ButtonAddPoint.UseVisualStyleBackColor = False
+        '
+        'LabelPoints
+        '
+        Me.LabelPoints.AutoSize = True
+        Me.LabelPoints.BackColor = System.Drawing.Color.Transparent
+        Me.LabelPoints.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LabelPoints.Location = New System.Drawing.Point(5, 2)
+        Me.LabelPoints.Margin = New System.Windows.Forms.Padding(0)
+        Me.LabelPoints.Name = "LabelPoints"
+        Me.LabelPoints.Size = New System.Drawing.Size(182, 24)
+        Me.LabelPoints.TabIndex = 2
+        Me.LabelPoints.Text = "Points to accomplish"
+        '
+        'ScrollBar
+        '
+        Me.ScrollBar.BackColor = System.Drawing.Color.FromArgb(CType(CType(40, Byte), Integer), CType(CType(40, Byte), Integer), CType(CType(40, Byte), Integer))
+        Me.ScrollBar.ForeColor = System.Drawing.Color.FromArgb(CType(CType(40, Byte), Integer), CType(CType(40, Byte), Integer), CType(CType(40, Byte), Integer))
+        Me.ScrollBar.Location = New System.Drawing.Point(420, 0)
+        Me.ScrollBar.Margin = New System.Windows.Forms.Padding(0)
+        Me.ScrollBar.Name = "ScrollBar"
+        Me.ScrollBar.Size = New System.Drawing.Size(17, 487)
+        Me.ScrollBar.TabIndex = 6
         '
         'TimeMarkerDescription
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(89, Byte), Integer), CType(CType(89, Byte), Integer), CType(CType(89, Byte), Integer))
-        Me.Controls.Add(Me.TitlePanel)
-        Me.Controls.Add(Me.DetailsPanel)
-        Me.Controls.Add(Me.PointsPanel)
-        Me.Controls.Add(Me.DescriptionPanel)
+        Me.Controls.Add(Me.ScrollBar)
+        Me.Controls.Add(Me.Descriptor)
         Me.Name = "TimeMarkerDescription"
-        Me.Size = New System.Drawing.Size(276, 284)
-        Me.DescriptionPanel.ResumeLayout(False)
-        Me.DescriptionPanel.PerformLayout()
-        Me.PointsPanel.ResumeLayout(False)
-        Me.PointsPanel.PerformLayout()
-        Me.DetailsPanel.ResumeLayout(False)
-        Me.DetailsPanel.PerformLayout()
-        Me.TitlePanel.ResumeLayout(False)
-        Me.TitlePanel.PerformLayout()
+        Me.Size = New System.Drawing.Size(437, 487)
+        Me.Descriptor.ResumeLayout(False)
+        Me.PanelTitle.ResumeLayout(False)
+        Me.PanelDescription.ResumeLayout(False)
+        Me.PanelDescription.PerformLayout()
+        Me.PanelDetails.ResumeLayout(False)
+        Me.PanelDetails.PerformLayout()
+        Me.PanelPoints.ResumeLayout(False)
+        Me.PanelPoints.PerformLayout()
         Me.ResumeLayout(False)
 
     End Sub
 
-    Friend WithEvents Txt_Title As TextBox
-    Friend WithEvents Txt_Description As TextBox
-    Friend WithEvents Label1 As Label
-    Friend WithEvents DescriptionPanel As Panel
-    Friend WithEvents PointsPanel As Panel
-    Friend WithEvents Label2 As Label
-    Friend WithEvents CheckBox1 As CheckBox
-    Friend WithEvents DetailsPanel As Panel
-    Friend WithEvents Label4 As Label
-    Friend WithEvents Label5 As Label
-    Friend WithEvents Label3 As Label
-    Friend WithEvents TitlePanel As Panel
-    Friend WithEvents Panel1 As Panel
-    Friend WithEvents Label6 As Label
-    Friend WithEvents Label7 As Label
+    Friend WithEvents Descriptor As FlowLayoutPanel
+    Friend WithEvents PanelTitle As Panel
+    Friend WithEvents TxtboxTitle As RichTextBox
+    Friend WithEvents PanelDescription As Panel
+    Friend WithEvents TxtboxDesc As RichTextBox
+    Friend WithEvents LabelDesc As Label
+    Friend WithEvents PanelDetails As Panel
+    Friend WithEvents LabelPriority As Label
+    Friend WithEvents LabelEndDate As Label
+    Friend WithEvents LabelStartDate As Label
+    Friend WithEvents LabelDetails As Label
+    Friend WithEvents PanelPoints As Panel
+    Friend WithEvents LabelPoints As Label
+    Friend WithEvents PanelStart As Panel
+    Friend WithEvents ButtonStartDate As Button
+    Friend WithEvents ButtonPriority As Button
+    Friend WithEvents ButtonEndDate As Button
+    Friend WithEvents ButtonRemovePoint As Button
+    Friend WithEvents ButtonAddPoint As Button
+    Friend WithEvents ScrollBar As Panel
 End Class
