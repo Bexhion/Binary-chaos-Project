@@ -12,9 +12,15 @@
 
     Public Property ResultDate As Date
 
-    Public Sub New(pos As Point)
+    Public Sub New()
         InitializeComponent()
-        Me.pos = pos
+    End Sub
+
+    Public Sub New(control As UserControl, pos As Point)
+        InitializeComponent()
+        pos.Y = pos.Y - Height
+        Dim p As Point = Me.PointToClient(pos)
+        Me.pos = control.Parent.PointToScreen(pos)
     End Sub
 
     Private Sub DateChoser_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -23,7 +29,7 @@
         CMonth.Text = vmonth
         CYear.Text = vyear
         CHour.Text = vhour
-        CMinute.Text = vmonth
+        CMinute.Text = vminute
     End Sub
 
     Private Sub SetDate_Click(sender As Object, e As EventArgs) Handles SetDate.Click
@@ -56,8 +62,7 @@
         AddMinute(1)
     End Sub
 #End Region
-
-#Region "decreasers"
+#Region "Decreasers"
     Private Sub DayDc_Click(sender As Object, e As EventArgs) Handles DayDc.Click
         AddDay(-1)
     End Sub
@@ -89,6 +94,7 @@
             vday = Date.DaysInMonth(vyear, vmonth)
             AddMonth(-1)
         End If
+        CDay.Text = vday
     End Sub
 
     Private Sub AddMonth(increment As Integer)
@@ -101,6 +107,7 @@
             vmonth = 12
             AddYear(-1)
         End If
+        CMonth.Text = vmonth
     End Sub
 
     Private Sub AddYear(increment As Integer)
@@ -111,6 +118,7 @@
         If vyear < Date.MinValue.Year Then
             vyear = Date.MinValue.Year
         End If
+        CYear.Text = vyear
     End Sub
 
     Private Sub AddHour(increment As Integer)
@@ -123,6 +131,7 @@
             vhour = 23
             AddDay(-1)
         End If
+        CHour.Text = vhour
     End Sub
 
     Private Sub AddMinute(increment As Integer)
@@ -135,35 +144,48 @@
             vhour = 59
             AddHour(-1)
         End If
+        CMinute.Text = vminute
     End Sub
 
-    Private Function GetMaxDaysInMonth(monthIndex As Integer) As Integer
-        Select Case monthIndex
-            Case 1, 3, 5, 7, 8, 10
-                Return 31
-        End Select
-    End Function
-
-#Region "Cuteness"
+#Region "Cuteness :3"
 #Region "MouseEnter"
+    Private Sub DayIncE(sender As Object, e As EventArgs) Handles DayInc.MouseEnter
+        DayInc.ForeColor = Color.FromArgb(25, 156, 255)
+    End Sub
+
+    Private Sub MonthIncE(sender As Object, e As EventArgs) Handles MonthInc.MouseEnter
+        MonthInc.ForeColor = Color.FromArgb(25, 156, 255)
+    End Sub
+
+    Private Sub YearIncE(sender As Object, e As EventArgs) Handles YearInc.MouseEnter
+        YearInc.ForeColor = Color.FromArgb(25, 156, 255)
+    End Sub
+
+    Private Sub HourIncE(sender As Object, e As EventArgs) Handles HourInc.MouseEnter
+        HourInc.ForeColor = Color.FromArgb(25, 156, 255)
+    End Sub
+
+    Private Sub MinuteIncE(sender As Object, e As EventArgs) Handles MinuteInc.MouseEnter
+        MinuteInc.ForeColor = Color.FromArgb(25, 156, 255)
+    End Sub
     Private Sub DayDcE(sender As Object, e As EventArgs) Handles DayDc.MouseEnter
-        CDay.ForeColor = Color.FromArgb(25, 156, 255)
+        DayDc.ForeColor = Color.FromArgb(25, 156, 255)
     End Sub
 
     Private Sub MonthDcE(sender As Object, e As EventArgs) Handles MonthDc.MouseEnter
-        CMonth.ForeColor = Color.FromArgb(25, 156, 255)
+        MonthDc.ForeColor = Color.FromArgb(25, 156, 255)
     End Sub
 
     Private Sub YearDcE(sender As Object, e As EventArgs) Handles YearDc.MouseEnter
-        CYear.ForeColor = Color.FromArgb(25, 156, 255)
+        YearDc.ForeColor = Color.FromArgb(25, 156, 255)
     End Sub
 
     Private Sub HourDcE(sender As Object, e As EventArgs) Handles HourDc.MouseEnter
-        CHour.ForeColor = Color.FromArgb(25, 156, 255)
+        HourDc.ForeColor = Color.FromArgb(25, 156, 255)
     End Sub
 
     Private Sub MinuteDcE(sender As Object, e As EventArgs) Handles MinuteDc.MouseEnter
-        CMinute.ForeColor = Color.FromArgb(25, 156, 255)
+        MinuteDc.ForeColor = Color.FromArgb(25, 156, 255)
     End Sub
 
     Private Sub SetDateE(sender As Object, e As EventArgs) Handles SetDate.MouseEnter
@@ -171,29 +193,48 @@
     End Sub
 
     Private Sub CancelE(sender As Object, e As EventArgs) Handles Cancel.MouseEnter
-        CDay.ForeColor = Color.FromArgb(25, 156, 255)
+        Cancel.ForeColor = Color.FromArgb(25, 156, 255)
     End Sub
 #End Region
 
 #Region "MouseLeave"
+    Private Sub DayIncL(sender As Object, e As EventArgs) Handles DayInc.MouseLeave
+        DayInc.ForeColor = Color.FromArgb(0, 112, 192)
+    End Sub
+
+    Private Sub MonthIncL(sender As Object, e As EventArgs) Handles MonthInc.MouseLeave
+        MonthInc.ForeColor = Color.FromArgb(0, 112, 192)
+    End Sub
+
+    Private Sub YearIncL(sender As Object, e As EventArgs) Handles YearInc.MouseLeave
+        YearInc.ForeColor = Color.FromArgb(0, 112, 192)
+    End Sub
+
+    Private Sub HourIncL(sender As Object, e As EventArgs) Handles HourInc.MouseLeave
+        HourInc.ForeColor = Color.FromArgb(0, 112, 192)
+    End Sub
+
+    Private Sub MinuteIncL(sender As Object, e As EventArgs) Handles MinuteInc.MouseLeave
+        MinuteInc.ForeColor = Color.FromArgb(0, 112, 192)
+    End Sub
     Private Sub DayDcL(sender As Object, e As EventArgs) Handles DayDc.MouseLeave
-        CDay.ForeColor = Color.FromArgb(0, 112, 192)
+        DayDc.ForeColor = Color.FromArgb(0, 112, 192)
     End Sub
 
     Private Sub MonthDcL(sender As Object, e As EventArgs) Handles MonthDc.MouseLeave
-        CMonth.ForeColor = Color.FromArgb(0, 112, 192)
+        MonthDc.ForeColor = Color.FromArgb(0, 112, 192)
     End Sub
 
     Private Sub YearDcL(sender As Object, e As EventArgs) Handles YearDc.MouseLeave
-        CYear.ForeColor = Color.FromArgb(0, 112, 192)
+        YearDc.ForeColor = Color.FromArgb(0, 112, 192)
     End Sub
 
     Private Sub HourDcL(sender As Object, e As EventArgs) Handles HourDc.MouseLeave
-        CHour.ForeColor = Color.FromArgb(0, 112, 192)
+        HourDc.ForeColor = Color.FromArgb(0, 112, 192)
     End Sub
 
     Private Sub MinuteDcL(sender As Object, e As EventArgs) Handles MinuteDc.MouseLeave
-        CMinute.ForeColor = Color.FromArgb(0, 112, 192)
+        MinuteDc.ForeColor = Color.FromArgb(0, 112, 192)
     End Sub
 
     Private Sub SetDateL(sender As Object, e As EventArgs) Handles SetDate.MouseLeave
@@ -201,7 +242,7 @@
     End Sub
 
     Private Sub CancelL(sender As Object, e As EventArgs) Handles Cancel.MouseLeave
-        CDay.ForeColor = Color.FromArgb(0, 112, 192)
+        Cancel.ForeColor = Color.FromArgb(0, 112, 192)
     End Sub
 #End Region
 #End Region

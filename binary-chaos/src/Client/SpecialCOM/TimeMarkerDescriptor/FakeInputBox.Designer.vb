@@ -80,6 +80,7 @@ Partial Class FakeInputBox
         Me.Controls.Add(Me.Input)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
         Me.Name = "FakeInputBox"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.Manual
         Me.ResumeLayout(False)
 
     End Sub

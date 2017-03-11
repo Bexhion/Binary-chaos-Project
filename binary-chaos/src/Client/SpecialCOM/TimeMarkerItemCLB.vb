@@ -10,17 +10,17 @@ Public Class TimeMarkerItemCLB
     Public WithEvents timeMarker As TimeMarker
 
     Dim information As New Dictionary(Of String, Object)
-    Dim _title As String = "This is a title!"
-    Dim _description As String = "And this is a description used to describe the title!"
+    Dim _title As String = ""
+    Dim _description As String = ""
     Dim _points As List(Of String)
-    Dim _pointNumber As Integer
+    Dim _pointNumber As Integer = 0
     Dim accomplishedPointsNumber As Integer = 0
     Dim _accomplishedPoints As List(Of String)
-    Dim _priority As CustomListBox.Priority
+    Dim _priority As CustomListBox.Priority = Nothing
     Dim priorityBrush As SolidBrush
-    Dim _thisDate As Date
-    Dim _mode As CustomListBox.EditorMode = CustomListBox.EditorMode.FIXED
-    Dim _progress As Double
+    Dim _thisDate As Date = Nothing
+    Dim _mode As CustomListBox.EditorMode = Nothing
+    Dim _progress As Double = 0
     Dim _renderProgress As Boolean = False
     Dim _selectedForDeletion As Boolean = False
     Public WithEvents _updateTimer As New Timer With {.Interval = 1000}
@@ -83,9 +83,11 @@ Public Class TimeMarkerItemCLB
             Return _priority
         End Get
         Set(value As CustomListBox.Priority)
-            _priority = value
-            priorityBrush = GetPriorityBrush(value)
-            Refresh()
+            If Not Priority = CustomListBox.Priority.NONE Then
+                _priority = value
+                priorityBrush = GetPriorityBrush(value)
+                Refresh()
+            End If
         End Set
     End Property
 
@@ -282,7 +284,7 @@ Public Class TimeMarkerItemCLB
     End Sub
 
     Private Sub TimeMarkerTickHandler(sender As Object, e As EventArgs) Handles _updateTimer.Tick
-        PushMarker(Me)
+        PushMarker()
     End Sub
 #End Region
 #Region "Renderers"
@@ -292,8 +294,8 @@ Public Class TimeMarkerItemCLB
         graphics.FillRectangle(brush, rectangle)
     End Sub
 #End Region
-    Public Sub PushMarker(info As TimeMarkerItemCLB)
-        RaiseEvent PushInformation(info)
+    Public Sub PushMarker()
+        RaiseEvent PushInformation(Me)
     End Sub
 #End Region
 

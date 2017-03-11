@@ -22,6 +22,7 @@ Partial Class TimeMarkerDescription
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
+        Me.components = New System.ComponentModel.Container()
         Me.Descriptor = New System.Windows.Forms.FlowLayoutPanel()
         Me.PanelTitle = New System.Windows.Forms.Panel()
         Me.TxtboxTitle = New System.Windows.Forms.RichTextBox()
@@ -29,19 +30,20 @@ Partial Class TimeMarkerDescription
         Me.LabelDesc = New System.Windows.Forms.Label()
         Me.TxtboxDesc = New System.Windows.Forms.RichTextBox()
         Me.PanelDetails = New System.Windows.Forms.Panel()
+        Me.ButtonStartDate = New System.Windows.Forms.Button()
         Me.ButtonPriority = New System.Windows.Forms.Button()
         Me.ButtonEndDate = New System.Windows.Forms.Button()
         Me.PanelStart = New System.Windows.Forms.Panel()
         Me.LabelPriority = New System.Windows.Forms.Label()
         Me.LabelEndDate = New System.Windows.Forms.Label()
         Me.LabelStartDate = New System.Windows.Forms.Label()
-        Me.ButtonStartDate = New System.Windows.Forms.Button()
         Me.LabelDetails = New System.Windows.Forms.Label()
         Me.PanelPoints = New System.Windows.Forms.Panel()
         Me.ButtonRemovePoint = New System.Windows.Forms.Button()
         Me.ButtonAddPoint = New System.Windows.Forms.Button()
         Me.LabelPoints = New System.Windows.Forms.Label()
         Me.ScrollBar = New System.Windows.Forms.Panel()
+        Me.ContextMenuStrip1 = New System.Windows.Forms.ContextMenuStrip(Me.components)
         Me.Descriptor.SuspendLayout()
         Me.PanelTitle.SuspendLayout()
         Me.PanelDescription.SuspendLayout()
@@ -52,12 +54,12 @@ Partial Class TimeMarkerDescription
         'Descriptor
         '
         Me.Descriptor.AutoScroll = True
-        Me.Descriptor.BackColor = System.Drawing.Color.FromArgb(CType(CType(55, Byte), Integer), CType(CType(55, Byte), Integer), CType(CType(55, Byte), Integer))
+        Me.Descriptor.BackColor = System.Drawing.Color.Transparent
         Me.Descriptor.Controls.Add(Me.PanelTitle)
         Me.Descriptor.Controls.Add(Me.PanelDescription)
         Me.Descriptor.Controls.Add(Me.PanelDetails)
         Me.Descriptor.Controls.Add(Me.PanelPoints)
-        Me.Descriptor.Dock = System.Windows.Forms.DockStyle.Left
+        Me.Descriptor.Dock = System.Windows.Forms.DockStyle.Fill
         Me.Descriptor.FlowDirection = System.Windows.Forms.FlowDirection.TopDown
         Me.Descriptor.Location = New System.Drawing.Point(0, 0)
         Me.Descriptor.Name = "Descriptor"
@@ -76,7 +78,7 @@ Partial Class TimeMarkerDescription
         '
         'TxtboxTitle
         '
-        Me.TxtboxTitle.BackColor = System.Drawing.Color.FromArgb(CType(CType(89, Byte), Integer), CType(CType(89, Byte), Integer), CType(CType(89, Byte), Integer))
+        Me.TxtboxTitle.BackColor = System.Drawing.Color.FromArgb(CType(CType(55, Byte), Integer), CType(CType(55, Byte), Integer), CType(CType(55, Byte), Integer))
         Me.TxtboxTitle.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.TxtboxTitle.Cursor = System.Windows.Forms.Cursors.IBeam
         Me.TxtboxTitle.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -105,6 +107,7 @@ Partial Class TimeMarkerDescription
         Me.LabelDesc.AutoSize = True
         Me.LabelDesc.BackColor = System.Drawing.Color.Transparent
         Me.LabelDesc.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LabelDesc.ForeColor = System.Drawing.Color.FromArgb(CType(CType(240, Byte), Integer), CType(CType(240, Byte), Integer), CType(CType(240, Byte), Integer))
         Me.LabelDesc.Location = New System.Drawing.Point(5, 2)
         Me.LabelDesc.Margin = New System.Windows.Forms.Padding(0)
         Me.LabelDesc.Name = "LabelDesc"
@@ -129,19 +132,34 @@ Partial Class TimeMarkerDescription
         '
         'PanelDetails
         '
+        Me.PanelDetails.BackColor = System.Drawing.Color.Transparent
+        Me.PanelDetails.Controls.Add(Me.ButtonStartDate)
         Me.PanelDetails.Controls.Add(Me.ButtonPriority)
         Me.PanelDetails.Controls.Add(Me.ButtonEndDate)
         Me.PanelDetails.Controls.Add(Me.PanelStart)
         Me.PanelDetails.Controls.Add(Me.LabelPriority)
         Me.PanelDetails.Controls.Add(Me.LabelEndDate)
         Me.PanelDetails.Controls.Add(Me.LabelStartDate)
-        Me.PanelDetails.Controls.Add(Me.ButtonStartDate)
         Me.PanelDetails.Controls.Add(Me.LabelDetails)
         Me.PanelDetails.Location = New System.Drawing.Point(0, 102)
         Me.PanelDetails.Margin = New System.Windows.Forms.Padding(0)
         Me.PanelDetails.Name = "PanelDetails"
         Me.PanelDetails.Size = New System.Drawing.Size(420, 95)
         Me.PanelDetails.TabIndex = 3
+        '
+        'ButtonStartDate
+        '
+        Me.ButtonStartDate.BackColor = System.Drawing.Color.FromArgb(CType(CType(55, Byte), Integer), CType(CType(55, Byte), Integer), CType(CType(55, Byte), Integer))
+        Me.ButtonStartDate.FlatAppearance.BorderSize = 0
+        Me.ButtonStartDate.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.ButtonStartDate.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ButtonStartDate.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(112, Byte), Integer), CType(CType(192, Byte), Integer))
+        Me.ButtonStartDate.Location = New System.Drawing.Point(122, 23)
+        Me.ButtonStartDate.Name = "ButtonStartDate"
+        Me.ButtonStartDate.Size = New System.Drawing.Size(32, 20)
+        Me.ButtonStartDate.TabIndex = 6
+        Me.ButtonStartDate.Text = "Set"
+        Me.ButtonStartDate.UseVisualStyleBackColor = False
         '
         'ButtonPriority
         '
@@ -217,20 +235,6 @@ Partial Class TimeMarkerDescription
         Me.LabelStartDate.TabIndex = 2
         Me.LabelStartDate.Text = "Beginning Date:"
         '
-        'ButtonStartDate
-        '
-        Me.ButtonStartDate.BackColor = System.Drawing.Color.FromArgb(CType(CType(55, Byte), Integer), CType(CType(55, Byte), Integer), CType(CType(55, Byte), Integer))
-        Me.ButtonStartDate.FlatAppearance.BorderSize = 0
-        Me.ButtonStartDate.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.ButtonStartDate.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.ButtonStartDate.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(112, Byte), Integer), CType(CType(192, Byte), Integer))
-        Me.ButtonStartDate.Location = New System.Drawing.Point(122, 23)
-        Me.ButtonStartDate.Name = "ButtonStartDate"
-        Me.ButtonStartDate.Size = New System.Drawing.Size(32, 20)
-        Me.ButtonStartDate.TabIndex = 6
-        Me.ButtonStartDate.Text = "Set"
-        Me.ButtonStartDate.UseVisualStyleBackColor = False
-        '
         'LabelDetails
         '
         Me.LabelDetails.AutoSize = True
@@ -246,14 +250,14 @@ Partial Class TimeMarkerDescription
         '
         'PanelPoints
         '
-        Me.PanelPoints.BackColor = System.Drawing.Color.FromArgb(CType(CType(55, Byte), Integer), CType(CType(55, Byte), Integer), CType(CType(55, Byte), Integer))
+        Me.PanelPoints.BackColor = System.Drawing.Color.Transparent
         Me.PanelPoints.Controls.Add(Me.ButtonRemovePoint)
         Me.PanelPoints.Controls.Add(Me.ButtonAddPoint)
         Me.PanelPoints.Controls.Add(Me.LabelPoints)
         Me.PanelPoints.Location = New System.Drawing.Point(0, 197)
         Me.PanelPoints.Margin = New System.Windows.Forms.Padding(0)
         Me.PanelPoints.Name = "PanelPoints"
-        Me.PanelPoints.Size = New System.Drawing.Size(420, 33)
+        Me.PanelPoints.Size = New System.Drawing.Size(420, 61)
         Me.PanelPoints.TabIndex = 5
         '
         'ButtonRemovePoint
@@ -289,6 +293,7 @@ Partial Class TimeMarkerDescription
         Me.LabelPoints.AutoSize = True
         Me.LabelPoints.BackColor = System.Drawing.Color.Transparent
         Me.LabelPoints.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LabelPoints.ForeColor = System.Drawing.Color.FromArgb(CType(CType(240, Byte), Integer), CType(CType(240, Byte), Integer), CType(CType(240, Byte), Integer))
         Me.LabelPoints.Location = New System.Drawing.Point(5, 2)
         Me.LabelPoints.Margin = New System.Windows.Forms.Padding(0)
         Me.LabelPoints.Name = "LabelPoints"
@@ -306,11 +311,16 @@ Partial Class TimeMarkerDescription
         Me.ScrollBar.Size = New System.Drawing.Size(17, 487)
         Me.ScrollBar.TabIndex = 6
         '
+        'ContextMenuStrip1
+        '
+        Me.ContextMenuStrip1.Name = "ContextMenuStrip1"
+        Me.ContextMenuStrip1.Size = New System.Drawing.Size(61, 4)
+        '
         'TimeMarkerDescription
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(89, Byte), Integer), CType(CType(89, Byte), Integer), CType(CType(89, Byte), Integer))
+        Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(55, Byte), Integer), CType(CType(55, Byte), Integer), CType(CType(55, Byte), Integer))
         Me.Controls.Add(Me.ScrollBar)
         Me.Controls.Add(Me.Descriptor)
         Me.Name = "TimeMarkerDescription"
@@ -347,4 +357,5 @@ Partial Class TimeMarkerDescription
     Friend WithEvents ButtonRemovePoint As Button
     Friend WithEvents ButtonAddPoint As Button
     Friend WithEvents ScrollBar As Panel
+    Friend WithEvents ContextMenuStrip1 As ContextMenuStrip
 End Class

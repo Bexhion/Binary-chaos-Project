@@ -90,7 +90,7 @@ Public Class Points
 
     Private Sub PaintRepresentationSquares(graphics As Graphics)
         Dim square As Rectangle = GetRepresentationSquares()
-        Dim brush As SolidBrush = ItemCLBColors.SpecialAdditions
+        Dim brush As SolidBrush = New SolidBrush(Color.FromArgb(0, 112, 192))
         Dim maxPoints As Integer = GetMaxNumberOfSquares(square.Height)
         Dim point As Point = New Point()
         point.X = (Me.Width - square.Width) / 2

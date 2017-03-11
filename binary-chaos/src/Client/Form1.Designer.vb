@@ -35,6 +35,11 @@ Partial Class Form1
         Me.ToolTip1 = New System.Windows.Forms.ToolTip(Me.components)
         Me.Label1 = New System.Windows.Forms.Label()
         Me.UsernameLabel = New System.Windows.Forms.Label()
+        Me.Button1 = New System.Windows.Forms.Button()
+        Me.Button2 = New System.Windows.Forms.Button()
+        Me.Button3 = New System.Windows.Forms.Button()
+        Me.Button4 = New System.Windows.Forms.Button()
+        Me.TimeMarkerDescription1 = New WindowsApplication1.TimeMarkerDescription()
         Me.Panel1.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -117,11 +122,59 @@ Partial Class Form1
         Me.UsernameLabel.ForeColor = System.Drawing.SystemColors.ActiveCaption
         Me.UsernameLabel.Name = "UsernameLabel"
         '
+        'Button1
+        '
+        resources.ApplyResources(Me.Button1, "Button1")
+        Me.Button1.Name = "Button1"
+        Me.Button1.UseVisualStyleBackColor = True
+        '
+        'Button2
+        '
+        resources.ApplyResources(Me.Button2, "Button2")
+        Me.Button2.Name = "Button2"
+        Me.Button2.UseVisualStyleBackColor = True
+        '
+        'Button3
+        '
+        resources.ApplyResources(Me.Button3, "Button3")
+        Me.Button3.Name = "Button3"
+        Me.Button3.UseVisualStyleBackColor = True
+        '
+        'Button4
+        '
+        resources.ApplyResources(Me.Button4, "Button4")
+        Me.Button4.Name = "Button4"
+        Me.Button4.UseVisualStyleBackColor = True
+        '
+        'TimeMarkerDescription1
+        '
+        Me.TimeMarkerDescription1.AccomplishedPoints = Nothing
+        Me.TimeMarkerDescription1.AccomplishedPointsNumber = 0
+        Me.TimeMarkerDescription1.BackColor = System.Drawing.Color.FromArgb(CType(CType(55, Byte), Integer), CType(CType(55, Byte), Integer), CType(CType(55, Byte), Integer))
+        Me.TimeMarkerDescription1.Description = ""
+        Me.TimeMarkerDescription1.EditorMode = WindowsApplication1.CustomListBox.EditorMode.NONE
+        Me.TimeMarkerDescription1.FullDateEnd = Nothing
+        Me.TimeMarkerDescription1.FullDateStart = Nothing
+        resources.ApplyResources(Me.TimeMarkerDescription1, "TimeMarkerDescription1")
+        Me.TimeMarkerDescription1.Name = "TimeMarkerDescription1"
+        Me.TimeMarkerDescription1.Points = Nothing
+        Me.TimeMarkerDescription1.PointsNumber = 0
+        Me.TimeMarkerDescription1.Priority = WindowsApplication1.CustomListBox.Priority.NONE
+        Me.TimeMarkerDescription1.Progress = 0R
+        Me.TimeMarkerDescription1.RenderPointsProgress = False
+        Me.TimeMarkerDescription1.ThisTimeMarker = Nothing
+        Me.TimeMarkerDescription1.Title = ""
+        '
         'Form1
         '
         resources.ApplyResources(Me, "$this")
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(40, Byte), Integer), CType(CType(40, Byte), Integer), CType(CType(40, Byte), Integer))
+        Me.Controls.Add(Me.TimeMarkerDescription1)
+        Me.Controls.Add(Me.Button4)
+        Me.Controls.Add(Me.Button3)
+        Me.Controls.Add(Me.Button2)
+        Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.UsernameLabel)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.Panel1)
@@ -148,4 +201,9 @@ Partial Class Form1
     Friend WithEvents ToolTip1 As ToolTip
     Friend WithEvents Label1 As Label
     Friend WithEvents UsernameLabel As Label
+    Friend WithEvents Button1 As Button
+    Friend WithEvents Button2 As Button
+    Friend WithEvents Button3 As Button
+    Friend WithEvents Button4 As Button
+    Friend WithEvents TimeMarkerDescription1 As TimeMarkerDescription
 End Class

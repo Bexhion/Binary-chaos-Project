@@ -54,11 +54,13 @@ Partial Class DateChoser
         Me.MinuteInc = New System.Windows.Forms.Button()
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.Panel2 = New System.Windows.Forms.Panel()
+        Me.Panel3 = New System.Windows.Forms.Panel()
         Me.Day.SuspendLayout()
         Me.Month.SuspendLayout()
         Me.Year.SuspendLayout()
         Me.Hour.SuspendLayout()
         Me.Minutes.SuspendLayout()
+        Me.Panel3.SuspendLayout()
         Me.SuspendLayout()
         '
         'Day
@@ -154,13 +156,13 @@ Partial Class DateChoser
         'CYear
         '
         Me.CYear.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.CYear.Font = New System.Drawing.Font("Microsoft Sans Serif", 21.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.CYear.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.CYear.ForeColor = System.Drawing.Color.White
         Me.CYear.Location = New System.Drawing.Point(0, 0)
         Me.CYear.Name = "CYear"
         Me.CYear.Size = New System.Drawing.Size(65, 65)
         Me.CYear.TabIndex = 3
-        Me.CYear.Text = "00"
+        Me.CYear.Text = "0000"
         Me.CYear.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
         'Hour
@@ -278,12 +280,12 @@ Partial Class DateChoser
         '
         'Cancel
         '
-        Me.Cancel.BackColor = System.Drawing.Color.FromArgb(CType(CType(55, Byte), Integer), CType(CType(55, Byte), Integer), CType(CType(55, Byte), Integer))
+        Me.Cancel.BackColor = System.Drawing.Color.FromArgb(CType(CType(45, Byte), Integer), CType(CType(45, Byte), Integer), CType(CType(45, Byte), Integer))
         Me.Cancel.DialogResult = System.Windows.Forms.DialogResult.Cancel
         Me.Cancel.FlatAppearance.BorderSize = 0
         Me.Cancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.Cancel.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(112, Byte), Integer), CType(CType(192, Byte), Integer))
-        Me.Cancel.Location = New System.Drawing.Point(229, 118)
+        Me.Cancel.Location = New System.Drawing.Point(250, 6)
         Me.Cancel.Margin = New System.Windows.Forms.Padding(0)
         Me.Cancel.Name = "Cancel"
         Me.Cancel.Size = New System.Drawing.Size(53, 23)
@@ -293,12 +295,12 @@ Partial Class DateChoser
         '
         'SetDate
         '
-        Me.SetDate.BackColor = System.Drawing.Color.FromArgb(CType(CType(55, Byte), Integer), CType(CType(55, Byte), Integer), CType(CType(55, Byte), Integer))
+        Me.SetDate.BackColor = System.Drawing.Color.FromArgb(CType(CType(45, Byte), Integer), CType(CType(45, Byte), Integer), CType(CType(45, Byte), Integer))
         Me.SetDate.DialogResult = System.Windows.Forms.DialogResult.OK
         Me.SetDate.FlatAppearance.BorderSize = 0
         Me.SetDate.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.SetDate.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(112, Byte), Integer), CType(CType(192, Byte), Integer))
-        Me.SetDate.Location = New System.Drawing.Point(138, 118)
+        Me.SetDate.Location = New System.Drawing.Point(117, 6)
         Me.SetDate.Margin = New System.Windows.Forms.Padding(0)
         Me.SetDate.Name = "SetDate"
         Me.SetDate.Size = New System.Drawing.Size(53, 23)
@@ -449,18 +451,31 @@ Partial Class DateChoser
         'Panel1
         '
         Me.Panel1.BackColor = System.Drawing.Color.White
-        Me.Panel1.Location = New System.Drawing.Point(332, 47)
+        Me.Panel1.Location = New System.Drawing.Point(335, 46)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(7, 7)
+        Me.Panel1.Size = New System.Drawing.Size(5, 5)
         Me.Panel1.TabIndex = 18
+        Me.Panel1.TabStop = True
         '
         'Panel2
         '
         Me.Panel2.BackColor = System.Drawing.Color.White
-        Me.Panel2.Location = New System.Drawing.Point(332, 70)
+        Me.Panel2.Location = New System.Drawing.Point(335, 70)
         Me.Panel2.Name = "Panel2"
-        Me.Panel2.Size = New System.Drawing.Size(7, 7)
+        Me.Panel2.Size = New System.Drawing.Size(5, 5)
         Me.Panel2.TabIndex = 19
+        Me.Panel2.TabStop = True
+        '
+        'Panel3
+        '
+        Me.Panel3.BackColor = System.Drawing.Color.FromArgb(CType(CType(45, Byte), Integer), CType(CType(45, Byte), Integer), CType(CType(45, Byte), Integer))
+        Me.Panel3.Controls.Add(Me.SetDate)
+        Me.Panel3.Controls.Add(Me.Cancel)
+        Me.Panel3.Dock = System.Windows.Forms.DockStyle.Bottom
+        Me.Panel3.Location = New System.Drawing.Point(0, 116)
+        Me.Panel3.Name = "Panel3"
+        Me.Panel3.Size = New System.Drawing.Size(420, 34)
+        Me.Panel3.TabIndex = 20
         '
         'DateChoser
         '
@@ -468,6 +483,7 @@ Partial Class DateChoser
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(55, Byte), Integer), CType(CType(55, Byte), Integer), CType(CType(55, Byte), Integer))
         Me.ClientSize = New System.Drawing.Size(420, 150)
+        Me.Controls.Add(Me.Panel3)
         Me.Controls.Add(Me.Panel2)
         Me.Controls.Add(Me.Panel1)
         Me.Controls.Add(Me.MinuteInc)
@@ -479,16 +495,15 @@ Partial Class DateChoser
         Me.Controls.Add(Me.MonthDc)
         Me.Controls.Add(Me.DayInc)
         Me.Controls.Add(Me.MinuteDc)
-        Me.Controls.Add(Me.Cancel)
         Me.Controls.Add(Me.Day)
         Me.Controls.Add(Me.DayDc)
-        Me.Controls.Add(Me.SetDate)
         Me.Controls.Add(Me.Minutes)
         Me.Controls.Add(Me.Hour)
         Me.Controls.Add(Me.Year)
         Me.Controls.Add(Me.Month)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
         Me.Name = "DateChoser"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.Manual
         Me.Text = "DateChoser"
         Me.Day.ResumeLayout(False)
         Me.Day.PerformLayout()
@@ -500,6 +515,7 @@ Partial Class DateChoser
         Me.Hour.PerformLayout()
         Me.Minutes.ResumeLayout(False)
         Me.Minutes.PerformLayout()
+        Me.Panel3.ResumeLayout(False)
         Me.ResumeLayout(False)
 
     End Sub
@@ -536,4 +552,5 @@ Partial Class DateChoser
     Friend WithEvents MinuteInc As Button
     Friend WithEvents Panel1 As Panel
     Friend WithEvents Panel2 As Panel
+    Friend WithEvents Panel3 As Panel
 End Class

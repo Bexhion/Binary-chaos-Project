@@ -11,7 +11,7 @@
         STATE_FINISHED
     End Enum
 
-    Public totalTime As Integer
+    Public totalTime As Integer 'In minutes
     Public startingDate As Date
     Dim elapsedTime As Integer = 0
     Public progress As Double

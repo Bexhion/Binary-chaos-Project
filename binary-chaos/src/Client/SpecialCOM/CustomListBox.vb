@@ -11,12 +11,14 @@
     Dim internalMode As EditorMode = EditorMode.FIXED
 
     Public Enum Priority
+        NONE
         HIGH
         MEDIUM
         LOW
     End Enum
 
     Public Enum EditorMode
+        NONE
         FIXED
         ADD
         EDIT
@@ -51,7 +53,8 @@
     'Call this before anything else
     Public Sub SetDescriptor(descriptor As TimeMarkerDescription)
         Me.descriptor = descriptor
-        'AddHandler Me.UpdateDescriptorInformation, AddressOf descriptor.HandleInformationUpdate
+        AddHandler Me.UpdateDescriptorInformation, AddressOf descriptor.HandleInformationUpdate
+        AddHandler descriptor.PushInformation, AddressOf RegisterInformationToMarker
     End Sub
 
     Public Sub Add(timeMarker As TimeMarker, title As String, description As String, points As List(Of String), priority As Priority)
@@ -72,7 +75,6 @@
         AddHandler marker.MarkerSetForDeletion, AddressOf OnSetForDeletion
         AddHandler marker.TimeMarkerEnd, AddressOf OnTimeMarkerEnd
         AddHandler marker.PushInformation, AddressOf PushInformationToDescriptor
-
         ActualList.Controls.Add(marker)
         RaiseEvent CheckForScrollbar()
         SetupAnchors()
@@ -88,11 +90,9 @@
     Public Sub Remove(name As String)
         Dim marker As TimeMarkerItemCLB = ActualList.Controls(name)
         If IsNothing(marker) Then
-            Beep()
             Exit Sub
         End If
         ActualList.Controls.Remove(marker)
-        Console.Beep()
         RemoveHandler marker.Click, AddressOf ItemClicked
         RemoveHandler marker.SelectionChanged, AddressOf SetActiveControl
         RemoveHandler marker.MarkerSetForDeletion, AddressOf OnSetForDeletion
@@ -142,8 +142,10 @@
     End Sub
 
     Public Sub ChangeEditorMode(mode As CustomListBox.EditorMode)
-        internalMode = mode
-        RaiseEvent EditorModeChanged(mode)
+        If Not mode = EditorMode.NONE Then
+            internalMode = mode
+            RaiseEvent EditorModeChanged(mode)
+        End If
     End Sub
 
     Private Sub OrganizeListBox()
@@ -173,18 +175,19 @@
             currentActiveControl.Points1.BackgroundColor = Color.FromArgb(38, 38, 38)
             currentActiveControl.BackgroundColor = Color.FromArgb(38, 38, 38)
             currentActiveControl = marker
-            marker.PushMarker(currentActiveControl)
+            currentActiveControl.PushMarker()
         End If
     End Sub
 
     Private Sub ChangeMode(newMode As EditorMode) Handles Me.EditorModeChanged
+        If newMode = EditorMode.NONE Then Exit Sub
         If ActualList.Controls.Count > 0 Then
             For i = 0 To ActualList.Controls.Count - 1
                 Dim control As TimeMarkerItemCLB = ActualList.Controls(i)
                 control.EditorMode = newMode
             Next
         End If
-        'descriptor.RaiseEditorModeEvent(newMode)
+        descriptor.EditorMode = newMode
     End Sub
 
     Private Sub ItemClicked(sender As Object, e As EventArgs)
@@ -221,7 +224,17 @@
     End Sub
 
     Private Sub PushInformationToDescriptor(information As TimeMarkerItemCLB)
+        descriptor.ThisTimeMarker = information
         RaiseEvent UpdateDescriptorInformation()
+    End Sub
+
+    'TODO
+    Public Sub RegisterInformationToMarker(marker As TimeMarkerItemCLB)
+        If marker Is Nothing Then
+            'Add()
+        Else
+            Dim godf As TimeMarkerItemCLB = ActualList.Controls()
+        End If
     End Sub
 #End Region
 
