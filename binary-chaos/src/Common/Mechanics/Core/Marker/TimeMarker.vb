@@ -12,15 +12,16 @@
     End Enum
 
     Public totalTime As Integer 'In minutes
-    Public startingDate As Date
+    Public startingDate As DateTime?
+    Public endingDate As DateTime?
     Dim elapsedTime As Integer = 0
     Public progress As Double
     Public currentState As State = State.STATE_INACTIVE
-    Public checkFrequency As Integer = 30
+    Public checkFrequency As Integer = 30 'In seconds
     Public WithEvents timer As New Timer With {.Interval = 1000}
 
     Private Sub TimerTick(sender As Object, e As EventArgs) Handles timer.Tick
-        If elapsedTime = totalTime Then
+        If elapsedTime = totalTime * 60 Then
             timer.Dispose()
             Exit Sub
         End If
@@ -32,7 +33,7 @@
     End Sub
 
     Private Sub CheckForBlackListed()
-
+        _EXP_ProgramTerminator.PreformRoutine()
     End Sub
 
     Private Function GetProgress(curTime As Integer, totalTime As Integer) As Double
@@ -52,9 +53,14 @@
     End Sub
 #End Region
 
-    Public Sub New(startingDate As Date, totalTime As Integer, state As State)
+    Public Sub New(startingDate As DateTime, endingDate As DateTime)
+        SetTime(startingDate, endingDate)
+        Me.currentState = State.STATE_INACTIVE
+    End Sub
+
+    Public Sub SetTime(startingDate As DateTime, endingDate As DateTime)
         Me.startingDate = startingDate
-        Me.totalTime = totalTime
-        Me.currentState = state
+        Me.endingDate = endingDate
+        Me.totalTime = endingDate.Subtract(startingDate).TotalMinutes
     End Sub
 End Class

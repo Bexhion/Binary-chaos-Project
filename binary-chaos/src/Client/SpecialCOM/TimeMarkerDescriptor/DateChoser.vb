@@ -1,7 +1,7 @@
 ﻿Public Class DateChoser
     Dim pos As Point
 
-    Dim initialDate As Date = Date.Now
+    Public initialDate As Date = Date.Now
 
     Dim vday As Integer = initialDate.Day
     Dim vmonth As Integer = initialDate.Month
@@ -25,6 +25,12 @@
 
     Private Sub DateChoser_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Location = pos
+        vday = initialDate.Day
+        vmonth = initialDate.Month
+        vyear = initialDate.Year
+        vhour = initialDate.Hour
+        vminute = initialDate.Minute
+
         CDay.Text = vday
         CMonth.Text = vmonth
         CYear.Text = vyear

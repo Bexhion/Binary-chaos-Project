@@ -38,12 +38,12 @@ Partial Class TimeMarkerDescription
         Me.LabelEndDate = New System.Windows.Forms.Label()
         Me.LabelStartDate = New System.Windows.Forms.Label()
         Me.LabelDetails = New System.Windows.Forms.Label()
-        Me.PanelPoints = New System.Windows.Forms.Panel()
-        Me.ButtonRemovePoint = New System.Windows.Forms.Button()
-        Me.ButtonAddPoint = New System.Windows.Forms.Button()
-        Me.LabelPoints = New System.Windows.Forms.Label()
         Me.ScrollBar = New System.Windows.Forms.Panel()
         Me.ContextMenuStrip1 = New System.Windows.Forms.ContextMenuStrip(Me.components)
+        Me.LabelPoints = New System.Windows.Forms.Label()
+        Me.ButtonAddPoint = New System.Windows.Forms.Button()
+        Me.ButtonRemovePoint = New System.Windows.Forms.Button()
+        Me.PanelPoints = New System.Windows.Forms.Panel()
         Me.Descriptor.SuspendLayout()
         Me.PanelTitle.SuspendLayout()
         Me.PanelDescription.SuspendLayout()
@@ -125,6 +125,7 @@ Partial Class TimeMarkerDescription
         Me.TxtboxDesc.Location = New System.Drawing.Point(9, 29)
         Me.TxtboxDesc.Margin = New System.Windows.Forms.Padding(0)
         Me.TxtboxDesc.Name = "TxtboxDesc"
+        Me.TxtboxDesc.ReadOnly = True
         Me.TxtboxDesc.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.None
         Me.TxtboxDesc.Size = New System.Drawing.Size(402, 18)
         Me.TxtboxDesc.TabIndex = 0
@@ -154,7 +155,7 @@ Partial Class TimeMarkerDescription
         Me.ButtonStartDate.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.ButtonStartDate.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.ButtonStartDate.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(112, Byte), Integer), CType(CType(192, Byte), Integer))
-        Me.ButtonStartDate.Location = New System.Drawing.Point(122, 23)
+        Me.ButtonStartDate.Location = New System.Drawing.Point(106, 23)
         Me.ButtonStartDate.Name = "ButtonStartDate"
         Me.ButtonStartDate.Size = New System.Drawing.Size(32, 20)
         Me.ButtonStartDate.TabIndex = 6
@@ -231,9 +232,9 @@ Partial Class TimeMarkerDescription
         Me.LabelStartDate.Location = New System.Drawing.Point(24, 25)
         Me.LabelStartDate.Margin = New System.Windows.Forms.Padding(0)
         Me.LabelStartDate.Name = "LabelStartDate"
-        Me.LabelStartDate.Size = New System.Drawing.Size(95, 15)
+        Me.LabelStartDate.Size = New System.Drawing.Size(79, 15)
         Me.LabelStartDate.TabIndex = 2
-        Me.LabelStartDate.Text = "Beginning Date:"
+        Me.LabelStartDate.Text = "Starting date:"
         '
         'LabelDetails
         '
@@ -247,59 +248,6 @@ Partial Class TimeMarkerDescription
         Me.LabelDetails.Size = New System.Drawing.Size(57, 16)
         Me.LabelDetails.TabIndex = 1
         Me.LabelDetails.Text = "Details"
-        '
-        'PanelPoints
-        '
-        Me.PanelPoints.BackColor = System.Drawing.Color.Transparent
-        Me.PanelPoints.Controls.Add(Me.ButtonRemovePoint)
-        Me.PanelPoints.Controls.Add(Me.ButtonAddPoint)
-        Me.PanelPoints.Controls.Add(Me.LabelPoints)
-        Me.PanelPoints.Location = New System.Drawing.Point(0, 197)
-        Me.PanelPoints.Margin = New System.Windows.Forms.Padding(0)
-        Me.PanelPoints.Name = "PanelPoints"
-        Me.PanelPoints.Size = New System.Drawing.Size(420, 61)
-        Me.PanelPoints.TabIndex = 5
-        '
-        'ButtonRemovePoint
-        '
-        Me.ButtonRemovePoint.BackColor = System.Drawing.Color.FromArgb(CType(CType(55, Byte), Integer), CType(CType(55, Byte), Integer), CType(CType(55, Byte), Integer))
-        Me.ButtonRemovePoint.FlatAppearance.BorderSize = 0
-        Me.ButtonRemovePoint.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.ButtonRemovePoint.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.ButtonRemovePoint.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(112, Byte), Integer), CType(CType(192, Byte), Integer))
-        Me.ButtonRemovePoint.Location = New System.Drawing.Point(232, 6)
-        Me.ButtonRemovePoint.Name = "ButtonRemovePoint"
-        Me.ButtonRemovePoint.Size = New System.Drawing.Size(58, 20)
-        Me.ButtonRemovePoint.TabIndex = 10
-        Me.ButtonRemovePoint.Text = "Remove"
-        Me.ButtonRemovePoint.UseVisualStyleBackColor = False
-        '
-        'ButtonAddPoint
-        '
-        Me.ButtonAddPoint.BackColor = System.Drawing.Color.FromArgb(CType(CType(55, Byte), Integer), CType(CType(55, Byte), Integer), CType(CType(55, Byte), Integer))
-        Me.ButtonAddPoint.FlatAppearance.BorderSize = 0
-        Me.ButtonAddPoint.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.ButtonAddPoint.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.ButtonAddPoint.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(112, Byte), Integer), CType(CType(192, Byte), Integer))
-        Me.ButtonAddPoint.Location = New System.Drawing.Point(190, 6)
-        Me.ButtonAddPoint.Name = "ButtonAddPoint"
-        Me.ButtonAddPoint.Size = New System.Drawing.Size(36, 20)
-        Me.ButtonAddPoint.TabIndex = 9
-        Me.ButtonAddPoint.Text = "Add"
-        Me.ButtonAddPoint.UseVisualStyleBackColor = False
-        '
-        'LabelPoints
-        '
-        Me.LabelPoints.AutoSize = True
-        Me.LabelPoints.BackColor = System.Drawing.Color.Transparent
-        Me.LabelPoints.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelPoints.ForeColor = System.Drawing.Color.FromArgb(CType(CType(240, Byte), Integer), CType(CType(240, Byte), Integer), CType(CType(240, Byte), Integer))
-        Me.LabelPoints.Location = New System.Drawing.Point(5, 2)
-        Me.LabelPoints.Margin = New System.Windows.Forms.Padding(0)
-        Me.LabelPoints.Name = "LabelPoints"
-        Me.LabelPoints.Size = New System.Drawing.Size(182, 24)
-        Me.LabelPoints.TabIndex = 2
-        Me.LabelPoints.Text = "Points to accomplish"
         '
         'ScrollBar
         '
@@ -315,6 +263,59 @@ Partial Class TimeMarkerDescription
         '
         Me.ContextMenuStrip1.Name = "ContextMenuStrip1"
         Me.ContextMenuStrip1.Size = New System.Drawing.Size(61, 4)
+        '
+        'LabelPoints
+        '
+        Me.LabelPoints.AutoSize = True
+        Me.LabelPoints.BackColor = System.Drawing.Color.Transparent
+        Me.LabelPoints.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LabelPoints.ForeColor = System.Drawing.Color.FromArgb(CType(CType(240, Byte), Integer), CType(CType(240, Byte), Integer), CType(CType(240, Byte), Integer))
+        Me.LabelPoints.Location = New System.Drawing.Point(5, 2)
+        Me.LabelPoints.Margin = New System.Windows.Forms.Padding(0)
+        Me.LabelPoints.Name = "LabelPoints"
+        Me.LabelPoints.Size = New System.Drawing.Size(149, 24)
+        Me.LabelPoints.TabIndex = 2
+        Me.LabelPoints.Text = "Goals to achieve"
+        '
+        'ButtonAddPoint
+        '
+        Me.ButtonAddPoint.BackColor = System.Drawing.Color.FromArgb(CType(CType(55, Byte), Integer), CType(CType(55, Byte), Integer), CType(CType(55, Byte), Integer))
+        Me.ButtonAddPoint.FlatAppearance.BorderSize = 0
+        Me.ButtonAddPoint.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.ButtonAddPoint.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ButtonAddPoint.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(112, Byte), Integer), CType(CType(192, Byte), Integer))
+        Me.ButtonAddPoint.Location = New System.Drawing.Point(157, 6)
+        Me.ButtonAddPoint.Name = "ButtonAddPoint"
+        Me.ButtonAddPoint.Size = New System.Drawing.Size(36, 20)
+        Me.ButtonAddPoint.TabIndex = 9
+        Me.ButtonAddPoint.Text = "Add"
+        Me.ButtonAddPoint.UseVisualStyleBackColor = False
+        '
+        'ButtonRemovePoint
+        '
+        Me.ButtonRemovePoint.BackColor = System.Drawing.Color.FromArgb(CType(CType(55, Byte), Integer), CType(CType(55, Byte), Integer), CType(CType(55, Byte), Integer))
+        Me.ButtonRemovePoint.FlatAppearance.BorderSize = 0
+        Me.ButtonRemovePoint.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.ButtonRemovePoint.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ButtonRemovePoint.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(112, Byte), Integer), CType(CType(192, Byte), Integer))
+        Me.ButtonRemovePoint.Location = New System.Drawing.Point(199, 6)
+        Me.ButtonRemovePoint.Name = "ButtonRemovePoint"
+        Me.ButtonRemovePoint.Size = New System.Drawing.Size(58, 20)
+        Me.ButtonRemovePoint.TabIndex = 10
+        Me.ButtonRemovePoint.Text = "Remove"
+        Me.ButtonRemovePoint.UseVisualStyleBackColor = False
+        '
+        'PanelPoints
+        '
+        Me.PanelPoints.BackColor = System.Drawing.Color.Transparent
+        Me.PanelPoints.Controls.Add(Me.ButtonRemovePoint)
+        Me.PanelPoints.Controls.Add(Me.ButtonAddPoint)
+        Me.PanelPoints.Controls.Add(Me.LabelPoints)
+        Me.PanelPoints.Location = New System.Drawing.Point(0, 197)
+        Me.PanelPoints.Margin = New System.Windows.Forms.Padding(0)
+        Me.PanelPoints.Name = "PanelPoints"
+        Me.PanelPoints.Size = New System.Drawing.Size(420, 40)
+        Me.PanelPoints.TabIndex = 5
         '
         'TimeMarkerDescription
         '
@@ -348,14 +349,14 @@ Partial Class TimeMarkerDescription
     Friend WithEvents LabelEndDate As Label
     Friend WithEvents LabelStartDate As Label
     Friend WithEvents LabelDetails As Label
-    Friend WithEvents PanelPoints As Panel
-    Friend WithEvents LabelPoints As Label
     Friend WithEvents PanelStart As Panel
     Friend WithEvents ButtonStartDate As Button
     Friend WithEvents ButtonPriority As Button
     Friend WithEvents ButtonEndDate As Button
-    Friend WithEvents ButtonRemovePoint As Button
-    Friend WithEvents ButtonAddPoint As Button
     Friend WithEvents ScrollBar As Panel
     Friend WithEvents ContextMenuStrip1 As ContextMenuStrip
+    Friend WithEvents PanelPoints As Panel
+    Friend WithEvents ButtonRemovePoint As Button
+    Friend WithEvents ButtonAddPoint As Button
+    Friend WithEvents LabelPoints As Label
 End Class

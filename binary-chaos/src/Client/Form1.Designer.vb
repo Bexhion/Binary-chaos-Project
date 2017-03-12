@@ -39,7 +39,9 @@ Partial Class Form1
         Me.Button2 = New System.Windows.Forms.Button()
         Me.Button3 = New System.Windows.Forms.Button()
         Me.Button4 = New System.Windows.Forms.Button()
+        Me.Button5 = New System.Windows.Forms.Button()
         Me.TimeMarkerDescription1 = New WindowsApplication1.TimeMarkerDescription()
+        Me.CustomListBox1 = New WindowsApplication1.CustomListBox()
         Me.Panel1.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -146,6 +148,12 @@ Partial Class Form1
         Me.Button4.Name = "Button4"
         Me.Button4.UseVisualStyleBackColor = True
         '
+        'Button5
+        '
+        resources.ApplyResources(Me.Button5, "Button5")
+        Me.Button5.Name = "Button5"
+        Me.Button5.UseVisualStyleBackColor = True
+        '
         'TimeMarkerDescription1
         '
         Me.TimeMarkerDescription1.AccomplishedPoints = Nothing
@@ -165,12 +173,22 @@ Partial Class Form1
         Me.TimeMarkerDescription1.ThisTimeMarker = Nothing
         Me.TimeMarkerDescription1.Title = ""
         '
+        'CustomListBox1
+        '
+        Me.CustomListBox1.BackColor = System.Drawing.Color.FromArgb(CType(CType(38, Byte), Integer), CType(CType(38, Byte), Integer), CType(CType(38, Byte), Integer))
+        Me.CustomListBox1.CurrentEditorMode = WindowsApplication1.CustomListBox.EditorMode.NONE
+        Me.CustomListBox1.descriptor = Nothing
+        resources.ApplyResources(Me.CustomListBox1, "CustomListBox1")
+        Me.CustomListBox1.Name = "CustomListBox1"
+        '
         'Form1
         '
         resources.ApplyResources(Me, "$this")
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(40, Byte), Integer), CType(CType(40, Byte), Integer), CType(CType(40, Byte), Integer))
+        Me.Controls.Add(Me.CustomListBox1)
         Me.Controls.Add(Me.TimeMarkerDescription1)
+        Me.Controls.Add(Me.Button5)
         Me.Controls.Add(Me.Button4)
         Me.Controls.Add(Me.Button3)
         Me.Controls.Add(Me.Button2)
@@ -205,5 +223,7 @@ Partial Class Form1
     Friend WithEvents Button2 As Button
     Friend WithEvents Button3 As Button
     Friend WithEvents Button4 As Button
+    Friend WithEvents Button5 As Button
     Friend WithEvents TimeMarkerDescription1 As TimeMarkerDescription
+    Friend WithEvents CustomListBox1 As CustomListBox
 End Class

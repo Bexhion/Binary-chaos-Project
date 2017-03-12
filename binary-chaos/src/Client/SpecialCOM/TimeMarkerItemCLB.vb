@@ -9,16 +9,16 @@ Public Class TimeMarkerItemCLB
 
     Public WithEvents timeMarker As TimeMarker
 
-    Dim information As New Dictionary(Of String, Object)
     Dim _title As String = ""
     Dim _description As String = ""
     Dim _points As List(Of String)
-    Dim _pointNumber As Integer = 0
     Dim accomplishedPointsNumber As Integer = 0
     Dim _accomplishedPoints As List(Of String)
     Dim _priority As CustomListBox.Priority = Nothing
     Dim priorityBrush As SolidBrush
-    Dim _thisDate As Date = Nothing
+    Dim _timespan As Integer = 0
+    Dim _thisDate As DateTime? = Nothing
+    Dim _endDate As DateTime? = Nothing
     Dim _mode As CustomListBox.EditorMode = Nothing
     Dim _progress As Double = 0
     Dim _renderProgress As Boolean = False
@@ -61,20 +61,36 @@ Public Class TimeMarkerItemCLB
         End Get
         Set(value As List(Of String))
             _points = value
-            _pointNumber = 1
-            Points1.SetPointNumber(_pointNumber)
+            If _points IsNot Nothing Then
+                Points1.SetPointNumber(_points.Count)
+                Refresh()
+            End If
+        End Set
+    End Property
+
+    Public Property FullDate() As DateTime?
+        Get
+            Return _thisDate
+        End Get
+        Set(value As DateTime?)
+            _thisDate = value
+            FullDate1.FullDate = _thisDate
+            RecalculateTimeMarker()
             Refresh()
         End Set
     End Property
 
-    Public Property FullDate() As Date
+    Public Property FullDateEnd() As DateTime?
         Get
-            Return _thisDate
+            Return _endDate
         End Get
-        Set(value As Date)
-            _thisDate = value
-            FullDate1.FullDate = _thisDate
-            Refresh()
+        Set(value As DateTime?)
+            _endDate = value
+            If FullDate IsNot Nothing Then
+                Dim span As TimeSpan = _endDate.Value.Subtract(FullDate)
+                _timespan = span.TotalMinutes
+            End If
+            RecalculateTimeMarker()
         End Set
     End Property
 
@@ -83,7 +99,7 @@ Public Class TimeMarkerItemCLB
             Return _priority
         End Get
         Set(value As CustomListBox.Priority)
-            If Not Priority = CustomListBox.Priority.NONE Then
+            If Not value = CustomListBox.Priority.NONE Then
                 _priority = value
                 priorityBrush = GetPriorityBrush(value)
                 Refresh()
@@ -182,7 +198,11 @@ Public Class TimeMarkerItemCLB
         End Get
         Set(value As List(Of String))
             _accomplishedPoints = value
-            accomplishedPointsNumber = value.Count
+            If _accomplishedPoints IsNot Nothing Then
+                accomplishedPointsNumber = value.Count
+            Else
+                accomplishedPointsNumber = 0
+            End If
         End Set
     End Property
 
@@ -209,12 +229,17 @@ Public Class TimeMarkerItemCLB
         End Select
         Return brush
     End Function
+
+    Public Sub RecalculateTimeMarker()
+        If FullDate IsNot Nothing And FullDateEnd IsNot Nothing Then
+            timeMarker.SetTime(FullDate, FullDateEnd)
+        End If
+    End Sub
 #End Region
 
 #End Region
     Public Sub New()
         InitializeComponent()
-        GetPath()
         BackgroundColor = Color.FromArgb(38, 38, 38)
         DoRenderOutline = True
         OutlineColor = Color.FromArgb(90, 90, 90)
@@ -223,10 +248,12 @@ Public Class TimeMarkerItemCLB
         FullDate1.DoRenderOutline = True
         FullDate1.OutlineColor = Color.FromArgb(90, 90, 90)
         totalProgress = (Me.Width - 5) - (Points1.Width + Points1.Location.X)
+        GetContourPath()
+        startingPoint = New Point(Points1.Right, 0)
+        endingPoint = New Point(totalProgress, 0)
     End Sub
 
 #Region "Events"
-
 #Region "Mouse Hover Me"
     Private Sub MouseEnterEvent(sender As Object, e As EventArgs) Handles Me.MouseEnter, Label_Title.MouseEnter, Label_Desc.MouseEnter, Points1.MouseEnter
         Label_Title.ForeColor = Color.White
@@ -242,13 +269,12 @@ Public Class TimeMarkerItemCLB
 #End Region
 #Region "Click"
     Private Sub MouseClickEvent(sender As Object, e As MouseEventArgs) Handles Me.MouseClick, Label_Title.MouseClick, Label_Desc.MouseClick, Points1.MouseClick
+        SelectMarker()
+    End Sub
+
+    Public Sub SelectMarker()
         RaiseEvent SelectionChanged(Me)
-        If Not SelectMe Then
-            SelectMe = True
-            FullDate1.BackgroundColor = Color.FromArgb(63, 63, 63)
-            Points1.BackgroundColor = Color.FromArgb(63, 63, 63)
-            BackgroundColor = Color.FromArgb(63, 63, 63)
-        End If
+        PushMarker()
     End Sub
 #End Region
 #Region "Date"
@@ -280,6 +306,10 @@ Public Class TimeMarkerItemCLB
 
     Private Sub TimeMarkerFinished(marker As TimeMarker) Handles timeMarker.TimerEnd
         ShowProgress = False
+        TimeMarkerEndHandler()
+    End Sub
+
+    Public Sub TimeMarkerEndHandler()
         RaiseEvent TimeMarkerEnd(Me)
     End Sub
 
@@ -315,10 +345,11 @@ Public Class TimeMarkerItemCLB
         If ShowProgress Then
             RenderProgress(graphics)
         End If
+        graphics.Dispose()
     End Sub
 
-    Public Sub GetPath()
-        Dim path As New GraphicsPath
+    Public Sub GetContourPath()
+        Dim path As New GraphicsPath()
         path.StartFigure()
         path.AddLine(0, 0, Me.Width - 1, 0)
         path.AddLine(Me.Width - 1, 0, Me.Width - 1, Me.Height - 1)
@@ -329,18 +360,13 @@ Public Class TimeMarkerItemCLB
     End Sub
 
     Dim totalProgress As Integer
+    Dim startingPoint As Point
+    Dim endingPoint As Point
     Private Sub RenderProgress(graphics As Graphics)
         Dim path As New GraphicsPath
-        Dim pointsProgress As PointF() = {
-            New Point(Points1.Width + Points1.Location.X, 0),
-            New Point(totalProgress * Progress, 0)
-            }
-        Dim pointsFree As PointF() = {
-            New Point(totalProgress * Progress, 0),
-            New Point(totalProgress, 0)
-            }
-        graphics.DrawLine(New Pen(Color.FromArgb(89, 89, 89), 2), pointsProgress(0), pointsProgress(1))
-        graphics.DrawLine(New Pen(Color.FromArgb(0, 112, 192), 2), pointsFree(0), pointsFree(1))
+        Dim prog As New Point(totalProgress * Progress, 0)
+        graphics.DrawLine(New Pen(Color.FromArgb(89, 89, 89), 4), startingPoint, prog)
+        graphics.DrawLine(New Pen(Color.FromArgb(0, 112, 192), 4), prog, endingPoint)
     End Sub
 
     Private Sub RenderOutline(graphics As Graphics, color As Color)

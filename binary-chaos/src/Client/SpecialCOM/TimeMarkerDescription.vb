@@ -1,21 +1,49 @@
 ﻿Imports System.Drawing.Drawing2D
 Public Class TimeMarkerDescription
-    'Necessary
-    Private Declare Function HideCaret Lib “user32" (ByVal wHandle As Int32) As Int32
-    Private Declare Function ShowCaret Lib “user32" (ByVal wHandle As Int32) As Int32
-
 #Region "Properties"
     Dim panelColection As New Dictionary(Of Panel, List(Of Control))
     Dim markedForUpdate As New List(Of Panel)
     Dim initialDropDown As New Dictionary(Of Panel, Integer)
-    Dim checkBoxColection As New List(Of CheckBox)
+    Dim deletePointsColection As New List(Of CheckBox)
+    Dim todelete As New List(Of CheckBox)
 
     Public Event UpdatePanels()
     Public Event UpdateEditorMode(mode As CustomListBox.EditorMode)
-    Public Event PushInformation(timeMarker As TimeMarkerItemCLB)
+    Public Event PushInformation(doesOverride As Boolean, description As TimeMarkerDescription)
 
     Public Sub PushMyInformation()
-        RaiseEvent PushInformation(ThisTimeMarker)
+        Dim missingInformation As String = ""
+        If Title IsNot Nothing Then
+            If Description IsNot Nothing Then
+                If FullDateStart IsNot Nothing Then
+                    If FullDateEnd IsNot Nothing Then
+                        If Not IsNothing(Priority) Then
+                            Select Case EditorMode
+                                Case CustomListBox.EditorMode.ADD
+                                    RaiseEvent PushInformation(False, Me)
+                                Case Else
+                                    If ThisTimeMarker IsNot Nothing Then
+                                        RaiseEvent PushInformation(True, Me)
+                                    End If
+                            End Select
+                        Else
+                            missingInformation = "priority"
+                        End If
+                    Else
+                        missingInformation = "finish date"
+                    End If
+                Else
+                    missingInformation = "starting date"
+                End If
+            Else
+                missingInformation = "description"
+            End If
+        Else
+            missingInformation = "title"
+        End If
+        If missingInformation IsNot "" Then
+            MsgBox("Unable to create a new marker. Please introduce a valid " & missingInformation)
+        End If
     End Sub
 
     Dim hasScrollBar As Boolean = False
@@ -28,12 +56,13 @@ Public Class TimeMarkerDescription
     Dim _description As String = ""
     Dim _fullDateStart As DateTime? = Nothing
     Dim _fullDateEnd As DateTime? = Nothing
-    Dim _priority As CustomListBox.Priority = Nothing
-    Dim _points As List(Of String) = Nothing
+    Dim _priority As CustomListBox.Priority = CustomListBox.Priority.NONE
+    Dim _points As List(Of String)
     Dim _accomplishedPoints As List(Of String) = Nothing
     Dim _pointsNumber As Integer = 0
     Dim _accomplishedPointsNumber As Integer = 0
     Dim _progress As Double
+    Dim _renderInformation As Boolean = False
 
 #Region "Paint render"
     Dim diff As Integer = 10
@@ -51,13 +80,22 @@ Public Class TimeMarkerDescription
         Title = ThisTimeMarker.Title
         Description = ThisTimeMarker.Description
         FullDateStart = ThisTimeMarker.FullDate
-        Dim filler As DateTime = FullDateStart
-        filler.AddMinutes(ThisTimeMarker.timeMarker.totalTime)
-        FullDateEnd = filler
+        Dim filler As DateTime = ThisTimeMarker.FullDate
+        FullDateEnd = filler.AddMinutes(ThisTimeMarker.timeMarker.totalTime)
         Priority = ThisTimeMarker.Priority
+        Points = Nothing
         Points = ThisTimeMarker.Points
+        AccomplishedPoints = Nothing
         AccomplishedPoints = ThisTimeMarker.AccomplishedPoints
         Progress = ThisTimeMarker.Progress
+        Select Case Priority
+            Case CustomListBox.Priority.HIGH
+                PanelStart.Visible = True
+                PanelStart.Enabled = True
+            Case Else
+                PanelStart.Visible = False
+                PanelStart.Enabled = False
+        End Select
     End Sub
 #End Region
 
@@ -102,10 +140,8 @@ Public Class TimeMarkerDescription
         End Get
         Set(value As DateTime?)
             _fullDateStart = value
-            If value.HasValue Then
-                SetDetailsStartDate(value)
-                RaiseEvent UpdatePanels()
-            End If
+            SetDetailsStartDate(value)
+            RaiseEvent UpdatePanels()
         End Set
     End Property
 
@@ -115,10 +151,8 @@ Public Class TimeMarkerDescription
         End Get
         Set(value As DateTime?)
             _fullDateEnd = value
-            If value.HasValue Then
-                SetDetailsEndDate(value)
-                RaiseEvent UpdatePanels()
-            End If
+            SetDetailsEndDate(value)
+            RaiseEvent UpdatePanels()
         End Set
     End Property
 
@@ -128,18 +162,9 @@ Public Class TimeMarkerDescription
         End Get
         Set(value As CustomListBox.Priority)
             _priority = value
-            If Not IsNothing(_priority) Then
-                SetDetailsPriority(value)
-                RaiseEvent UpdatePanels()
-                If value = CustomListBox.Priority.HIGH Then
-                    PanelStart.Visible = True
-                    PanelStart.Enabled = True
-                Else
-                    PanelStart.Visible = False
-                    PanelStart.Enabled = False
-                End If
-                PanelDetails.Refresh()
-            End If
+            SetDetailsPriority(value)
+            RaiseEvent UpdatePanels()
+            PanelDetails.Refresh()
         End Set
     End Property
 
@@ -148,32 +173,69 @@ Public Class TimeMarkerDescription
             Return _points
         End Get
         Set(value As List(Of String))
-            _points = value
+            If value IsNot Nothing Then
+                If _points IsNot Nothing Then
+                    _points.AddRange(value)
+                Else
+                    _points = New List(Of String)(value)
+                End If
+            Else
+                _points = Nothing
+            End If
+            ClearCheckBoxes()
+            Dim list As New List(Of Control)
+            list.Add(LabelPoints)
+            list.Add(ButtonAddPoint)
+            list.Add(ButtonRemovePoint)
             If _points IsNot Nothing Then
-                PointsNumber = _points.Count
-                Dim list As New List(Of Control)
                 For i = 0 To _points.Count - 1
                     Dim entry As String = _points(i)
                     Dim checkBox As CheckBox = CreateCheckBox(entry, (20 * i) + 30)
                     list.Add(checkBox)
-                    PanelPoints.Controls.Add(checkBox)
                 Next
                 PointsNumber = _points.Count
-                panelColection(PanelPoints) = list
-                markedForUpdate.Add(PanelPoints)
             End If
+            panelColection(PanelPoints) = list
+            markedForUpdate.Add(PanelPoints)
             RaiseEvent UpdatePanels()
         End Set
     End Property
+
+    Private Sub ClearCheckBoxes()
+        PanelPoints.Hide()
+        For index = PanelPoints.Controls.Count - 1 To 0 Step -1
+            Dim control As Control = PanelPoints.Controls(index)
+            If TypeOf control Is CheckBox Then
+                PanelPoints.Controls.Remove(control)
+                RemoveHandler CType(control, CheckBox).MouseClick, AddressOf CheckBoxClicked
+                control.Dispose()
+            End If
+        Next
+        PanelPoints.Show()
+    End Sub
 
     Public Property AccomplishedPoints() As List(Of String)
         Get
             Return _accomplishedPoints
         End Get
         Set(value As List(Of String))
-            _accomplishedPoints = value
-            If _accomplishedPoints IsNot Nothing Then
+            If value IsNot Nothing Then
+                _accomplishedPoints = value
+            Else
+                _accomplishedPoints = Nothing
+            End If
+            If value IsNot Nothing Then
+                For Each c As Control In PanelPoints.Controls
+                    If TypeOf c Is CheckBox Then
+                        Dim check As CheckBox = CType(c, CheckBox)
+                        If value.Contains(check.Text) Then
+                            CType(c, CheckBox).Checked = True
+                        End If
+                    End If
+                Next
                 AccomplishedPointsNumber = _accomplishedPoints.Count
+            Else
+                AccomplishedPointsNumber = 0
             End If
         End Set
     End Property
@@ -189,6 +251,7 @@ Public Class TimeMarkerDescription
             Else
                 RenderPointsProgress = True
             End If
+            PanelPoints.Refresh()
         End Set
     End Property
 
@@ -219,8 +282,8 @@ Public Class TimeMarkerDescription
         Set(value As CustomListBox.EditorMode)
             If Not value = CustomListBox.EditorMode.NONE Then
                 _editorMode = value
-                RaiseEvent UpdateEditorMode(value)
             End If
+            RaiseEvent UpdateEditorMode(value)
         End Set
     End Property
 
@@ -261,21 +324,23 @@ Public Class TimeMarkerDescription
         triangularPath = GetTrianglePath(30)
         AddHandler TxtboxTitle.ContentsResized, AddressOf ResizeRichTextBox
         AddHandler TxtboxDesc.ContentsResized, AddressOf ResizeRichTextBox
+        PopulateInitialDropDown()
         SetControls()
+        CreatePanelStartTooltip()
+
     End Sub
 
 #Region "Events"
+    Private Sub CreatePanelStartTooltip()
+        Dim tooltip As New ToolTip
+        tooltip.SetToolTip(PanelStart, "Start this marker")
+    End Sub
+
     Private Sub UpdatePanelSequence() Handles Me.UpdatePanels
         Dim lastPanel As Panel = Nothing
         For Each panel As Panel In markedForUpdate
             If panel IsNot Nothing Then
-                Dim dropDown As Integer
-                If initialDropDown.ContainsKey(panel) Then
-                    dropDown = initialDropDown(panel)
-                Else
-                    dropDown = 5
-                End If
-                panel.Height = GetMaxControlHeight(panel) + dropDown
+                panel.Height = GetMaxControlHeight(panel)
                 DockPanelToPanel(panel, lastPanel)
             End If
         Next
@@ -285,34 +350,91 @@ Public Class TimeMarkerDescription
     Private Sub EditorChanged(mode As CustomListBox.EditorMode) Handles Me.UpdateEditorMode
         Select Case mode
             Case CustomListBox.EditorMode.ADD
+
                 ThisTimeMarker = Nothing
                 RenderPointsProgress = False
+
                 TxtboxTitle.ReadOnly = False
                 TxtboxDesc.ReadOnly = False
                 Title = ""
                 Description = ""
+
                 FullDateStart = Nothing
                 FullDateEnd = Nothing
                 Priority = Nothing
-                SetButtonVisibility(ButtonStartDate, True)
-                SetButtonVisibility(ButtonEndDate, True)
-                SetButtonVisibility(ButtonPriority, True)
+
                 Points = Nothing
-                AccomplishedPoints = Nothing
+                ClearCheckBoxes()
+                AccomplishedPoints = New List(Of String)
+
+                SetButtonVisibility(ButtonStartDate, True)
+                AppendButtonToControl(ButtonStartDate, LabelStartDate)
+
+                SetButtonVisibility(ButtonEndDate, True)
+                AppendButtonToControl(ButtonEndDate, LabelEndDate)
+
+                SetButtonVisibility(ButtonPriority, True)
+                AppendButtonToControl(ButtonPriority, LabelPriority)
+
+                SetButtonVisibility(ButtonRemovePoint, True)
+                SetButtonVisibility(ButtonAddPoint, True)
+
+                PanelStart.Visible = False
+                PanelStart.Enabled = False
+                'Manual way for reasons
+                PanelPoints.Height = GetMaxControlHeight(PanelPoints)
+
             Case CustomListBox.EditorMode.EDIT
+
                 RenderPointsProgress = False
                 TxtboxTitle.ReadOnly = False
                 TxtboxDesc.ReadOnly = False
+
                 SetButtonVisibility(ButtonStartDate, True)
                 AppendButtonToControl(ButtonStartDate, LabelStartDate)
+
                 SetButtonVisibility(ButtonEndDate, True)
                 AppendButtonToControl(ButtonEndDate, LabelEndDate)
+
                 SetButtonVisibility(ButtonPriority, True)
                 AppendButtonToControl(ButtonPriority, LabelPriority)
+
                 SetButtonVisibility(ButtonRemovePoint, True)
                 SetButtonVisibility(ButtonAddPoint, True)
-            Case CustomListBox.EditorMode.REMOVE, CustomListBox.EditorMode.FIXED
+
+                PanelStart.Visible = False
+                PanelStart.Enabled = False
+
+            Case CustomListBox.EditorMode.REMOVE
+                RenderPointsProgress = False
+                TxtboxTitle.ReadOnly = True
+                TxtboxDesc.ReadOnly = True
+
+                SetButtonVisibility(ButtonStartDate, False)
+                SetButtonVisibility(ButtonEndDate, False)
+                SetButtonVisibility(ButtonPriority, False)
+                SetButtonVisibility(ButtonRemovePoint, False)
+                SetButtonVisibility(ButtonAddPoint, False)
+
+                PanelStart.Visible = False
+                PanelStart.Enabled = False
+
+            Case CustomListBox.EditorMode.FIXED
                 RenderPointsProgress = True
+                TxtboxTitle.ReadOnly = True
+                TxtboxDesc.ReadOnly = True
+
+                SetButtonVisibility(ButtonStartDate, False)
+                SetButtonVisibility(ButtonEndDate, False)
+                SetButtonVisibility(ButtonPriority, False)
+                SetButtonVisibility(ButtonRemovePoint, False)
+                SetButtonVisibility(ButtonAddPoint, False)
+
+                PanelStart.Visible = True
+                PanelStart.Enabled = True
+
+            Case CustomListBox.EditorMode.NONE
+                RenderPointsProgress = False
                 TxtboxTitle.ReadOnly = True
                 TxtboxDesc.ReadOnly = True
                 SetButtonVisibility(ButtonStartDate, False)
@@ -320,32 +442,32 @@ Public Class TimeMarkerDescription
                 SetButtonVisibility(ButtonPriority, False)
                 SetButtonVisibility(ButtonRemovePoint, False)
                 SetButtonVisibility(ButtonAddPoint, False)
+                PanelStart.Visible = False
+                PanelStart.Enabled = False
         End Select
     End Sub
 
     Private Sub StartButtonClick(sender As Object, e As MouseEventArgs) Handles PanelStart.MouseClick
-        fColorStart.Color = Color.FromArgb(89, 89, 89)
+        fColorStart.Color = Color.FromArgb(45, 45, 45)
         If ThisTimeMarker IsNot Nothing Then
             ThisTimeMarker.timeMarker.StartTimeMarker()
         End If
     End Sub
 
 #Region "Rich text boxes"
+
     Private Sub TextBoxesGotFocus(sender As RichTextBox, e As EventArgs) Handles TxtboxTitle.GotFocus, TxtboxDesc.GotFocus
         Select Case EditorMode
-            Case CustomListBox.EditorMode.FIXED, CustomListBox.EditorMode.REMOVE
-                HideCaret(sender.Handle.ToInt32)
             Case CustomListBox.EditorMode.ADD, CustomListBox.EditorMode.EDIT
-                ShowCaret(sender.Handle.ToInt32)
                 If Not sender.ForeColor = Color.FromArgb(240, 240, 240) And (sender.Text = "ADD A TITLE" Or sender.Text = "Add a description") Then
                     sender.ForeColor = Color.FromArgb(240, 240, 240)
                     sender.Text = ""
                 End If
+            Case Else
         End Select
     End Sub
 
     Private Sub TextBoxesLostFocus(sender As RichTextBox, e As EventArgs) Handles TxtboxTitle.LostFocus, TxtboxDesc.LostFocus
-        HideCaret(sender.Handle.ToInt32)
         Select Case EditorMode
             Case CustomListBox.EditorMode.ADD, CustomListBox.EditorMode.EDIT
                 If (sender.ForeColor = Color.FromArgb(240, 240, 240) And (sender.Text = "ADD A TITLE" Or sender.Text = "Add a description" Or sender.Text = "")) Then
@@ -356,7 +478,14 @@ Public Class TimeMarkerDescription
                         sender.ForeColor = Color.FromArgb(130, 130, 130)
                         sender.Text = "Add a description"
                     End If
+                Else
+                    If sender.Name = TxtboxTitle.Name Then
+                        Title = TxtboxTitle.Text
+                    Else
+                        Description = TxtboxDesc.Text
+                    End If
                 End If
+            Case Else
         End Select
     End Sub
 #End Region
@@ -364,6 +493,9 @@ Public Class TimeMarkerDescription
 #Region "Button setters"
     Private Sub ButtonStartDate_Click(sender As Object, e As EventArgs) Handles ButtonStartDate.Click
         Dim inputBox As New DateChoser(Me, New Point(Left, Bottom))
+        If FullDateStart IsNot Nothing Then
+            inputBox.initialDate = FullDateStart
+        End If
         If inputBox.ShowDialog() = DialogResult.OK Then
             FullDateStart = inputBox.ResultDate
         End If
@@ -371,6 +503,9 @@ Public Class TimeMarkerDescription
 
     Private Sub ButtonEndDate_Click(sender As Object, e As EventArgs) Handles ButtonEndDate.Click
         Dim inputBox As New DateChoser(Me, New Point(Left, Bottom))
+        If FullDateEnd IsNot Nothing Then
+            inputBox.initialDate = FullDateEnd
+        End If
         If inputBox.ShowDialog = DialogResult.OK Then
             FullDateEnd = inputBox.ResultDate
         End If
@@ -386,13 +521,17 @@ Public Class TimeMarkerDescription
     Private Sub ButtonAddPoint_Click(sender As Object, e As EventArgs) Handles ButtonAddPoint.Click
         Dim inputBox As New FakeInputBox(Me, New Point(Left, Bottom))
         If inputBox.ShowDialog = DialogResult.OK Then
+            Dim list As List(Of String)
             'why won't '.add' do this?
-            If Points Is Nothing Then
-                Dim list = New List(Of String)
-                list.Add(inputBox.Text)
-                Points = list
+            list = New List(Of String)
+            If Points IsNot Nothing Then
+                If Points.Contains(inputBox.Text) Then
+                    MsgBox("A checkbox with this name already exists in this marker. Please choose another name")
+                Else
+                    list.Add(inputBox.Text)
+                    Points = list
+                End If
             Else
-                Dim list As List(Of String) = Points
                 list.Add(inputBox.Text)
                 Points = list
             End If
@@ -402,42 +541,75 @@ Public Class TimeMarkerDescription
     Private Sub ButtonRemovePoint_Click(sender As Object, e As EventArgs) Handles ButtonRemovePoint.Click
         deletePoints = Not deletePoints
         If deletePoints Then
-            ButtonRemovePoint.ForeColor = Color.FromArgb(25, 156, 255)
+            ButtonRemovePoint.BackColor = Color.FromArgb(128, 255, 255, 255)
         Else
-            ButtonRemovePoint.ForeColor = Color.FromArgb(0, 112, 192)
+            ButtonRemovePoint.BackColor = Color.Transparent
+        End If
+        If Not deletePoints Then
+            If Points IsNot Nothing Then
+                Dim pnts As List(Of String) = Points
+                Dim list As List(Of String) = AccomplishedPoints
+                For i = PanelPoints.Controls.Count - 1 To 0 Step -1
+                    If TypeOf PanelPoints.Controls(i) Is CheckBox Then
+                        Dim checkBox As CheckBox = CType(PanelPoints.Controls(i), CheckBox)
+                        If deletePointsColection.Contains(checkBox) Then
+                            PanelPoints.Controls.Remove(checkBox)
+                            RemoveHandler checkBox.MouseClick, AddressOf CheckBoxClicked
+                            checkBox.Dispose()
+                            If Points.Contains(checkBox.Text) Then
+                                pnts.Remove(checkBox.Text)
+                            End If
+                            If list IsNot Nothing Then
+                                If AccomplishedPoints.Contains(checkBox.Text) Then
+                                    list.Remove(checkBox.Text)
+                                End If
+                            End If
+                        End If
+                    End If
+                Next
+                Points = Nothing
+                Points = pnts
+                AccomplishedPoints = list
+            End If
         End If
     End Sub
 #End Region
 
 #Region "Write down details"
     Private Sub SetDetailsStartDate(startDate As DateTime?)
-        If startDate.HasValue Then
-            LabelStartDate.Text = "Beginning date: " & startDate.Value.ToString("dd/MM/yyyy") & " at " & startDate.Value.ToString("HH:mm")
-        Else
-            LabelStartDate.Text = "Beginning date:"
-            SetButtonVisibility(ButtonStartDate, True)
+        If Not EditorMode = 0 Then
+            If startDate.HasValue Then
+                LabelStartDate.Text = "Starting date: " & startDate.Value.ToString("dd/MM/yyyy") & " at " & startDate.Value.ToString("HH:mm")
+            Else
+                LabelStartDate.Text = "Starting date:"
+                SetButtonVisibility(ButtonStartDate, True)
+            End If
+            AppendButtonToControl(ButtonStartDate, LabelStartDate)
         End If
-        AppendButtonToControl(ButtonStartDate, LabelStartDate)
     End Sub
 
     Private Sub SetDetailsEndDate(endDate As DateTime?)
-        If endDate.HasValue Then
-            LabelEndDate.Text = "Finish date: " & endDate.Value.ToString("dd/MM/yyyy") & " at " & endDate.Value.ToString("HH:mm")
-        Else
-            LabelEndDate.Text = "Finish date:"
-            SetButtonVisibility(ButtonEndDate, True)
+        If Not EditorMode = 0 Then
+            If endDate.HasValue Then
+                LabelEndDate.Text = "Finish date: " & endDate.Value.ToString("dd/MM/yyyy") & " at " & endDate.Value.ToString("HH:mm")
+            Else
+                LabelEndDate.Text = "Finish date:"
+                SetButtonVisibility(ButtonEndDate, True)
+            End If
+            AppendButtonToControl(ButtonEndDate, LabelEndDate)
         End If
-        AppendButtonToControl(ButtonEndDate, LabelEndDate)
     End Sub
 
     Private Sub SetDetailsPriority(priority As CustomListBox.Priority)
-        If Not IsNothing(priority) And Not priority = CustomListBox.Priority.NONE Then
+        If Not IsNothing(priority) And Not priority = 0 Then
             LabelPriority.Text = "Priority: " & StrConv(priority.ToString, VbStrConv.ProperCase)
         Else
             LabelPriority.Text = "Priority:"
-            SetButtonVisibility(ButtonPriority, True)
+            If Not EditorMode = 0 Then
+                SetButtonVisibility(ButtonPriority, True)
+            End If
         End If
-        AppendButtonToControl(ButtonPriority, LabelPriority)
+            AppendButtonToControl(ButtonPriority, LabelPriority)
     End Sub
 #End Region
 #Region "Do checkBoxes"
@@ -460,7 +632,9 @@ Public Class TimeMarkerDescription
         Return checkBox
     End Function
 
-    Private Sub CheckBoxClicked(sender As CheckBox, e As MouseEventArgs)
+    Private Sub CheckBoxClicked(obj As Object, e As MouseEventArgs)
+        Dim sender As CheckBox = TryCast(obj, CheckBox)
+        If sender Is Nothing Then Exit Sub
         Select Case EditorMode
             Case CustomListBox.EditorMode.FIXED
                 Dim list As List(Of String)
@@ -471,16 +645,29 @@ Public Class TimeMarkerDescription
                 End If
                 If Not sender.Checked Then
                     sender.Checked = True
-                    'that work
+                    'why wont
                     list.Add(sender.Text)
                     AccomplishedPoints = list
                 Else
                     sender.Checked = False
-                    'why dont
+                    'that work
                     If list.Contains(sender.Text) Then
                         list.Remove(sender.Text)
                     End If
                     AccomplishedPoints = list
+                End If
+                If ThisTimeMarker IsNot Nothing Then
+                    ThisTimeMarker.AccomplishedPoints = AccomplishedPoints
+                End If
+            Case CustomListBox.EditorMode.ADD, CustomListBox.EditorMode.EDIT
+                If deletePoints Then
+                    If Not sender.CheckState = CheckState.Indeterminate Then
+                        sender.CheckState = CheckState.Indeterminate
+                        deletePointsColection.Add(sender)
+                    Else
+                        sender.CheckState = CheckState.Unchecked
+                        deletePointsColection.Remove(sender)
+                    End If
                 End If
         End Select
     End Sub
@@ -534,11 +721,15 @@ Public Class TimeMarkerDescription
         If Not panelColection.ContainsKey(panel) Then Return -1
         Dim controlList As List(Of Control) = panelColection(panel)
         Dim maxHeight As Integer = 0
+        Dim dropDown As Integer
+        If initialDropDown.ContainsKey(panel) Then
+            dropDown = initialDropDown(panel)
+        Else
+            dropDown = 5
+        End If
         For Each control As Control In controlList
-            If panel Is PanelPoints Then
-            End If
-            If control.Bottom > maxHeight Then
-                maxHeight = control.Bottom
+            If control.Bottom + dropDown > maxHeight Then
+                maxHeight = control.Bottom + dropDown
             End If
         Next
         Return maxHeight
@@ -609,16 +800,17 @@ Public Class TimeMarkerDescription
     End Sub
 
     Private Sub PaintStart(sender As Object, e As PaintEventArgs) Handles PanelStart.Paint
-        If Priority = 1 Then
-            Dim graphics As Graphics = e.Graphics
-            Dim pen As New Pen(fColorStart, 5)
-            Dim rectangle As Rectangle = PanelStart.DisplayRectangle
-            Dim path As GraphicsPath = triangularPath
-            rectangle.Inflate(-pen.Width, -pen.Width)
-            graphics.DrawEllipse(pen, rectangle)
-            graphics.FillPath(fColorStart, path)
-            graphics.Dispose()
-        End If
+        Select Case Priority
+            Case CustomListBox.Priority.HIGH
+                Dim graphics As Graphics = e.Graphics
+                Dim pen As New Pen(fColorStart, 5)
+                Dim rectangle As Rectangle = PanelStart.DisplayRectangle
+                Dim path As GraphicsPath = triangularPath
+                rectangle.Inflate(-pen.Width, -pen.Width)
+                graphics.DrawEllipse(pen, rectangle)
+                graphics.FillPath(fColorStart, path)
+                graphics.Dispose()
+        End Select
     End Sub
 
     Private Function GetTrianglePath(dist As Integer) As GraphicsPath
@@ -638,7 +830,7 @@ Public Class TimeMarkerDescription
 
     Dim Pprogress As Double
     Private Sub PaintPoints(sender As Object, e As PaintEventArgs) Handles PanelPoints.Paint
-        If renderPointsProgress Then
+        If RenderPointsProgress Then
             Dim graphics As Graphics = e.Graphics
             If Not PointsNumber = 0 Then
                 Pprogress = startPoint.X + ((AccomplishedPointsNumber / PointsNumber) * widthB)

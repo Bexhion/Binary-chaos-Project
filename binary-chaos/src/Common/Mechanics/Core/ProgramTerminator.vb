@@ -5,63 +5,38 @@
     'Time, in seconds, that the program waits before force closing the program
     Public Shared timeExpected As Integer = 10
 
-    Public Shared Function PreformRoutine() As Integer
-        Dim result As Integer = 0
-        For Each program As String In blackListedPrograms
-            Dim r As Integer = TerminateProgram(program)
-            If result = r Then
-                result = r
-            Else
-                result = 0
-            End If
-        Next
-        Return result
-    End Function
+    Public Shared Sub PreformRoutine()
+        'For Each program As String In blackListedPrograms
+        TerminateBrowsers()
+        'Next
+    End Sub
 
-    Public Shared Function TerminateProgram(proces As String) As Integer
-        Dim sucess As Boolean = True
-        Dim graceful As Boolean = True
+    Public Shared Sub TerminateProgram(proces As String)
         If Not IsNothing(proces) Then
             If (proces.Contains(".exe")) Then
                 proces.TrimEnd(".exe")
             End If
             Dim knownProcesses() As Process = System.Diagnostics.Process.GetProcessesByName(proces)
-            If IsNothing(knownProcesses) Then
-                Return -1
-            End If
-            For Each proc As Process In knownProcesses
-                If proc.HasExited = False Then
-                    proc.CloseMainWindow()
-                    proc.WaitForExit(timeExpected * 1000)
-
+            If knownProcesses IsNot Nothing Then
+                For Each proc As Process In knownProcesses
                     If proc.HasExited = False Then
-                        proc.Kill()
-                        graceful = False
-                    End If
-                End If
-            Next
-        Else
-            sucess = False
-        End If
-        Return Compare(sucess, graceful)
-    End Function
+                        proc.CloseMainWindow()
+                        proc.WaitForExit(timeExpected * 1000)
 
-    Public Shared Function Compare(x As Boolean, y As Boolean) As Integer
-        If x Then
-            If y Then
-                Return 1
+                        If proc.HasExited = False Then
+                            proc.Kill()
+                        End If
+                    End If
+                Next
             Else
-                Return 0
             End If
-        Else
-            Return -1
         End If
-    End Function
+    End Sub
 
     Public Shared Sub TerminateBrowsers()
-        Dim chrome As Integer = TerminateProgram("chrome")
-        Dim ie As Integer = TerminateProgram("ie")
-        Dim firefox As Integer = TerminateProgram("firefox")
+        TerminateProgram("chrome")
+        TerminateProgram("ie")
+        TerminateProgram("firefox")
     End Sub
 
     Public Shared Sub AddProcessToBlacklist(process As String)

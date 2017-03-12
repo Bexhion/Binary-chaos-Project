@@ -2,7 +2,7 @@
 
     Dim windowRelativeSize As Double = 0.85
 
-    Private Sub MainFormLoad(sender As Object, e As EventArgs)
+    Private Sub MainFormLoad(sender As Object, e As EventArgs) Handles MyBase.Load
         'Check if our relative size isn't inferior to 0% or superior to 100%
         If windowRelativeSize > 1 Then
             windowRelativeSize = 1
@@ -24,6 +24,8 @@
         'Setting the properties
         Me.Size = size
         Me.Location = location
+
+        CustomListBox1.ChangeEditorMode(CustomListBox.EditorMode.NONE)
     End Sub
     'Private Sub Planificação_Click(sender As Object, e As EventArgs) Handles Planificação.Click
     '    RecoverPassword.Show()
@@ -57,10 +59,6 @@
         'newlist.Add("tesoura")
         'marker = New TimeMarker(New Date(2017, 6, 15, 13, 9, 0), 89, TimeMarker.State.STATE_INACTIVE)
         'CustomListBox1.Add(marker, "oh look son", "your dead parents! you're adopted!", newlist, CustomListBox.Priority.MEDIUM
-        Dim chooser As New FakeInputBox()
-        If chooser.ShowDialog() = DialogResult.OK Then
-            MsgBox("yeah")
-        End If
     End Sub
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -68,21 +66,29 @@
         'If chooser.ShowDialog() = DialogResult.OK Then
 
         'End If
+        CustomListBox1.SetDescriptor(TimeMarkerDescription1)
     End Sub
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
-        TimeMarkerDescription1.EditorMode = CustomListBox.EditorMode.ADD
+        CustomListBox1.ChangeEditorMode(CustomListBox.EditorMode.ADD)
     End Sub
 
     Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
-        TimeMarkerDescription1.EditorMode = CustomListBox.EditorMode.EDIT
+        CustomListBox1.ChangeEditorMode(CustomListBox.EditorMode.EDIT)
     End Sub
 
     Private Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click
-        TimeMarkerDescription1.EditorMode = CustomListBox.EditorMode.FIXED
+        CustomListBox1.ChangeEditorMode(CustomListBox.EditorMode.FIXED)
     End Sub
 
     Private Sub Button4_Click(sender As Object, e As EventArgs) Handles Button4.Click
-        TimeMarkerDescription1.EditorMode = CustomListBox.EditorMode.REMOVE
+        CustomListBox1.ChangeEditorMode(CustomListBox.EditorMode.REMOVE)
+    End Sub
+
+    Private Sub Button5_Click(sender As Object, e As EventArgs) Handles Button5.Click
+        Select Case CustomListBox1.CurrentEditorMode
+            Case CustomListBox.EditorMode.ADD, CustomListBox.EditorMode.EDIT
+                TimeMarkerDescription1.PushMyInformation()
+        End Select
     End Sub
 End Class

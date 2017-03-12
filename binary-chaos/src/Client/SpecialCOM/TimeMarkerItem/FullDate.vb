@@ -20,12 +20,12 @@ Public Class FullDate
 
     Dim path As GraphicsPath
 
-    Dim _fullDate As Date
-    Public Property FullDate() As Date
+    Dim _fullDate As DateTime?
+    Public Property FullDate() As DateTime?
         Get
             Return _fullDate
         End Get
-        Set(value As Date)
+        Set(value As DateTime?)
             _fullDate = value
             Refresh()
         End Set
@@ -129,7 +129,7 @@ Public Class FullDate
         Dim point As Point
 
         'Month
-        str = GetMonth(FullDate.Month)
+        str = GetMonth(FullDate.Value.Month)
         font = New Font("Microsoft Sans Serif", 10)
         size = graphics.MeasureString(str, font)
         point.X = (Me.Width - size.Width) / 2
@@ -138,7 +138,7 @@ Public Class FullDate
         graphics.DrawString(str, font, brush, layoutRect)
 
         'Day
-        str = FullDate.Day
+        str = FullDate.Value.Day
         font = New Font("Microsoft Sans Serif", 25)
         size = graphics.MeasureString(str, font)
         point.X = (Me.Width - size.Width) / 2

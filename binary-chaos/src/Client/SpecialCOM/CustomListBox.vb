@@ -8,7 +8,7 @@
     Public Event CheckForScrollbar()
 
     Dim hasScrollBar As Boolean = False
-    Dim internalMode As EditorMode = EditorMode.FIXED
+    Dim internalMode As EditorMode
 
     Public Enum Priority
         NONE
@@ -40,6 +40,15 @@
         DEC
     End Enum
 
+    Public Property CurrentEditorMode() As EditorMode
+        Get
+            Return internalMode
+        End Get
+        Set(value As EditorMode)
+            internalMode = value
+        End Set
+    End Property
+
     Public listToDelete As New List(Of TimeMarkerItemCLB)
 
     Public WithEvents descriptor As TimeMarkerDescription
@@ -57,16 +66,18 @@
         AddHandler descriptor.PushInformation, AddressOf RegisterInformationToMarker
     End Sub
 
-    Public Sub Add(timeMarker As TimeMarker, title As String, description As String, points As List(Of String), priority As Priority)
+    Public Function Add(startDate As DateTime, endDate As DateTime, title As String, description As String, points As List(Of String), priority As Priority) As TimeMarkerItemCLB
         Dim marker As New TimeMarkerItemCLB
         With marker
             .Name = Guid.NewGuid().ToString("N")
             .Title = title
             .Description = description
-            .FullDate = timeMarker.startingDate
+            .timeMarker = New TimeMarker(startDate, endDate)
+            .FullDate = startDate
+            .FullDateEnd = endDate
             .Points = points
+            .AccomplishedPoints = New List(Of String)
             .Priority = priority
-            .timeMarker = timeMarker
             .EditorMode = internalMode
         End With
 
@@ -75,11 +86,13 @@
         AddHandler marker.MarkerSetForDeletion, AddressOf OnSetForDeletion
         AddHandler marker.TimeMarkerEnd, AddressOf OnTimeMarkerEnd
         AddHandler marker.PushInformation, AddressOf PushInformationToDescriptor
+
         ActualList.Controls.Add(marker)
         RaiseEvent CheckForScrollbar()
         SetupAnchors()
         Refresh()
-    End Sub
+        Return marker
+    End Function
 
     Public Sub Remove(index As Integer)
         Dim control As TimeMarkerItemCLB = ActualList.Controls(index)
@@ -118,7 +131,7 @@
                 Else
                     control.Width = ActualList.Width
                 End If
-                control.GetPath()
+                control.GetContourPath()
                 control.FullDate1.GetPath()
                 control.Points1.GetPath()
                 control.Label_Title.Width = (Width - control.Label_Title.Location.X) + (Width - 15)
@@ -134,8 +147,6 @@
                     Remove(item.Name)
                 End If
             Next
-            For Each item As TimeMarkerItemCLB In list
-            Next
             list.Clear()
         End If
         Refresh()
@@ -143,13 +154,8 @@
 
     Public Sub ChangeEditorMode(mode As CustomListBox.EditorMode)
         If Not mode = EditorMode.NONE Then
-            internalMode = mode
             RaiseEvent EditorModeChanged(mode)
         End If
-    End Sub
-
-    Private Sub OrganizeListBox()
-
     End Sub
 
 #Region "Events"
@@ -169,14 +175,34 @@
     End Sub
 
     Public Sub SetActiveControl(marker As TimeMarkerItemCLB)
-        If Not IsNothing(currentActiveControl) And currentActiveControl IsNot marker Then
-            currentActiveControl.SelectMe = False
-            currentActiveControl.FullDate1.BackgroundColor = Color.FromArgb(38, 38, 38)
-            currentActiveControl.Points1.BackgroundColor = Color.FromArgb(38, 38, 38)
-            currentActiveControl.BackgroundColor = Color.FromArgb(38, 38, 38)
-            currentActiveControl = marker
-            currentActiveControl.PushMarker()
-        End If
+        Select Case internalMode
+            Case EditorMode.FIXED, EditorMode.REMOVE
+                If marker IsNot Nothing Then
+                    If Not marker.SelectMe Then
+                        marker.SelectMe = True
+                        marker.FullDate1.BackgroundColor = Color.FromArgb(63, 63, 63)
+                        marker.Points1.BackgroundColor = Color.FromArgb(63, 63, 63)
+                        marker.BackgroundColor = Color.FromArgb(63, 63, 63)
+                    End If
+                    If Not IsNothing(currentActiveControl) And currentActiveControl IsNot marker Then
+                        currentActiveControl.SelectMe = False
+                        currentActiveControl.FullDate1.BackgroundColor = Color.FromArgb(38, 38, 38)
+                        currentActiveControl.Points1.BackgroundColor = Color.FromArgb(38, 38, 38)
+                        currentActiveControl.BackgroundColor = Color.FromArgb(38, 38, 38)
+                    End If
+                    If marker IsNot currentActiveControl Then
+                        currentActiveControl = marker
+                    End If
+                End If
+            Case EditorMode.ADD
+                If currentActiveControl IsNot Nothing Then
+                    currentActiveControl.SelectMe = False
+                    currentActiveControl.FullDate1.BackgroundColor = Color.FromArgb(38, 38, 38)
+                    currentActiveControl.Points1.BackgroundColor = Color.FromArgb(38, 38, 38)
+                    currentActiveControl.BackgroundColor = Color.FromArgb(38, 38, 38)
+                    currentActiveControl = Nothing
+                End If
+        End Select
     End Sub
 
     Private Sub ChangeMode(newMode As EditorMode) Handles Me.EditorModeChanged
@@ -187,7 +213,11 @@
                 control.EditorMode = newMode
             Next
         End If
+        CurrentEditorMode = newMode
         descriptor.EditorMode = newMode
+        If currentActiveControl IsNot Nothing Then
+            SetActiveControl(Nothing)
+        End If
     End Sub
 
     Private Sub ItemClicked(sender As Object, e As EventArgs)
@@ -210,6 +240,10 @@
         End If
     End Sub
 
+    Private Sub delete()
+
+    End Sub
+
     Private Sub CheckScrollbarEnabled() Handles Me.CheckForScrollbar
         Dim totalSize As Integer = 0
         For i = 0 To ActualList.Controls.Count - 1
@@ -229,11 +263,26 @@
     End Sub
 
     'TODO
-    Public Sub RegisterInformationToMarker(marker As TimeMarkerItemCLB)
-        If marker Is Nothing Then
-            'Add()
+    Public Sub RegisterInformationToMarker(doesOverride As Boolean, descriptor As TimeMarkerDescription)
+        Dim startTime As DateTime = descriptor.FullDateStart
+        Dim endTime As DateTime = descriptor.FullDateEnd
+        If startTime >= endTime Then
+            MsgBox("The time span is invalid. Please choose another beginning/finish time")
+            Exit Sub
+        End If
+        If Not doesOverride Then
+            Dim control As TimeMarkerItemCLB = Add(startTime, endTime, descriptor.Title, descriptor.Description, descriptor.Points, descriptor.Priority)
+            control.AccomplishedPoints = descriptor.AccomplishedPoints
+            control.SelectMarker()
         Else
-            Dim godf As TimeMarkerItemCLB = ActualList.Controls()
+            If currentActiveControl IsNot Nothing Then
+                currentActiveControl.timeMarker.SetTime(startTime, endTime)
+                currentActiveControl.Title = descriptor.Title
+                currentActiveControl.Description = descriptor.Description
+                currentActiveControl.Points = descriptor.Points
+                currentActiveControl.AccomplishedPoints = descriptor.AccomplishedPoints
+                currentActiveControl.FullDate = startTime.Date
+            End If
         End If
     End Sub
 #End Region

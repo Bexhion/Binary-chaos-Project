@@ -38,8 +38,6 @@ Partial Class TimeMarkerItemCLB
         '
         'Points1
         '
-        Me.Points1.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.Points1.BackColor = System.Drawing.Color.FromArgb(CType(CType(38, Byte), Integer), CType(CType(38, Byte), Integer), CType(CType(38, Byte), Integer))
         Me.Points1.BackgroundColor = System.Drawing.Color.FromArgb(CType(CType(38, Byte), Integer), CType(CType(38, Byte), Integer), CType(CType(38, Byte), Integer))
         Me.Points1.DoRenderOutline = True
@@ -49,24 +47,22 @@ Partial Class TimeMarkerItemCLB
         Me.Points1.OutlineColor = System.Drawing.Color.FromArgb(CType(CType(90, Byte), Integer), CType(CType(90, Byte), Integer), CType(CType(90, Byte), Integer))
         Me.Points1.PointCount = 0
         Me.Points1.Size = New System.Drawing.Size(12, 70)
-        Me.Points1.TabIndex = 3
+        Me.Points1.TabIndex = 2
         '
         'FullDate1
         '
-        Me.FullDate1.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.FullDate1.BackColor = System.Drawing.Color.FromArgb(CType(CType(38, Byte), Integer), CType(CType(38, Byte), Integer), CType(CType(38, Byte), Integer))
         Me.FullDate1.BackgroundColor = System.Drawing.Color.FromArgb(CType(CType(38, Byte), Integer), CType(CType(38, Byte), Integer), CType(CType(38, Byte), Integer))
         Me.FullDate1.ConstantOverlay = False
         Me.FullDate1.DoRenderOutline = True
-        Me.FullDate1.FullDate = New Date(2017, 3, 5, 18, 31, 54, 125)
+        Me.FullDate1.FullDate = Nothing
         Me.FullDate1.Location = New System.Drawing.Point(0, 0)
         Me.FullDate1.Margin = New System.Windows.Forms.Padding(0)
         Me.FullDate1.Name = "FullDate1"
         Me.FullDate1.OutlineColor = System.Drawing.Color.FromArgb(CType(CType(90, Byte), Integer), CType(CType(90, Byte), Integer), CType(CType(90, Byte), Integer))
         Me.FullDate1.OverlayMethod = Nothing
         Me.FullDate1.Size = New System.Drawing.Size(60, 70)
-        Me.FullDate1.TabIndex = 2
+        Me.FullDate1.TabIndex = 3
         Me.FullDate1.UseOverlay = False
         '
         'TimeMarkerItemCLB
@@ -74,8 +70,8 @@ Partial Class TimeMarkerItemCLB
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.Control
-        Me.Controls.Add(Me.Points1)
         Me.Controls.Add(Me.FullDate1)
+        Me.Controls.Add(Me.Points1)
         Me.Controls.Add(Me.Label_Desc)
         Me.Controls.Add(Me.Label_Title)
         Me.Margin = New System.Windows.Forms.Padding(0)
@@ -87,6 +83,6 @@ Partial Class TimeMarkerItemCLB
 
     Friend WithEvents Label_Title As Label
     Friend WithEvents Label_Desc As Label
-    Friend WithEvents FullDate1 As FullDate
     Friend WithEvents Points1 As Points
+    Friend WithEvents FullDate1 As FullDate
 End Class

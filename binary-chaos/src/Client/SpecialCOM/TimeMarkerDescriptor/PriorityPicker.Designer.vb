@@ -140,7 +140,7 @@ Partial Class PriorityPicker
     End Sub
 
     Friend WithEvents SetPriorityButton As Button
-    Friend WithEvents CancelButton As Button
+    Friend Shadows WithEvents CancelButton As Button
     Friend WithEvents PriorityHigh As Button
     Friend WithEvents PriorityMedium As Button
     Friend WithEvents PriorityLow As Button
