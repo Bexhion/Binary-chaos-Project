@@ -1,7 +1,7 @@
 ﻿Public Class _EXP_ProgramTerminator
 
     'List of process names that are meant to be shut down
-    Public Shared blackListedPrograms As List(Of String)
+    Public Shared blackListedPrograms As New List(Of String)
     'Time, in seconds, that the program waits before force closing the program
     Public Shared timeExpected As Integer = 10
 

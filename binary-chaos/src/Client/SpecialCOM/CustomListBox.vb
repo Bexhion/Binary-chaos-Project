@@ -226,6 +226,14 @@
 
     Private Sub OnTimeMarkerEnd(sender As TimeMarkerItemCLB)
         Remove(sender.Name)
+        descriptor.ThisTimeMarker = Nothing
+        descriptor.Title = Nothing
+        descriptor.Description = Nothing
+        descriptor.FullDateStart = Nothing
+        descriptor.FullDateEnd = Nothing
+        descriptor.Priority = Nothing
+        descriptor.Points = Nothing
+        descriptor.AccomplishedPoints = Nothing
     End Sub
 
     Private Sub OnSetForDeletion(sender As TimeMarkerItemCLB)

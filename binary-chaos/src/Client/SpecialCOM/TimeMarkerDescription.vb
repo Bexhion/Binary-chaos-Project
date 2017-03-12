@@ -90,8 +90,10 @@ Public Class TimeMarkerDescription
         Progress = ThisTimeMarker.Progress
         Select Case Priority
             Case CustomListBox.Priority.HIGH
-                PanelStart.Visible = True
-                PanelStart.Enabled = True
+                If EditorMode = 1 Then
+                    PanelStart.Visible = True
+                    PanelStart.Enabled = True
+                End If
             Case Else
                 PanelStart.Visible = False
                 PanelStart.Enabled = False

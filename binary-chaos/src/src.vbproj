@@ -62,6 +62,10 @@
     <OptionInfer>On</OptionInfer>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.9.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="src">
       <HintPath>obj\Debug\src.exe</HintPath>
     </Reference>
@@ -69,6 +73,7 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Deployment" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Core" />
@@ -144,6 +149,12 @@
     <Compile Include="Client\SpecialCOM\TimeMarkerItem\Points.vb">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="Client\User.Designer.vb">
+      <DependentUpon>User.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Client\User.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Common\Mechanics\Core\Marker\TimeMarker.vb" />
     <Compile Include="Client\SpecialCOM\CustomListBox.Designer.vb">
       <DependentUpon>CustomListBox.vb</DependentUpon>
@@ -164,6 +175,8 @@
     <Compile Include="Client\SpecialCOM\TimeMarkerDescription.vb">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="Common\Mechanics\Core\User\MyJsonParser.vb" />
+    <Compile Include="Common\Mechanics\Core\User\User.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>
@@ -238,6 +251,7 @@
     <None Include="Common\App.config" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="packages.config" />
     <None Include="Resources\clog.png" />
   </ItemGroup>
   <ItemGroup>

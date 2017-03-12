@@ -343,7 +343,7 @@ Public Class TimeMarkerItemCLB
             RenderOutline(graphics, OutlineColor)
         End If
         If ShowProgress Then
-            RenderProgress(graphics)
+            'RenderProgress(graphics)
         End If
         graphics.Dispose()
     End Sub

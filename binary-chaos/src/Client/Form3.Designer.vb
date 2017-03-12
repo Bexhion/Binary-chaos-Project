@@ -36,28 +36,30 @@ Partial Class Form3
         'TextBox2
         '
         Me.TextBox2.ForeColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
-        Me.TextBox2.Location = New System.Drawing.Point(95, 129)
-        Me.TextBox2.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
+        Me.TextBox2.Location = New System.Drawing.Point(71, 105)
+        Me.TextBox2.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.TextBox2.Name = "TextBox2"
-        Me.TextBox2.Size = New System.Drawing.Size(123, 22)
+        Me.TextBox2.Size = New System.Drawing.Size(93, 20)
         Me.TextBox2.TabIndex = 2
         Me.TextBox2.Text = "USERNAME"
         '
         'SignIn
         '
         Me.SignIn.AutoSize = True
-        Me.SignIn.Location = New System.Drawing.Point(45, 401)
+        Me.SignIn.Location = New System.Drawing.Point(34, 326)
+        Me.SignIn.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.SignIn.Name = "SignIn"
-        Me.SignIn.Size = New System.Drawing.Size(58, 17)
+        Me.SignIn.Size = New System.Drawing.Size(45, 13)
         Me.SignIn.TabIndex = 6
         Me.SignIn.Text = "Sign Up"
         '
         'RecoverPassword
         '
         Me.RecoverPassword.AutoSize = True
-        Me.RecoverPassword.Location = New System.Drawing.Point(45, 427)
+        Me.RecoverPassword.Location = New System.Drawing.Point(34, 347)
+        Me.RecoverPassword.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.RecoverPassword.Name = "RecoverPassword"
-        Me.RecoverPassword.Size = New System.Drawing.Size(126, 17)
+        Me.RecoverPassword.Size = New System.Drawing.Size(97, 13)
         Me.RecoverPassword.TabIndex = 7
         Me.RecoverPassword.Text = "Recover Password"
         '
@@ -71,9 +73,10 @@ Partial Class Form3
         Me.Login.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.Login.Font = New System.Drawing.Font("Arial Narrow", 10.2!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Login.ForeColor = System.Drawing.Color.Black
-        Me.Login.Location = New System.Drawing.Point(95, 311)
+        Me.Login.Location = New System.Drawing.Point(71, 253)
+        Me.Login.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.Login.Name = "Login"
-        Me.Login.Size = New System.Drawing.Size(123, 35)
+        Me.Login.Size = New System.Drawing.Size(92, 28)
         Me.Login.TabIndex = 8
         Me.Login.Text = "Login"
         Me.Login.UseVisualStyleBackColor = False
@@ -82,8 +85,9 @@ Partial Class Form3
         '
         Me.Panel1.Controls.Add(Me.Label3)
         Me.Panel1.Location = New System.Drawing.Point(1, 1)
+        Me.Panel1.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(340, 76)
+        Me.Panel1.Size = New System.Drawing.Size(255, 62)
         Me.Panel1.TabIndex = 1
         '
         'Label3
@@ -92,18 +96,20 @@ Partial Class Form3
         Me.Label3.BackColor = System.Drawing.Color.FromArgb(CType(CType(40, Byte), Integer), CType(CType(40, Byte), Integer), CType(CType(40, Byte), Integer))
         Me.Label3.Font = New System.Drawing.Font("Arial", 22.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label3.ForeColor = System.Drawing.Color.WhiteSmoke
-        Me.Label3.Location = New System.Drawing.Point(95, 19)
+        Me.Label3.Location = New System.Drawing.Point(71, 15)
+        Me.Label3.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(112, 43)
+        Me.Label3.Size = New System.Drawing.Size(89, 35)
         Me.Label3.TabIndex = 1
         Me.Label3.Text = "Login"
         '
         'CheckBox1
         '
         Me.CheckBox1.AutoSize = True
-        Me.CheckBox1.Location = New System.Drawing.Point(48, 259)
+        Me.CheckBox1.Location = New System.Drawing.Point(36, 210)
+        Me.CheckBox1.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.CheckBox1.Name = "CheckBox1"
-        Me.CheckBox1.Size = New System.Drawing.Size(122, 21)
+        Me.CheckBox1.Size = New System.Drawing.Size(94, 17)
         Me.CheckBox1.TabIndex = 13
         Me.CheckBox1.Text = "Remember me"
         Me.CheckBox1.UseVisualStyleBackColor = True
@@ -111,19 +117,19 @@ Partial Class Form3
         'TextBox1
         '
         Me.TextBox1.ForeColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
-        Me.TextBox1.Location = New System.Drawing.Point(95, 188)
-        Me.TextBox1.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
+        Me.TextBox1.Location = New System.Drawing.Point(71, 153)
+        Me.TextBox1.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.TextBox1.Name = "TextBox1"
-        Me.TextBox1.Size = New System.Drawing.Size(123, 22)
+        Me.TextBox1.Size = New System.Drawing.Size(93, 20)
         Me.TextBox1.TabIndex = 3
         Me.TextBox1.Text = "PASSWORD"
         '
         'Form3
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(40, Byte), Integer), CType(CType(40, Byte), Integer), CType(CType(40, Byte), Integer))
-        Me.ClientSize = New System.Drawing.Size(340, 453)
+        Me.ClientSize = New System.Drawing.Size(255, 368)
         Me.Controls.Add(Me.TextBox2)
         Me.Controls.Add(Me.TextBox1)
         Me.Controls.Add(Me.CheckBox1)
@@ -133,7 +139,7 @@ Partial Class Form3
         Me.Controls.Add(Me.SignIn)
         Me.ForeColor = System.Drawing.Color.Gray
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
-        Me.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
+        Me.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.Name = "Form3"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Login"
