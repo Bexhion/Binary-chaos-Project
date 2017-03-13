@@ -310,7 +310,7 @@ Partial Class DateChoser
         '
         'DayDc
         '
-        Me.DayDc.BackColor = System.Drawing.Color.FromArgb(CType(CType(55, Byte), Integer), CType(CType(55, Byte), Integer), CType(CType(55, Byte), Integer))
+        Me.DayDc.BackColor = System.Drawing.Color.Transparent
         Me.DayDc.FlatAppearance.BorderSize = 0
         Me.DayDc.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.DayDc.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(112, Byte), Integer), CType(CType(192, Byte), Integer))
@@ -324,7 +324,7 @@ Partial Class DateChoser
         '
         'MinuteDc
         '
-        Me.MinuteDc.BackColor = System.Drawing.Color.FromArgb(CType(CType(55, Byte), Integer), CType(CType(55, Byte), Integer), CType(CType(55, Byte), Integer))
+        Me.MinuteDc.BackColor = System.Drawing.Color.Transparent
         Me.MinuteDc.FlatAppearance.BorderSize = 0
         Me.MinuteDc.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.MinuteDc.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(112, Byte), Integer), CType(CType(192, Byte), Integer))
@@ -338,7 +338,7 @@ Partial Class DateChoser
         '
         'DayInc
         '
-        Me.DayInc.BackColor = System.Drawing.Color.FromArgb(CType(CType(55, Byte), Integer), CType(CType(55, Byte), Integer), CType(CType(55, Byte), Integer))
+        Me.DayInc.BackColor = System.Drawing.Color.Transparent
         Me.DayInc.FlatAppearance.BorderSize = 0
         Me.DayInc.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.DayInc.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(112, Byte), Integer), CType(CType(192, Byte), Integer))
@@ -352,7 +352,7 @@ Partial Class DateChoser
         '
         'MonthDc
         '
-        Me.MonthDc.BackColor = System.Drawing.Color.FromArgb(CType(CType(55, Byte), Integer), CType(CType(55, Byte), Integer), CType(CType(55, Byte), Integer))
+        Me.MonthDc.BackColor = System.Drawing.Color.Transparent
         Me.MonthDc.FlatAppearance.BorderSize = 0
         Me.MonthDc.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.MonthDc.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(112, Byte), Integer), CType(CType(192, Byte), Integer))
@@ -366,7 +366,7 @@ Partial Class DateChoser
         '
         'YearDc
         '
-        Me.YearDc.BackColor = System.Drawing.Color.FromArgb(CType(CType(55, Byte), Integer), CType(CType(55, Byte), Integer), CType(CType(55, Byte), Integer))
+        Me.YearDc.BackColor = System.Drawing.Color.Transparent
         Me.YearDc.FlatAppearance.BorderSize = 0
         Me.YearDc.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.YearDc.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(112, Byte), Integer), CType(CType(192, Byte), Integer))
@@ -380,7 +380,7 @@ Partial Class DateChoser
         '
         'HourDc
         '
-        Me.HourDc.BackColor = System.Drawing.Color.FromArgb(CType(CType(55, Byte), Integer), CType(CType(55, Byte), Integer), CType(CType(55, Byte), Integer))
+        Me.HourDc.BackColor = System.Drawing.Color.Transparent
         Me.HourDc.FlatAppearance.BorderSize = 0
         Me.HourDc.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.HourDc.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(112, Byte), Integer), CType(CType(192, Byte), Integer))
@@ -394,7 +394,7 @@ Partial Class DateChoser
         '
         'MonthInc
         '
-        Me.MonthInc.BackColor = System.Drawing.Color.FromArgb(CType(CType(55, Byte), Integer), CType(CType(55, Byte), Integer), CType(CType(55, Byte), Integer))
+        Me.MonthInc.BackColor = System.Drawing.Color.Transparent
         Me.MonthInc.FlatAppearance.BorderSize = 0
         Me.MonthInc.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.MonthInc.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(112, Byte), Integer), CType(CType(192, Byte), Integer))
@@ -408,7 +408,7 @@ Partial Class DateChoser
         '
         'YearInc
         '
-        Me.YearInc.BackColor = System.Drawing.Color.FromArgb(CType(CType(55, Byte), Integer), CType(CType(55, Byte), Integer), CType(CType(55, Byte), Integer))
+        Me.YearInc.BackColor = System.Drawing.Color.Transparent
         Me.YearInc.FlatAppearance.BorderSize = 0
         Me.YearInc.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.YearInc.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(112, Byte), Integer), CType(CType(192, Byte), Integer))
@@ -422,7 +422,7 @@ Partial Class DateChoser
         '
         'HourInc
         '
-        Me.HourInc.BackColor = System.Drawing.Color.FromArgb(CType(CType(55, Byte), Integer), CType(CType(55, Byte), Integer), CType(CType(55, Byte), Integer))
+        Me.HourInc.BackColor = System.Drawing.Color.Transparent
         Me.HourInc.FlatAppearance.BorderSize = 0
         Me.HourInc.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.HourInc.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(112, Byte), Integer), CType(CType(192, Byte), Integer))
@@ -436,7 +436,7 @@ Partial Class DateChoser
         '
         'MinuteInc
         '
-        Me.MinuteInc.BackColor = System.Drawing.Color.FromArgb(CType(CType(55, Byte), Integer), CType(CType(55, Byte), Integer), CType(CType(55, Byte), Integer))
+        Me.MinuteInc.BackColor = System.Drawing.Color.Transparent
         Me.MinuteInc.FlatAppearance.BorderSize = 0
         Me.MinuteInc.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.MinuteInc.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(112, Byte), Integer), CType(CType(192, Byte), Integer))
@@ -481,7 +481,7 @@ Partial Class DateChoser
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(55, Byte), Integer), CType(CType(55, Byte), Integer), CType(CType(55, Byte), Integer))
+        Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(60, Byte), Integer), CType(CType(60, Byte), Integer), CType(CType(60, Byte), Integer))
         Me.ClientSize = New System.Drawing.Size(420, 150)
         Me.Controls.Add(Me.Panel3)
         Me.Controls.Add(Me.Panel2)

@@ -21,23 +21,21 @@
     Public WithEvents timer As New Timer With {.Interval = 1000}
 
     Private Sub TimerTick(sender As Object, e As EventArgs) Handles timer.Tick
-        If elapsedTime = totalTime * 60 Then
+        If elapsedTime >= totalTime * 60 Then
+            timer.Stop()
             timer.Dispose()
             Exit Sub
         End If
-        If elapsedTime Mod checkFrequency = 0 Then
-            CheckForBlackListed()
+        If elapsedTime Mod (checkFrequency * 1000) = 0 Then
+            Me.elapsedTime += _EXP_ProgramTerminator.PreformRoutine() + 1
+        Else
+            Me.elapsedTime += 1
         End If
         Me.progress = GetProgress(Me.elapsedTime, Me.totalTime)
-        Me.elapsedTime += 1
-    End Sub
-
-    Private Sub CheckForBlackListed()
-        _EXP_ProgramTerminator.PreformRoutine()
     End Sub
 
     Private Function GetProgress(curTime As Integer, totalTime As Integer) As Double
-        Return curTime / totalTime
+        Return curTime / (totalTime * 60)
     End Function
 
     Public Sub StartTimeMarker()

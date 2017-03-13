@@ -149,10 +149,10 @@
     <Compile Include="Client\SpecialCOM\TimeMarkerItem\Points.vb">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Client\User.Designer.vb">
-      <DependentUpon>User.vb</DependentUpon>
+    <Compile Include="Client\UserAccount.Designer.vb">
+      <DependentUpon>UserAccount.vb</DependentUpon>
     </Compile>
-    <Compile Include="Client\User.vb">
+    <Compile Include="Client\UserAccount.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Common\Mechanics\Core\Marker\TimeMarker.vb" />
@@ -175,8 +175,7 @@
     <Compile Include="Client\SpecialCOM\TimeMarkerDescription.vb">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Common\Mechanics\Core\User\MyJsonParser.vb" />
-    <Compile Include="Common\Mechanics\Core\User\User.vb" />
+    <Compile Include="Common\Mechanics\Core\JsonParser\MyJsonParser.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>
@@ -230,6 +229,9 @@
     <EmbeddedResource Include="Client\SpecialCOM\TimeMarkerItem\Points.resx">
       <DependentUpon>Points.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Client\UserAccount.resx">
+      <DependentUpon>UserAccount.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.vb</LastGenOutput>
@@ -278,7 +280,18 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="Resources\sloth1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sloth1sub.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sloth1main.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\userbackbutton.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

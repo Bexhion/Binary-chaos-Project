@@ -5,24 +5,25 @@
     'Time, in seconds, that the program waits before force closing the program
     Public Shared timeExpected As Integer = 10
 
-    Public Shared Sub PreformRoutine()
-        'For Each program As String In blackListedPrograms
-        TerminateBrowsers()
-        'Next
-    End Sub
+    Public Shared Function PreformRoutine() As Integer
+        Dim time As Integer = 0
+        time += TerminateBrowsers()
+        Return time
+    End Function
 
-    Public Shared Sub TerminateProgram(proces As String)
+    Public Shared Function TerminateProgram(proces As String) As Integer
+        Dim time As Integer = 0
         If Not IsNothing(proces) Then
             If (proces.Contains(".exe")) Then
                 proces.TrimEnd(".exe")
             End If
-            Dim knownProcesses() As Process = System.Diagnostics.Process.GetProcessesByName(proces)
+            Dim knownProcesses() As Process = Process.GetProcessesByName(proces)
             If knownProcesses IsNot Nothing Then
                 For Each proc As Process In knownProcesses
                     If proc.HasExited = False Then
                         proc.CloseMainWindow()
                         proc.WaitForExit(timeExpected * 1000)
-
+                        time = timeExpected
                         If proc.HasExited = False Then
                             proc.Kill()
                         End If
@@ -31,13 +32,16 @@
             Else
             End If
         End If
-    End Sub
+        Return time
+    End Function
 
-    Public Shared Sub TerminateBrowsers()
-        TerminateProgram("chrome")
-        TerminateProgram("ie")
-        TerminateProgram("firefox")
-    End Sub
+    Public Shared Function TerminateBrowsers() As Integer
+        Dim time As Integer = 0
+        time += TerminateProgram("chrome")
+        time += TerminateProgram("ie")
+        time += TerminateProgram("firefox")
+        Return time
+    End Function
 
     Public Shared Sub AddProcessToBlacklist(process As String)
         If process IsNot Nothing Then

@@ -41,7 +41,7 @@ Partial Class FakeInputBox
         '
         'AddButton
         '
-        Me.AddButton.BackColor = System.Drawing.Color.FromArgb(CType(CType(55, Byte), Integer), CType(CType(55, Byte), Integer), CType(CType(55, Byte), Integer))
+        Me.AddButton.BackColor = System.Drawing.Color.Transparent
         Me.AddButton.DialogResult = System.Windows.Forms.DialogResult.OK
         Me.AddButton.FlatAppearance.BorderSize = 0
         Me.AddButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat
@@ -56,7 +56,7 @@ Partial Class FakeInputBox
         '
         'CloseButton
         '
-        Me.CloseButton.BackColor = System.Drawing.Color.FromArgb(CType(CType(55, Byte), Integer), CType(CType(55, Byte), Integer), CType(CType(55, Byte), Integer))
+        Me.CloseButton.BackColor = System.Drawing.Color.Transparent
         Me.CloseButton.DialogResult = System.Windows.Forms.DialogResult.Cancel
         Me.CloseButton.FlatAppearance.BorderSize = 0
         Me.CloseButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat
@@ -73,7 +73,7 @@ Partial Class FakeInputBox
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(55, Byte), Integer), CType(CType(55, Byte), Integer), CType(CType(55, Byte), Integer))
+        Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(60, Byte), Integer), CType(CType(60, Byte), Integer), CType(CType(60, Byte), Integer))
         Me.ClientSize = New System.Drawing.Size(420, 61)
         Me.Controls.Add(Me.CloseButton)
         Me.Controls.Add(Me.AddButton)

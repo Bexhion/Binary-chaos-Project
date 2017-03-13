@@ -130,7 +130,7 @@
     Private Sub AddHour(increment As Integer)
         vhour += increment
         If vhour > 23 Then
-            vhour = 1
+            vhour = 0
             AddDay(1)
         End If
         If vhour < 0 Then
@@ -142,12 +142,12 @@
 
     Private Sub AddMinute(increment As Integer)
         vminute += increment
-        If vhour > 59 Then
-            vhour = 1
+        If vminute > 59 Then
+            vminute = 0
             AddHour(1)
         End If
-        If vhour < 1 Then
-            vhour = 59
+        If vminute < 0 Then
+            vminute = 59
             AddHour(-1)
         End If
         CMinute.Text = vminute

@@ -62,7 +62,7 @@
     'Call this before anything else
     Public Sub SetDescriptor(descriptor As TimeMarkerDescription)
         Me.descriptor = descriptor
-        AddHandler Me.UpdateDescriptorInformation, AddressOf descriptor.HandleInformationUpdate
+        AddHandler UpdateDescriptorInformation, AddressOf descriptor.HandleInformationUpdate
         AddHandler descriptor.PushInformation, AddressOf RegisterInformationToMarker
     End Sub
 
@@ -86,6 +86,7 @@
         AddHandler marker.MarkerSetForDeletion, AddressOf OnSetForDeletion
         AddHandler marker.TimeMarkerEnd, AddressOf OnTimeMarkerEnd
         AddHandler marker.PushInformation, AddressOf PushInformationToDescriptor
+        AddHandler marker.PushProgress, AddressOf TimeUpdate
 
         ActualList.Controls.Add(marker)
         RaiseEvent CheckForScrollbar()
@@ -111,6 +112,7 @@
         RemoveHandler marker.MarkerSetForDeletion, AddressOf OnSetForDeletion
         RemoveHandler marker.TimeMarkerEnd, AddressOf OnTimeMarkerEnd
         RemoveHandler marker.PushInformation, AddressOf PushInformationToDescriptor
+        RemoveHandler marker.PushProgress, AddressOf TimeUpdate
 
         marker.Dispose()
         SetupAnchors()
@@ -134,15 +136,19 @@
                 control.GetContourPath()
                 control.FullDate1.GetPath()
                 control.Points1.GetPath()
-                control.Label_Title.Width = (Width - control.Label_Title.Location.X) + (Width - 15)
-                control.Label_Desc.Width = (Width - control.Label_Desc.Location.X) + (Width - 15)
+                control.Label_Title.Width = (Width - control.Label_Title.Location.X) - 15
+                control.Label_Desc.Width = (Width - control.Label_Desc.Location.X) - 15
+                control.totalProgress = Width - 5 - control.Points1.Right
+                control.startingPoint = New Point(control.Points1.Right, 0)
+                control.endingPoint = New Point(Width - 5, 0)
             Next
         End If
     End Sub
 
     Public Sub Clear(list As List(Of TimeMarkerItemCLB))
         If list.Count > 0 Then
-            For Each item As TimeMarkerItemCLB In list
+            For i = list.Count - 1 To 0 Step -1
+                Dim item As TimeMarkerItemCLB = list(i)
                 If ActualList.Controls.Contains(item) Then
                     Remove(item.Name)
                 End If
@@ -160,8 +166,24 @@
 
 #Region "Events"
 
-#Region "TimeMarkerItem"
-#End Region
+    Public Sub CheckAll(checkDate As Date)
+        For i = ActualList.Controls.Count - 1 To 0 Step -1
+            Dim timeMarker As TimeMarkerItemCLB = ActualList.Controls(i)
+            Dim thisDate As Date = timeMarker.FullDate.Value
+            If Not IsNothing(thisDate) Then
+                If thisDate.Day = checkDate.Day And thisDate.Month = checkDate.Month And thisDate.Year = checkDate.Year And thisDate.Hour = checkDate.Hour And thisDate.Minute = checkDate.Minute Then
+                    timeMarker.timeMarker.StartTimeMarker()
+                End If
+            End If
+        Next
+    End Sub
+
+    Private Sub TimeUpdate(marker As TimeMarkerItemCLB, progress As Double)
+        If marker Is descriptor.ThisTimeMarker Then
+            descriptor.Progress = progress
+        End If
+    End Sub
+
     Private Sub ResizeMe(sender As Object, e As EventArgs) Handles Me.Resize
         If ActualList.Controls.Count Then
             For i = 0 To ActualList.Controls.Count - 1
@@ -194,6 +216,7 @@
                         currentActiveControl = marker
                     End If
                 End If
+                currentActiveControl.PushMarker()
             Case EditorMode.ADD
                 If currentActiveControl IsNot Nothing Then
                     currentActiveControl.SelectMe = False
@@ -202,7 +225,13 @@
                     currentActiveControl.BackgroundColor = Color.FromArgb(38, 38, 38)
                     currentActiveControl = Nothing
                 End If
+            Case EditorMode.EDIT
+                currentActiveControl.PushMarker()
         End Select
+        If currentActiveControl Is Nothing And Not internalMode = 2 Then
+            descriptor.hiddingPanel.Visible = True
+            descriptor.hiddingPanel.BringToFront()
+        End If
     End Sub
 
     Private Sub ChangeMode(newMode As EditorMode) Handles Me.EditorModeChanged
@@ -214,10 +243,10 @@
             Next
         End If
         CurrentEditorMode = newMode
-        descriptor.EditorMode = newMode
         If currentActiveControl IsNot Nothing Then
             SetActiveControl(Nothing)
         End If
+        descriptor.EditorMode = newMode
     End Sub
 
     Private Sub ItemClicked(sender As Object, e As EventArgs)
@@ -234,6 +263,8 @@
         descriptor.Priority = Nothing
         descriptor.Points = Nothing
         descriptor.AccomplishedPoints = Nothing
+        descriptor.hiddingPanel.Visible = True
+        descriptor.hiddingPanel.BringToFront()
     End Sub
 
     Private Sub OnSetForDeletion(sender As TimeMarkerItemCLB)
@@ -246,10 +277,6 @@
                 listToDelete.Add(sender)
             End If
         End If
-    End Sub
-
-    Private Sub delete()
-
     End Sub
 
     Private Sub CheckScrollbarEnabled() Handles Me.CheckForScrollbar
@@ -270,14 +297,9 @@
         RaiseEvent UpdateDescriptorInformation()
     End Sub
 
-    'TODO
     Public Sub RegisterInformationToMarker(doesOverride As Boolean, descriptor As TimeMarkerDescription)
         Dim startTime As DateTime = descriptor.FullDateStart
         Dim endTime As DateTime = descriptor.FullDateEnd
-        If startTime >= endTime Then
-            MsgBox("The time span is invalid. Please choose another beginning/finish time")
-            Exit Sub
-        End If
         If Not doesOverride Then
             Dim control As TimeMarkerItemCLB = Add(startTime, endTime, descriptor.Title, descriptor.Description, descriptor.Points, descriptor.Priority)
             control.AccomplishedPoints = descriptor.AccomplishedPoints

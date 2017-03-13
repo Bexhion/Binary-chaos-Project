@@ -11,12 +11,12 @@ Public Class TimeMarkerDescription
     Public Event UpdateEditorMode(mode As CustomListBox.EditorMode)
     Public Event PushInformation(doesOverride As Boolean, description As TimeMarkerDescription)
 
-    Public Sub PushMyInformation()
+    Public Function PushMyInformation() As Boolean
         Dim missingInformation As String = ""
         If Title IsNot Nothing Then
             If Description IsNot Nothing Then
-                If FullDateStart IsNot Nothing Then
-                    If FullDateEnd IsNot Nothing Then
+                If FullDateStart IsNot Nothing And Not FullDateStart = Date.Now Then
+                    If FullDateEnd IsNot Nothing And FullDateEnd > FullDateStart Then
                         If Not IsNothing(Priority) Then
                             Select Case EditorMode
                                 Case CustomListBox.EditorMode.ADD
@@ -26,14 +26,17 @@ Public Class TimeMarkerDescription
                                         RaiseEvent PushInformation(True, Me)
                                     End If
                             End Select
+                            Return True
                         Else
                             missingInformation = "priority"
                         End If
                     Else
-                        missingInformation = "finish date"
+                        MsgBox("Unable to create a new marker. The finishing date is not valid")
+                        Return False
                     End If
                 Else
-                    missingInformation = "starting date"
+                    MsgBox("Unable to create a new marker. The starting date is not valid")
+                    Return False
                 End If
             Else
                 missingInformation = "description"
@@ -43,13 +46,14 @@ Public Class TimeMarkerDescription
         End If
         If missingInformation IsNot "" Then
             MsgBox("Unable to create a new marker. Please introduce a valid " & missingInformation)
+            Return False
         End If
-    End Sub
+    End Function
 
-    Dim hasScrollBar As Boolean = False
     Dim _editorMode As CustomListBox.EditorMode
     Dim _pointProgress As Boolean
     Dim deletePoints As Boolean = False
+    Public hiddingPanel As Panel
 
     Dim _timerMarker As TimeMarkerItemCLB
     Dim _title As String = ""
@@ -88,6 +92,9 @@ Public Class TimeMarkerDescription
         AccomplishedPoints = Nothing
         AccomplishedPoints = ThisTimeMarker.AccomplishedPoints
         Progress = ThisTimeMarker.Progress
+
+        hiddingPanel.Visible = False
+        hiddingPanel.SendToBack()
         Select Case Priority
             Case CustomListBox.Priority.HIGH
                 If EditorMode = 1 Then
@@ -309,9 +316,7 @@ Public Class TimeMarkerDescription
             Return _timerMarker
         End Get
         Set(value As TimeMarkerItemCLB)
-            If value IsNot Nothing Then
-                _timerMarker = value
-            End If
+            _timerMarker = value
         End Set
     End Property
 #End Region
@@ -328,8 +333,14 @@ Public Class TimeMarkerDescription
         AddHandler TxtboxDesc.ContentsResized, AddressOf ResizeRichTextBox
         PopulateInitialDropDown()
         SetControls()
-        CreatePanelStartTooltip()
-
+        hiddingPanel = New Panel
+        With hiddingPanel
+            .Location = New Point(0, 0)
+            .Size = Size
+            .BackColor = BackColor
+        End With
+        Controls.Add(hiddingPanel)
+        hiddingPanel.BringToFront()
     End Sub
 
 #Region "Events"
@@ -352,9 +363,9 @@ Public Class TimeMarkerDescription
     Private Sub EditorChanged(mode As CustomListBox.EditorMode) Handles Me.UpdateEditorMode
         Select Case mode
             Case CustomListBox.EditorMode.ADD
-
                 ThisTimeMarker = Nothing
                 RenderPointsProgress = False
+                Progress = 0
 
                 TxtboxTitle.ReadOnly = False
                 TxtboxDesc.ReadOnly = False
@@ -385,7 +396,8 @@ Public Class TimeMarkerDescription
                 PanelStart.Enabled = False
                 'Manual way for reasons
                 PanelPoints.Height = GetMaxControlHeight(PanelPoints)
-
+                hiddingPanel.Visible = False
+                hiddingPanel.SendToBack()
             Case CustomListBox.EditorMode.EDIT
 
                 RenderPointsProgress = False
@@ -406,7 +418,13 @@ Public Class TimeMarkerDescription
 
                 PanelStart.Visible = False
                 PanelStart.Enabled = False
-
+                If ThisTimeMarker IsNot Nothing Then
+                    hiddingPanel.Visible = False
+                    hiddingPanel.SendToBack()
+                Else
+                    hiddingPanel.Visible = True
+                    hiddingPanel.BringToFront()
+                End If
             Case CustomListBox.EditorMode.REMOVE
                 RenderPointsProgress = False
                 TxtboxTitle.ReadOnly = True
@@ -421,6 +439,13 @@ Public Class TimeMarkerDescription
                 PanelStart.Visible = False
                 PanelStart.Enabled = False
 
+                If ThisTimeMarker IsNot Nothing Then
+                    hiddingPanel.Visible = False
+                    hiddingPanel.SendToBack()
+                Else
+                    hiddingPanel.Visible = True
+                    hiddingPanel.BringToFront()
+                End If
             Case CustomListBox.EditorMode.FIXED
                 RenderPointsProgress = True
                 TxtboxTitle.ReadOnly = True
@@ -435,6 +460,13 @@ Public Class TimeMarkerDescription
                 PanelStart.Visible = True
                 PanelStart.Enabled = True
 
+                If ThisTimeMarker IsNot Nothing Then
+                    hiddingPanel.Visible = False
+                    hiddingPanel.SendToBack()
+                Else
+                    hiddingPanel.Visible = True
+                    hiddingPanel.BringToFront()
+                End If
             Case CustomListBox.EditorMode.NONE
                 RenderPointsProgress = False
                 TxtboxTitle.ReadOnly = True
@@ -446,6 +478,8 @@ Public Class TimeMarkerDescription
                 SetButtonVisibility(ButtonAddPoint, False)
                 PanelStart.Visible = False
                 PanelStart.Enabled = False
+                hiddingPanel.Visible = True
+                hiddingPanel.BringToFront()
         End Select
     End Sub
 
@@ -516,7 +550,11 @@ Public Class TimeMarkerDescription
     Private Sub ButtonPriority_Click(sender As Object, e As EventArgs) Handles ButtonPriority.Click
         Dim inputBox As New PriorityPicker(Me, New Point(Left, Bottom))
         If inputBox.ShowDialog = DialogResult.OK Then
-            Priority = inputBox.Priority
+            If Not IsNothing(inputBox.Priority) Then
+                Priority = inputBox.Priority
+            Else
+                MsgBox("The priority is not valid")
+            End If
         End If
     End Sub
 

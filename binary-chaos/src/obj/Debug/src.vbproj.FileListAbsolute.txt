@@ -25,7 +25,6 @@ C:\Users\hugo_\Documents\Project_CODE\Visual Studio 2015\Binary-chaos-Project\bi
 C:\Users\hugo_\Documents\Project_CODE\Visual Studio 2015\Binary-chaos-Project\binary-chaos\src\bin\Debug\src.pdb
 C:\Users\hugo_\Documents\Project_CODE\Visual Studio 2015\Binary-chaos-Project\binary-chaos\src\bin\Debug\src.xml
 C:\Users\hugo_\Documents\Project_CODE\Visual Studio 2015\Binary-chaos-Project\binary-chaos\src\obj\Debug\src.vbprojResolveAssemblyReference.cache
-C:\Users\hugo_\Documents\Project_CODE\Visual Studio 2015\Binary-chaos-Project\binary-chaos\src\obj\Debug\WindowsApplication1.Form1.resources
 C:\Users\hugo_\Documents\Project_CODE\Visual Studio 2015\Binary-chaos-Project\binary-chaos\src\obj\Debug\WindowsApplication1.RecoverPassword.resources
 C:\Users\hugo_\Documents\Project_CODE\Visual Studio 2015\Binary-chaos-Project\binary-chaos\src\obj\Debug\WindowsApplication1.Form3.resources
 C:\Users\hugo_\Documents\Project_CODE\Visual Studio 2015\Binary-chaos-Project\binary-chaos\src\obj\Debug\WindowsApplication1.RegistryPage.resources
@@ -58,4 +57,6 @@ C:\Users\hugo_\Documents\Project_CODE\Visual Studio 2015\Binary-chaos-Project\bi
 C:\Users\hugo_\Documents\Project_CODE\Visual Studio 2015\Binary-chaos-Project\binary-chaos\src\obj\Debug\WindowsApplication1.PriorityPicker.resources
 C:\Users\hugo_\Documents\Project_CODE\Visual Studio 2015\Binary-chaos-Project\binary-chaos\src\bin\Debug\Newtonsoft.Json.dll
 C:\Users\hugo_\Documents\Project_CODE\Visual Studio 2015\Binary-chaos-Project\binary-chaos\src\bin\Debug\Newtonsoft.Json.xml
+C:\Users\hugo_\Documents\Project_CODE\Visual Studio 2015\Binary-chaos-Project\binary-chaos\src\obj\Debug\WindowsApplication1.UserAccount.resources
+C:\Users\hugo_\Documents\Project_CODE\Visual Studio 2015\Binary-chaos-Project\binary-chaos\src\obj\Debug\WindowsApplication1.MainForm.resources
 C:\Users\hugo_\Documents\Project_CODE\Visual Studio 2015\Binary-chaos-Project\binary-chaos\src\obj\Debug\src.exe

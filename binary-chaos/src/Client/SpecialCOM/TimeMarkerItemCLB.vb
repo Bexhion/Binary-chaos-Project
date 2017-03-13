@@ -6,6 +6,7 @@ Public Class TimeMarkerItemCLB
     Public Event MarkerSetForDeletion(sender As TimeMarkerItemCLB)
     Public Event TimeMarkerEnd(sender As TimeMarkerItemCLB)
     Public Event PushInformation(information As TimeMarkerItemCLB)
+    Public Event PushProgress(marker As TimeMarkerItemCLB, progress As Double)
 
     Public WithEvents timeMarker As TimeMarker
 
@@ -63,7 +64,7 @@ Public Class TimeMarkerItemCLB
             _points = value
             If _points IsNot Nothing Then
                 Points1.SetPointNumber(_points.Count)
-                Refresh()
+                Points1.Refresh()
             End If
         End Set
     End Property
@@ -76,7 +77,7 @@ Public Class TimeMarkerItemCLB
             _thisDate = value
             FullDate1.FullDate = _thisDate
             RecalculateTimeMarker()
-            Refresh()
+            FullDate1.Refresh()
         End Set
     End Property
 
@@ -99,11 +100,9 @@ Public Class TimeMarkerItemCLB
             Return _priority
         End Get
         Set(value As CustomListBox.Priority)
-            If Not value = CustomListBox.Priority.NONE Then
-                _priority = value
-                priorityBrush = GetPriorityBrush(value)
-                Refresh()
-            End If
+            _priority = value
+            priorityBrush = GetPriorityBrush(value)
+            Refresh()
         End Set
     End Property
 
@@ -168,6 +167,8 @@ Public Class TimeMarkerItemCLB
         Set(value As Color)
             BackColor = value
             Refresh()
+            Points1.Refresh()
+            FullDate1.Refresh()
         End Set
     End Property
 
@@ -178,6 +179,8 @@ Public Class TimeMarkerItemCLB
         Set(value As Boolean)
             _selected = value
             Refresh()
+            Points1.Refresh()
+            FullDate1.Refresh()
         End Set
     End Property
 
@@ -188,7 +191,7 @@ Public Class TimeMarkerItemCLB
         Set(value As Boolean)
             _selectedForDeletion = value
             FullDate1.ConstantOverlay = value
-            Refresh()
+            FullDate1.Refresh()
         End Set
     End Property
 
@@ -247,10 +250,7 @@ Public Class TimeMarkerItemCLB
         Points1.OutlineColor = Color.FromArgb(90, 90, 90)
         FullDate1.DoRenderOutline = True
         FullDate1.OutlineColor = Color.FromArgb(90, 90, 90)
-        totalProgress = (Me.Width - 5) - (Points1.Width + Points1.Location.X)
         GetContourPath()
-        startingPoint = New Point(Points1.Right, 0)
-        endingPoint = New Point(totalProgress, 0)
     End Sub
 
 #Region "Events"
@@ -259,12 +259,16 @@ Public Class TimeMarkerItemCLB
         Label_Title.ForeColor = Color.White
         Label_Desc.ForeColor = Color.White
         Refresh()
+        Points1.Refresh()
+        FullDate1.Refresh()
     End Sub
 
     Private Sub MouseLeaveEvent(sender As Object, e As EventArgs) Handles Me.MouseLeave, Label_Title.MouseLeave, Label_Desc.MouseLeave, Points1.MouseLeave
         Label_Title.ForeColor = Color.White
         Label_Desc.ForeColor = Color.FromArgb(166, 166, 166)
         Refresh()
+        Points1.Refresh()
+        FullDate1.Refresh()
     End Sub
 #End Region
 #Region "Click"
@@ -274,7 +278,6 @@ Public Class TimeMarkerItemCLB
 
     Public Sub SelectMarker()
         RaiseEvent SelectionChanged(Me)
-        PushMarker()
     End Sub
 #End Region
 #Region "Date"
@@ -301,10 +304,13 @@ Public Class TimeMarkerItemCLB
 #End Region
 #Region "Timer"
     Private Sub TimeMarkerStart(marker As TimeMarker) Handles timeMarker.TimerStart
+        _updateTimer.Start()
         ShowProgress = True
     End Sub
 
     Private Sub TimeMarkerFinished(marker As TimeMarker) Handles timeMarker.TimerEnd
+        _updateTimer.Stop()
+        _updateTimer.Dispose()
         ShowProgress = False
         TimeMarkerEndHandler()
     End Sub
@@ -314,8 +320,11 @@ Public Class TimeMarkerItemCLB
     End Sub
 
     Private Sub TimeMarkerTickHandler(sender As Object, e As EventArgs) Handles _updateTimer.Tick
-        PushMarker()
+        Progress = timeMarker.progress
+        Refresh()
+        RaiseEvent PushProgress(Me, Progress)
     End Sub
+
 #End Region
 #Region "Renderers"
     Private Sub RenderForDeletionMode(graphics As Graphics)
@@ -329,12 +338,6 @@ Public Class TimeMarkerItemCLB
     End Sub
 #End Region
 
-    Public Overrides Sub Refresh()
-        MyBase.Refresh()
-        Points1.Refresh()
-        FullDate1.Refresh()
-    End Sub
-
 #Region "Rendering"
     Private Sub PaintMe(sender As Object, e As PaintEventArgs) Handles Me.Paint
         Dim graphics As Graphics = e.Graphics
@@ -343,7 +346,7 @@ Public Class TimeMarkerItemCLB
             RenderOutline(graphics, OutlineColor)
         End If
         If ShowProgress Then
-            'RenderProgress(graphics)
+            RenderProgress(graphics)
         End If
         graphics.Dispose()
     End Sub
@@ -359,14 +362,14 @@ Public Class TimeMarkerItemCLB
         Me.path = path
     End Sub
 
-    Dim totalProgress As Integer
-    Dim startingPoint As Point
-    Dim endingPoint As Point
+    Public totalProgress As Integer
+    Public startingPoint As Point
+    Public endingPoint As Point
     Private Sub RenderProgress(graphics As Graphics)
         Dim path As New GraphicsPath
-        Dim prog As New Point(totalProgress * Progress, 0)
-        graphics.DrawLine(New Pen(Color.FromArgb(89, 89, 89), 4), startingPoint, prog)
-        graphics.DrawLine(New Pen(Color.FromArgb(0, 112, 192), 4), prog, endingPoint)
+        Dim prog As New Point(startingPoint.X + (totalProgress * Progress), 0)
+        graphics.DrawLine(New Pen(Color.FromArgb(0, 112, 192), 4), startingPoint, prog)
+        graphics.DrawLine(New Pen(Color.FromArgb(89, 89, 89), 4), prog, endingPoint)
     End Sub
 
     Private Sub RenderOutline(graphics As Graphics, color As Color)

@@ -1,11 +1,4 @@
 ﻿Public Class RegistryPage
-    Private Sub CheckCredentials(username As String, password As String)
-        Dim result As MyJsonParser.User = MyJsonParser.User.LoadUser(username, password)
-        If result Is Nothing Then
-            MsgBox("Couldn't")
-        End If
-    End Sub
-
     Private Sub TextBox2_GotFocus(sender As Object, e As EventArgs) Handles TextBox2.GotFocus
         If TextBox2.Text = "USERNAME" And TextBox2.ForeColor = Color.Gray Then
             TextBox2.Text = ""
@@ -40,7 +33,7 @@
         Dim security3 As String = TextBox5.Text
         Dim user As New MyJsonParser.User
         With user
-            '.id = Guid.NewGuid.ToString("N")
+            .id = Guid.NewGuid.ToString("N")
             .username = username
             .password = password
             .securityAnswer1 = security1
@@ -51,5 +44,9 @@
         End With
         MyJsonParser.User.SaveUser(user)
         Me.Close()
+    End Sub
+
+    Private Sub RegistryPage_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+
     End Sub
 End Class
