@@ -78,11 +78,11 @@ Partial Class MainForm
         '
         'UserBox
         '
+        resources.ApplyResources(Me.UserBox, "UserBox")
         Me.UserBox.BackColor = System.Drawing.Color.FromArgb(CType(CType(30, Byte), Integer), CType(CType(30, Byte), Integer), CType(CType(30, Byte), Integer))
         Me.UserBox.Controls.Add(Me.Username)
         Me.UserBox.Controls.Add(Me.PictureBox1)
         Me.UserBox.Controls.Add(Me.Greeting)
-        resources.ApplyResources(Me.UserBox, "UserBox")
         Me.UserBox.Name = "UserBox"
         '
         'Username
@@ -182,8 +182,8 @@ Partial Class MainForm
         '
         Me.TimeMarkerDescription1.AccomplishedPoints = Nothing
         Me.TimeMarkerDescription1.AccomplishedPointsNumber = 0
-        Me.TimeMarkerDescription1.BackColor = System.Drawing.Color.FromArgb(CType(CType(50, Byte), Integer), CType(CType(50, Byte), Integer), CType(CType(50, Byte), Integer))
-        Me.TimeMarkerDescription1.Description = ""
+        Me.TimeMarkerDescription1.BackColor = System.Drawing.Color.FromArgb(CType(CType(55, Byte), Integer), CType(CType(55, Byte), Integer), CType(CType(55, Byte), Integer))
+        Me.TimeMarkerDescription1.Description = "Add a description"
         Me.TimeMarkerDescription1.EditorMode = WindowsApplication1.CustomListBox.EditorMode.NONE
         Me.TimeMarkerDescription1.FullDateEnd = Nothing
         Me.TimeMarkerDescription1.FullDateStart = Nothing
@@ -195,11 +195,11 @@ Partial Class MainForm
         Me.TimeMarkerDescription1.Progress = 0R
         Me.TimeMarkerDescription1.RenderPointsProgress = False
         Me.TimeMarkerDescription1.ThisTimeMarker = Nothing
-        Me.TimeMarkerDescription1.Title = ""
+        Me.TimeMarkerDescription1.Title = "ADD A TITLE"
         '
         'CustomListBox1
         '
-        Me.CustomListBox1.BackColor = System.Drawing.Color.FromArgb(CType(CType(20, Byte), Integer), CType(CType(20, Byte), Integer), CType(CType(20, Byte), Integer))
+        Me.CustomListBox1.BackColor = System.Drawing.Color.FromArgb(CType(CType(38, Byte), Integer), CType(CType(38, Byte), Integer), CType(CType(38, Byte), Integer))
         Me.CustomListBox1.CurrentEditorMode = WindowsApplication1.CustomListBox.EditorMode.NONE
         Me.CustomListBox1.descriptor = Nothing
         resources.ApplyResources(Me.CustomListBox1, "CustomListBox1")
@@ -211,8 +211,8 @@ Partial Class MainForm
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(40, Byte), Integer), CType(CType(40, Byte), Integer), CType(CType(40, Byte), Integer))
         Me.Controls.Add(Me.CustomListBox1)
-        Me.Controls.Add(Me.Panel1)
         Me.Controls.Add(Me.TimeMarkerDescription1)
+        Me.Controls.Add(Me.Panel1)
         Me.Controls.Add(Me.CancelMarker)
         Me.Controls.Add(Me.SetMarker)
         Me.Controls.Add(Me.RemoveMarker)

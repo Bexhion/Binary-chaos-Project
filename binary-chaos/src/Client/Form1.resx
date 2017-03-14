@@ -162,149 +162,8 @@
   <data name="&gt;&gt;Help.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="&gt;&gt;UserBox.Name" xml:space="preserve">
-    <value>UserBox</value>
-  </data>
-  <data name="&gt;&gt;UserBox.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;UserBox.Parent" xml:space="preserve">
-    <value>FakeTop</value>
-  </data>
-  <data name="&gt;&gt;UserBox.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;MinimizeButton.Name" xml:space="preserve">
-    <value>MinimizeButton</value>
-  </data>
-  <data name="&gt;&gt;MinimizeButton.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;MinimizeButton.Parent" xml:space="preserve">
-    <value>FakeTop</value>
-  </data>
-  <data name="&gt;&gt;MinimizeButton.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;CloseButton.Name" xml:space="preserve">
-    <value>CloseButton</value>
-  </data>
-  <data name="&gt;&gt;CloseButton.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;CloseButton.Parent" xml:space="preserve">
-    <value>FakeTop</value>
-  </data>
-  <data name="&gt;&gt;CloseButton.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="&gt;&gt;Title.Name" xml:space="preserve">
-    <value>Title</value>
-  </data>
-  <data name="&gt;&gt;Title.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;Title.Parent" xml:space="preserve">
-    <value>FakeTop</value>
-  </data>
-  <data name="&gt;&gt;Title.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="&gt;&gt;FakeIcon.Name" xml:space="preserve">
-    <value>FakeIcon</value>
-  </data>
-  <data name="&gt;&gt;FakeIcon.Type" xml:space="preserve">
-    <value>System.Windows.Forms.PictureBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;FakeIcon.Parent" xml:space="preserve">
-    <value>FakeTop</value>
-  </data>
-  <data name="&gt;&gt;FakeIcon.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
-  <data name="FakeTop.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Top</value>
-  </data>
-  <data name="FakeTop.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
-  </data>
-  <data name="FakeTop.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1161, 45</value>
-  </data>
-  <data name="FakeTop.TabIndex" type="System.Int32, mscorlib">
-    <value>19</value>
-  </data>
-  <data name="&gt;&gt;FakeTop.Name" xml:space="preserve">
-    <value>FakeTop</value>
-  </data>
-  <data name="&gt;&gt;FakeTop.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;FakeTop.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;FakeTop.ZOrder" xml:space="preserve">
-    <value>8</value>
-  </data>
-  <data name="&gt;&gt;Username.Name" xml:space="preserve">
-    <value>Username</value>
-  </data>
-  <data name="&gt;&gt;Username.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;Username.Parent" xml:space="preserve">
-    <value>UserBox</value>
-  </data>
-  <data name="&gt;&gt;Username.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;PictureBox1.Name" xml:space="preserve">
-    <value>PictureBox1</value>
-  </data>
-  <data name="&gt;&gt;PictureBox1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.PictureBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;PictureBox1.Parent" xml:space="preserve">
-    <value>UserBox</value>
-  </data>
-  <data name="&gt;&gt;PictureBox1.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;Greeting.Name" xml:space="preserve">
-    <value>Greeting</value>
-  </data>
-  <data name="&gt;&gt;Greeting.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;Greeting.Parent" xml:space="preserve">
-    <value>UserBox</value>
-  </data>
-  <data name="&gt;&gt;Greeting.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="UserBox.Location" type="System.Drawing.Point, System.Drawing">
-    <value>951, 2</value>
-  </data>
-  <data name="UserBox.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
-  <data name="UserBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>124, 40</value>
-  </data>
-  <data name="UserBox.TabIndex" type="System.Int32, mscorlib">
-    <value>20</value>
-  </data>
-  <data name="&gt;&gt;UserBox.Name" xml:space="preserve">
-    <value>UserBox</value>
-  </data>
-  <data name="&gt;&gt;UserBox.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;UserBox.Parent" xml:space="preserve">
-    <value>FakeTop</value>
-  </data>
-  <data name="&gt;&gt;UserBox.ZOrder" xml:space="preserve">
-    <value>0</value>
+  <data name="UserBox.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
   </data>
   <data name="Username.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Left</value>
@@ -413,6 +272,30 @@
   </data>
   <data name="&gt;&gt;Greeting.ZOrder" xml:space="preserve">
     <value>2</value>
+  </data>
+  <data name="UserBox.Location" type="System.Drawing.Point, System.Drawing">
+    <value>951, 2</value>
+  </data>
+  <data name="UserBox.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="UserBox.Size" type="System.Drawing.Size, System.Drawing">
+    <value>124, 41</value>
+  </data>
+  <data name="UserBox.TabIndex" type="System.Int32, mscorlib">
+    <value>20</value>
+  </data>
+  <data name="&gt;&gt;UserBox.Name" xml:space="preserve">
+    <value>UserBox</value>
+  </data>
+  <data name="&gt;&gt;UserBox.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;UserBox.Parent" xml:space="preserve">
+    <value>FakeTop</value>
+  </data>
+  <data name="&gt;&gt;UserBox.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
   <data name="MinimizeButton.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -539,6 +422,30 @@
   </data>
   <data name="&gt;&gt;FakeIcon.ZOrder" xml:space="preserve">
     <value>5</value>
+  </data>
+  <data name="FakeTop.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Top</value>
+  </data>
+  <data name="FakeTop.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="FakeTop.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1161, 45</value>
+  </data>
+  <data name="FakeTop.TabIndex" type="System.Int32, mscorlib">
+    <value>19</value>
+  </data>
+  <data name="&gt;&gt;FakeTop.Name" xml:space="preserve">
+    <value>FakeTop</value>
+  </data>
+  <data name="&gt;&gt;FakeTop.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;FakeTop.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;FakeTop.ZOrder" xml:space="preserve">
+    <value>8</value>
   </data>
   <metadata name="WindowMinimizedIcon.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>150, 21</value>
@@ -1298,16 +1205,16 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;Panel1.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>2</value>
   </data>
   <data name="TimeMarkerDescription1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>590, 78</value>
+    <value>572, 81</value>
   </data>
   <data name="TimeMarkerDescription1.Size" type="System.Drawing.Size, System.Drawing">
     <value>437, 487</value>
   </data>
   <data name="TimeMarkerDescription1.TabIndex" type="System.Int32, mscorlib">
-    <value>34</value>
+    <value>0</value>
   </data>
   <data name="&gt;&gt;TimeMarkerDescription1.Name" xml:space="preserve">
     <value>TimeMarkerDescription1</value>
@@ -1319,16 +1226,16 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;TimeMarkerDescription1.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>1</value>
   </data>
   <data name="CustomListBox1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>128, 78</value>
+    <value>147, 143</value>
   </data>
   <data name="CustomListBox1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>437, 487</value>
+    <value>322, 403</value>
   </data>
   <data name="CustomListBox1.TabIndex" type="System.Int32, mscorlib">
-    <value>35</value>
+    <value>0</value>
   </data>
   <data name="&gt;&gt;CustomListBox1.Name" xml:space="preserve">
     <value>CustomListBox1</value>

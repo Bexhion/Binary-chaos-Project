@@ -4,6 +4,7 @@
     Public Event EditorModeChanged(mode As CustomListBox.EditorMode)
     Public Event SelectionChange(sender As TimeMarkerItemCLB)
     Public Event ItemClick(sender As CustomListBox, subObject As TimeMarkerItemCLB)
+    Public Event ListChanged(list As CustomListBox)
     'Internal
     Public Event CheckForScrollbar()
 
@@ -90,6 +91,23 @@
 
         ActualList.Controls.Add(marker)
         RaiseEvent CheckForScrollbar()
+        RaiseEvent ListChanged(Me)
+        SetupAnchors()
+        Refresh()
+        Return marker
+    End Function
+
+    Public Function Add(marker As TimeMarkerItemCLB)
+        AddHandler marker.Click, AddressOf ItemClicked
+        AddHandler marker.SelectionChanged, AddressOf SetActiveControl
+        AddHandler marker.MarkerSetForDeletion, AddressOf OnSetForDeletion
+        AddHandler marker.TimeMarkerEnd, AddressOf OnTimeMarkerEnd
+        AddHandler marker.PushInformation, AddressOf PushInformationToDescriptor
+        AddHandler marker.PushProgress, AddressOf TimeUpdate
+
+        ActualList.Controls.Add(marker)
+        RaiseEvent CheckForScrollbar()
+        RaiseEvent ListChanged(Me)
         SetupAnchors()
         Refresh()
         Return marker
@@ -114,7 +132,11 @@
         RemoveHandler marker.PushInformation, AddressOf PushInformationToDescriptor
         RemoveHandler marker.PushProgress, AddressOf TimeUpdate
 
+        marker.timeMarker.EndTimeMarker()
+        marker.timeMarker = Nothing
         marker.Dispose()
+        RaiseEvent ListChanged(Me)
+        RaiseEvent CheckForScrollbar()
         SetupAnchors()
         Refresh()
     End Sub
@@ -147,10 +169,14 @@
 
     Public Sub Clear(list As List(Of TimeMarkerItemCLB))
         If list.Count > 0 Then
+            SetActiveControl(Nothing)
             For i = list.Count - 1 To 0 Step -1
                 Dim item As TimeMarkerItemCLB = list(i)
                 If ActualList.Controls.Contains(item) Then
                     Remove(item.Name)
+                    If item Is currentActiveControl Then
+                        SetActiveControl(Nothing)
+                    End If
                 End If
             Next
             list.Clear()
@@ -198,7 +224,7 @@
 
     Public Sub SetActiveControl(marker As TimeMarkerItemCLB)
         Select Case internalMode
-            Case EditorMode.FIXED, EditorMode.REMOVE
+            Case EditorMode.FIXED, EditorMode.REMOVE, EditorMode.NONE
                 If marker IsNot Nothing Then
                     If Not marker.SelectMe Then
                         marker.SelectMe = True
@@ -215,8 +241,9 @@
                     If marker IsNot currentActiveControl Then
                         currentActiveControl = marker
                     End If
+                Else
+                    currentActiveControl = Nothing
                 End If
-                currentActiveControl.PushMarker()
             Case EditorMode.ADD
                 If currentActiveControl IsNot Nothing Then
                     currentActiveControl.SelectMe = False
@@ -226,9 +253,22 @@
                     currentActiveControl = Nothing
                 End If
             Case EditorMode.EDIT
-                currentActiveControl.PushMarker()
         End Select
         If currentActiveControl Is Nothing And Not internalMode = 2 Then
+            descriptor.hiddingPanel.Visible = True
+            descriptor.hiddingPanel.BringToFront()
+        End If
+        If currentActiveControl IsNot Nothing Then
+            currentActiveControl.PushMarker()
+        Else
+            descriptor.ThisTimeMarker = Nothing
+            descriptor.Title = Nothing
+            descriptor.Description = Nothing
+            descriptor.FullDateStart = Nothing
+            descriptor.FullDateEnd = Nothing
+            descriptor.Priority = Nothing
+            descriptor.Points = Nothing
+            descriptor.AccomplishedPoints = Nothing
             descriptor.hiddingPanel.Visible = True
             descriptor.hiddingPanel.BringToFront()
         End If
@@ -311,7 +351,7 @@
                 currentActiveControl.Description = descriptor.Description
                 currentActiveControl.Points = descriptor.Points
                 currentActiveControl.AccomplishedPoints = descriptor.AccomplishedPoints
-                currentActiveControl.FullDate = startTime.Date
+                currentActiveControl.FullDate = startTime
             End If
         End If
     End Sub

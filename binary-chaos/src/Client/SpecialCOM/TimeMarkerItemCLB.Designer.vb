@@ -16,7 +16,7 @@ Partial Class TimeMarkerItemCLB
         Me.Label_Title.BackColor = System.Drawing.Color.Transparent
         Me.Label_Title.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label_Title.ForeColor = System.Drawing.Color.White
-        Me.Label_Title.Location = New System.Drawing.Point(74, 9)
+        Me.Label_Title.Location = New System.Drawing.Point(74, 8)
         Me.Label_Title.Margin = New System.Windows.Forms.Padding(0)
         Me.Label_Title.Name = "Label_Title"
         Me.Label_Title.Size = New System.Drawing.Size(209, 24)
@@ -29,7 +29,7 @@ Partial Class TimeMarkerItemCLB
         Me.Label_Desc.AutoEllipsis = True
         Me.Label_Desc.BackColor = System.Drawing.Color.Transparent
         Me.Label_Desc.ForeColor = System.Drawing.Color.FromArgb(CType(CType(166, Byte), Integer), CType(CType(166, Byte), Integer), CType(CType(166, Byte), Integer))
-        Me.Label_Desc.Location = New System.Drawing.Point(76, 33)
+        Me.Label_Desc.Location = New System.Drawing.Point(76, 34)
         Me.Label_Desc.Margin = New System.Windows.Forms.Padding(0)
         Me.Label_Desc.Name = "Label_Desc"
         Me.Label_Desc.Size = New System.Drawing.Size(207, 31)
@@ -44,6 +44,7 @@ Partial Class TimeMarkerItemCLB
         Me.FullDate1.DoRenderOutline = True
         Me.FullDate1.FullDate = Nothing
         Me.FullDate1.Location = New System.Drawing.Point(0, 0)
+        Me.FullDate1.Margin = New System.Windows.Forms.Padding(0)
         Me.FullDate1.Name = "FullDate1"
         Me.FullDate1.OutlineColor = System.Drawing.Color.FromArgb(CType(CType(90, Byte), Integer), CType(CType(90, Byte), Integer), CType(CType(90, Byte), Integer))
         Me.FullDate1.OverlayMethod = Nothing

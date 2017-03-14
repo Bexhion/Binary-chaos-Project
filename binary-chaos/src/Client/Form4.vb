@@ -43,6 +43,7 @@
             .allTimeMarkers = New List(Of MyJsonParser.User.Marker)
         End With
         MyJsonParser.User.SaveUser(user)
+        LoginUser.Show()
         Me.Close()
     End Sub
 

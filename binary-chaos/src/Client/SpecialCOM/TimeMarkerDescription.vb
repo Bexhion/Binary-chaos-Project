@@ -15,7 +15,7 @@ Public Class TimeMarkerDescription
         Dim missingInformation As String = ""
         If Title IsNot Nothing Then
             If Description IsNot Nothing Then
-                If FullDateStart IsNot Nothing And Not FullDateStart = Date.Now Then
+                If FullDateStart IsNot Nothing And Not (FullDateStart.Value.Day < Date.Now.Day And FullDateStart.Value.Month < Date.Now.Month And FullDateStart.Value.Year < Date.Now.Year And FullDateStart.Value.Hour < Date.Now.Hour And FullDateStart.Value.Minute < Date.Now.Minute) Then
                     If FullDateEnd IsNot Nothing And FullDateEnd > FullDateStart Then
                         If Not IsNothing(Priority) Then
                             Select Case EditorMode
@@ -399,25 +399,26 @@ Public Class TimeMarkerDescription
                 hiddingPanel.Visible = False
                 hiddingPanel.SendToBack()
             Case CustomListBox.EditorMode.EDIT
+                If Not ThisTimeMarker.timeMarker.timer.Enabled Then
+                    RenderPointsProgress = False
+                    TxtboxTitle.ReadOnly = False
+                    TxtboxDesc.ReadOnly = False
 
-                RenderPointsProgress = False
-                TxtboxTitle.ReadOnly = False
-                TxtboxDesc.ReadOnly = False
+                    SetButtonVisibility(ButtonStartDate, True)
+                    AppendButtonToControl(ButtonStartDate, LabelStartDate)
 
-                SetButtonVisibility(ButtonStartDate, True)
-                AppendButtonToControl(ButtonStartDate, LabelStartDate)
+                    SetButtonVisibility(ButtonEndDate, True)
+                    AppendButtonToControl(ButtonEndDate, LabelEndDate)
 
-                SetButtonVisibility(ButtonEndDate, True)
-                AppendButtonToControl(ButtonEndDate, LabelEndDate)
+                    SetButtonVisibility(ButtonPriority, True)
+                    AppendButtonToControl(ButtonPriority, LabelPriority)
 
-                SetButtonVisibility(ButtonPriority, True)
-                AppendButtonToControl(ButtonPriority, LabelPriority)
+                    SetButtonVisibility(ButtonRemovePoint, True)
+                    SetButtonVisibility(ButtonAddPoint, True)
 
-                SetButtonVisibility(ButtonRemovePoint, True)
-                SetButtonVisibility(ButtonAddPoint, True)
-
-                PanelStart.Visible = False
-                PanelStart.Enabled = False
+                    PanelStart.Visible = False
+                    PanelStart.Enabled = False
+                End If
                 If ThisTimeMarker IsNot Nothing Then
                     hiddingPanel.Visible = False
                     hiddingPanel.SendToBack()
@@ -427,26 +428,26 @@ Public Class TimeMarkerDescription
                 End If
             Case CustomListBox.EditorMode.REMOVE
                 RenderPointsProgress = False
-                TxtboxTitle.ReadOnly = True
-                TxtboxDesc.ReadOnly = True
+                    TxtboxTitle.ReadOnly = True
+                    TxtboxDesc.ReadOnly = True
 
-                SetButtonVisibility(ButtonStartDate, False)
-                SetButtonVisibility(ButtonEndDate, False)
-                SetButtonVisibility(ButtonPriority, False)
-                SetButtonVisibility(ButtonRemovePoint, False)
-                SetButtonVisibility(ButtonAddPoint, False)
+                    SetButtonVisibility(ButtonStartDate, False)
+                    SetButtonVisibility(ButtonEndDate, False)
+                    SetButtonVisibility(ButtonPriority, False)
+                    SetButtonVisibility(ButtonRemovePoint, False)
+                    SetButtonVisibility(ButtonAddPoint, False)
 
-                PanelStart.Visible = False
-                PanelStart.Enabled = False
+                    PanelStart.Visible = False
+                    PanelStart.Enabled = False
 
-                If ThisTimeMarker IsNot Nothing Then
-                    hiddingPanel.Visible = False
-                    hiddingPanel.SendToBack()
-                Else
-                    hiddingPanel.Visible = True
-                    hiddingPanel.BringToFront()
-                End If
-            Case CustomListBox.EditorMode.FIXED
+                    If ThisTimeMarker IsNot Nothing Then
+                        hiddingPanel.Visible = False
+                        hiddingPanel.SendToBack()
+                    Else
+                        hiddingPanel.Visible = True
+                        hiddingPanel.BringToFront()
+                    End If
+                    Case CustomListBox.EditorMode.FIXED
                 RenderPointsProgress = True
                 TxtboxTitle.ReadOnly = True
                 TxtboxDesc.ReadOnly = True

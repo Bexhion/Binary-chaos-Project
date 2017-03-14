@@ -8,6 +8,9 @@
     Public Shared Function PreformRoutine() As Integer
         Dim time As Integer = 0
         time += TerminateBrowsers()
+        For Each program As String In blackListedPrograms
+            time += TerminateProgram(program)
+        Next
         Return time
     End Function
 
@@ -15,7 +18,7 @@
         Dim time As Integer = 0
         If Not IsNothing(proces) Then
             If (proces.Contains(".exe")) Then
-                proces.TrimEnd(".exe")
+                proces = proces.Substring(0, InStr(proces, ".exe") - 1)
             End If
             Dim knownProcesses() As Process = Process.GetProcessesByName(proces)
             If knownProcesses IsNot Nothing Then

@@ -5,6 +5,7 @@ Public Class RecoverPassword
     Dim pass As Boolean = False
 
     Private Sub Label5_Click(sender As Object, e As EventArgs) Handles Label5.Click
+        LoginUser.Show()
         Me.Close()
     End Sub
 
@@ -26,8 +27,8 @@ Public Class RecoverPassword
         Else
             If TxtAnswer1.Text = TxtAnswer2.Text Then
                 user.password = TxtAnswer1.Text
-                MyJsonParser.WriteToJson(user)
-                Form3.Show()
+                MyJsonParser.User.SaveUser(user)
+                LoginUser.Show()
                 Me.Close()
             Else
                 MsgBox("Passwords do not match")

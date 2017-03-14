@@ -1,5 +1,5 @@
 ﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
-Partial Class Form3
+Partial Class LoginUser
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
@@ -22,31 +22,32 @@ Partial Class Form3
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
-        Me.TextBox2 = New System.Windows.Forms.TextBox()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(LoginUser))
+        Me.Username = New System.Windows.Forms.TextBox()
         Me.SignIn = New System.Windows.Forms.Label()
         Me.RecoverPasswordLabel = New System.Windows.Forms.Label()
         Me.Login = New System.Windows.Forms.Button()
-        Me.Panel1 = New System.Windows.Forms.Panel()
-        Me.Label1 = New System.Windows.Forms.Label()
-        Me.PictureBox1 = New System.Windows.Forms.PictureBox()
-        Me.Label3 = New System.Windows.Forms.Label()
-        Me.TextBox1 = New System.Windows.Forms.TextBox()
-        Me.Panel1.SuspendLayout()
-        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.FakeTop = New System.Windows.Forms.Panel()
+        Me.CloseButton = New System.Windows.Forms.Label()
+        Me.IconPic = New System.Windows.Forms.PictureBox()
+        Me.Title = New System.Windows.Forms.Label()
+        Me.Password = New System.Windows.Forms.TextBox()
+        Me.FakeTop.SuspendLayout()
+        CType(Me.IconPic, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
-        'TextBox2
+        'Username
         '
-        Me.TextBox2.Anchor = System.Windows.Forms.AnchorStyles.Top
-        Me.TextBox2.BackColor = System.Drawing.Color.FromArgb(CType(CType(89, Byte), Integer), CType(CType(89, Byte), Integer), CType(CType(89, Byte), Integer))
-        Me.TextBox2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.TextBox2.ForeColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
-        Me.TextBox2.Location = New System.Drawing.Point(56, 109)
-        Me.TextBox2.Margin = New System.Windows.Forms.Padding(0)
-        Me.TextBox2.Name = "TextBox2"
-        Me.TextBox2.Size = New System.Drawing.Size(152, 20)
-        Me.TextBox2.TabIndex = 2
-        Me.TextBox2.Text = "USERNAME"
+        Me.Username.Anchor = System.Windows.Forms.AnchorStyles.Top
+        Me.Username.BackColor = System.Drawing.Color.FromArgb(CType(CType(89, Byte), Integer), CType(CType(89, Byte), Integer), CType(CType(89, Byte), Integer))
+        Me.Username.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.Username.ForeColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
+        Me.Username.Location = New System.Drawing.Point(56, 109)
+        Me.Username.Margin = New System.Windows.Forms.Padding(0)
+        Me.Username.Name = "Username"
+        Me.Username.Size = New System.Drawing.Size(152, 20)
+        Me.Username.TabIndex = 2
+        Me.Username.Text = "USERNAME"
         '
         'SignIn
         '
@@ -92,97 +93,98 @@ Partial Class Form3
         Me.Login.Text = "Login"
         Me.Login.UseVisualStyleBackColor = False
         '
-        'Panel1
+        'FakeTop
         '
-        Me.Panel1.Controls.Add(Me.Label1)
-        Me.Panel1.Controls.Add(Me.PictureBox1)
-        Me.Panel1.Controls.Add(Me.Label3)
-        Me.Panel1.Dock = System.Windows.Forms.DockStyle.Top
-        Me.Panel1.Location = New System.Drawing.Point(0, 0)
-        Me.Panel1.Margin = New System.Windows.Forms.Padding(0)
-        Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(261, 89)
-        Me.Panel1.TabIndex = 1
+        Me.FakeTop.Controls.Add(Me.CloseButton)
+        Me.FakeTop.Controls.Add(Me.IconPic)
+        Me.FakeTop.Controls.Add(Me.Title)
+        Me.FakeTop.Dock = System.Windows.Forms.DockStyle.Top
+        Me.FakeTop.Location = New System.Drawing.Point(0, 0)
+        Me.FakeTop.Margin = New System.Windows.Forms.Padding(0)
+        Me.FakeTop.Name = "FakeTop"
+        Me.FakeTop.Size = New System.Drawing.Size(261, 89)
+        Me.FakeTop.TabIndex = 1
         '
-        'Label1
+        'CloseButton
         '
-        Me.Label1.AutoSize = True
-        Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.Location = New System.Drawing.Point(234, 9)
-        Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(15, 13)
-        Me.Label1.TabIndex = 3
-        Me.Label1.Text = "X"
+        Me.CloseButton.AutoSize = True
+        Me.CloseButton.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.CloseButton.Location = New System.Drawing.Point(234, 9)
+        Me.CloseButton.Name = "CloseButton"
+        Me.CloseButton.Size = New System.Drawing.Size(15, 13)
+        Me.CloseButton.TabIndex = 3
+        Me.CloseButton.Text = "X"
         '
-        'PictureBox1
+        'IconPic
         '
-        Me.PictureBox1.BackgroundImage = Global.WindowsApplication1.My.Resources.Resources.sloth1sub1
-        Me.PictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
-        Me.PictureBox1.Location = New System.Drawing.Point(8, 24)
-        Me.PictureBox1.Margin = New System.Windows.Forms.Padding(0)
-        Me.PictureBox1.Name = "PictureBox1"
-        Me.PictureBox1.Size = New System.Drawing.Size(60, 60)
-        Me.PictureBox1.TabIndex = 2
-        Me.PictureBox1.TabStop = False
+        Me.IconPic.BackgroundImage = Global.WindowsApplication1.My.Resources.Resources.sloth1sub1
+        Me.IconPic.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
+        Me.IconPic.Location = New System.Drawing.Point(8, 24)
+        Me.IconPic.Margin = New System.Windows.Forms.Padding(0)
+        Me.IconPic.Name = "IconPic"
+        Me.IconPic.Size = New System.Drawing.Size(60, 60)
+        Me.IconPic.TabIndex = 2
+        Me.IconPic.TabStop = False
         '
-        'Label3
+        'Title
         '
-        Me.Label3.AutoSize = True
-        Me.Label3.BackColor = System.Drawing.Color.FromArgb(CType(CType(40, Byte), Integer), CType(CType(40, Byte), Integer), CType(CType(40, Byte), Integer))
-        Me.Label3.Font = New System.Drawing.Font("Arial", 20.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label3.ForeColor = System.Drawing.Color.WhiteSmoke
-        Me.Label3.Location = New System.Drawing.Point(68, 38)
-        Me.Label3.Margin = New System.Windows.Forms.Padding(0)
-        Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(184, 32)
-        Me.Label3.TabIndex = 1
-        Me.Label3.Text = "Sloth no more"
+        Me.Title.AutoSize = True
+        Me.Title.BackColor = System.Drawing.Color.FromArgb(CType(CType(40, Byte), Integer), CType(CType(40, Byte), Integer), CType(CType(40, Byte), Integer))
+        Me.Title.Font = New System.Drawing.Font("Arial", 20.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Title.ForeColor = System.Drawing.Color.WhiteSmoke
+        Me.Title.Location = New System.Drawing.Point(68, 38)
+        Me.Title.Margin = New System.Windows.Forms.Padding(0)
+        Me.Title.Name = "Title"
+        Me.Title.Size = New System.Drawing.Size(184, 32)
+        Me.Title.TabIndex = 1
+        Me.Title.Text = "Sloth no more"
         '
-        'TextBox1
+        'Password
         '
-        Me.TextBox1.Anchor = System.Windows.Forms.AnchorStyles.Top
-        Me.TextBox1.BackColor = System.Drawing.Color.FromArgb(CType(CType(89, Byte), Integer), CType(CType(89, Byte), Integer), CType(CType(89, Byte), Integer))
-        Me.TextBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.TextBox1.ForeColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
-        Me.TextBox1.Location = New System.Drawing.Point(56, 144)
-        Me.TextBox1.Margin = New System.Windows.Forms.Padding(0)
-        Me.TextBox1.Name = "TextBox1"
-        Me.TextBox1.Size = New System.Drawing.Size(152, 20)
-        Me.TextBox1.TabIndex = 3
-        Me.TextBox1.Text = "PASSWORD"
+        Me.Password.Anchor = System.Windows.Forms.AnchorStyles.Top
+        Me.Password.BackColor = System.Drawing.Color.FromArgb(CType(CType(89, Byte), Integer), CType(CType(89, Byte), Integer), CType(CType(89, Byte), Integer))
+        Me.Password.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.Password.ForeColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
+        Me.Password.Location = New System.Drawing.Point(56, 144)
+        Me.Password.Margin = New System.Windows.Forms.Padding(0)
+        Me.Password.Name = "Password"
+        Me.Password.Size = New System.Drawing.Size(152, 20)
+        Me.Password.TabIndex = 3
+        Me.Password.Text = "PASSWORD"
         '
-        'Form3
+        'LoginUser
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(40, Byte), Integer), CType(CType(40, Byte), Integer), CType(CType(40, Byte), Integer))
         Me.ClientSize = New System.Drawing.Size(261, 285)
-        Me.Controls.Add(Me.TextBox2)
-        Me.Controls.Add(Me.TextBox1)
-        Me.Controls.Add(Me.Panel1)
+        Me.Controls.Add(Me.Username)
+        Me.Controls.Add(Me.Password)
+        Me.Controls.Add(Me.FakeTop)
         Me.Controls.Add(Me.Login)
         Me.Controls.Add(Me.RecoverPasswordLabel)
         Me.Controls.Add(Me.SignIn)
         Me.ForeColor = System.Drawing.Color.Gray
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Margin = New System.Windows.Forms.Padding(2)
-        Me.Name = "Form3"
+        Me.Name = "LoginUser"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Login"
-        Me.Panel1.ResumeLayout(False)
-        Me.Panel1.PerformLayout()
-        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.FakeTop.ResumeLayout(False)
+        Me.FakeTop.PerformLayout()
+        CType(Me.IconPic, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
     End Sub
-    Friend WithEvents TextBox2 As TextBox
+    Friend WithEvents Username As TextBox
     Friend WithEvents SignIn As Label
     Friend WithEvents RecoverPasswordLabel As Label
     Friend WithEvents Login As Button
-    Friend WithEvents Panel1 As Panel
-    Friend WithEvents TextBox1 As TextBox
-    Friend WithEvents PictureBox1 As PictureBox
-    Friend WithEvents Label1 As Label
-    Friend WithEvents Label3 As Label
+    Friend WithEvents FakeTop As Panel
+    Friend WithEvents Password As TextBox
+    Friend WithEvents IconPic As PictureBox
+    Friend WithEvents CloseButton As Label
+    Friend WithEvents Title As Label
 End Class

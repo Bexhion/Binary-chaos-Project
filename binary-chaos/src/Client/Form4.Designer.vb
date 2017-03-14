@@ -22,6 +22,7 @@ Partial Class RegistryPage
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(RegistryPage))
         Me.TextBox1 = New System.Windows.Forms.TextBox()
         Me.TextBox2 = New System.Windows.Forms.TextBox()
         Me.Button1 = New System.Windows.Forms.Button()
@@ -36,7 +37,7 @@ Partial Class RegistryPage
         'TextBox1
         '
         Me.TextBox1.ForeColor = System.Drawing.SystemColors.InactiveCaption
-        Me.TextBox1.Location = New System.Drawing.Point(65, 78)
+        Me.TextBox1.Location = New System.Drawing.Point(64, 78)
         Me.TextBox1.Margin = New System.Windows.Forms.Padding(2)
         Me.TextBox1.Name = "TextBox1"
         Me.TextBox1.Size = New System.Drawing.Size(119, 20)
@@ -66,7 +67,8 @@ Partial Class RegistryPage
         'Panel2
         '
         Me.Panel2.Controls.Add(Me.Label4)
-        Me.Panel2.Location = New System.Drawing.Point(2, 2)
+        Me.Panel2.Dock = System.Windows.Forms.DockStyle.Top
+        Me.Panel2.Location = New System.Drawing.Point(0, 0)
         Me.Panel2.Margin = New System.Windows.Forms.Padding(2)
         Me.Panel2.Name = "Panel2"
         Me.Panel2.Size = New System.Drawing.Size(255, 62)
@@ -129,8 +131,10 @@ Partial Class RegistryPage
         Me.Controls.Add(Me.TextBox2)
         Me.Controls.Add(Me.TextBox1)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Margin = New System.Windows.Forms.Padding(2)
         Me.Name = "RegistryPage"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Registry Page"
         Me.Panel2.ResumeLayout(False)
         Me.Panel2.PerformLayout()

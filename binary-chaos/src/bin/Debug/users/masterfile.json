@@ -1,0 +1,27 @@
+﻿{
+  "id": "6b1c1cda26994405bd800cf9a00b19ec",
+  "username": "master",
+  "password": "123",
+  "securityAnswer1": "c",
+  "securityAnswer2": "a",
+  "securityAnswer3": "b",
+  "blacklistedPrograms": [
+    "Minecraft.exe",
+    "Minecraft_staging.exe"
+  ],
+  "allTimeMarkers": [
+    {
+      "Name": "13d5e6c8a30345fcbecf53ee3c3f9436",
+      "Title": "erafd",
+      "Description": "rdsx",
+      "DateStart": "2017-03-14T02:16:00",
+      "DateEnd": "2017-03-14T02:18:00",
+      "Priority": 1,
+      "Points": [
+        "rfdsz"
+      ],
+      "AccomplishedPoints": []
+    }
+  ],
+  "fitness": 0.234405517578125
+}

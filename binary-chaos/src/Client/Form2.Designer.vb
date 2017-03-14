@@ -22,6 +22,7 @@ Partial Class RecoverPassword
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(RecoverPassword))
         Me.Label2 = New System.Windows.Forms.Label()
         Me.TxtAnswer1 = New System.Windows.Forms.TextBox()
         Me.Submit = New System.Windows.Forms.Button()
@@ -165,8 +166,10 @@ Partial Class RecoverPassword
         Me.Controls.Add(Me.TxtAnswer1)
         Me.Controls.Add(Me.Label2)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Margin = New System.Windows.Forms.Padding(2)
         Me.Name = "RecoverPassword"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Recover Password"
         Me.Panel1.ResumeLayout(False)
         Me.Panel1.PerformLayout()

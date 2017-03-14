@@ -1,13 +1,20 @@
-﻿Public Class MainForm
+﻿Imports System.IO
+Public Class MainForm
 
     Public Shared userDetails As MyJsonParser.User
     Dim windowRelativeSize As Double = 0.85
     Dim contextMenuMinimized As New ContextMenu
     Dim isRemoving As Boolean = True
-    'every minute
+    Dim blackListedPrograms As New List(Of String)
+    Dim WithEvents userAccountForm As UserAccount
+
+    'set to every minute after checking
     Dim WithEvents checkTimer As New Timer With {.Interval = 1000}
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        If userDetails Is Nothing Then
+            Application.Exit()
+        End If
         'Check if our relative size isn't inferior to 0% or superior to 100%
         If windowRelativeSize > 1 Then
             windowRelativeSize = 1
@@ -36,6 +43,15 @@
         SetMarker.Hide()
         CancelMarker.Hide()
         checkTimer.Start()
+        userAccountForm = New UserAccount
+        PopulateListBox()
+        AddHandler CustomListBox1.ListChanged, AddressOf WriteMarkersToUser
+        TestForMarkers(Date.Now)
+        CustomListBox1.ChangeEditorMode(CustomListBox.EditorMode.FIXED)
+        SetUsername(userDetails.username)
+        userAccountForm.LoadImage(Path.Combine(MyJsonParser.applicationPath, "users", "images", userDetails.username & ".png"))
+        userAccountForm.Location = Me.PointToScreen(userAccountForm.PointToClient(New Point(0, 45)))
+        _EXP_ProgramTerminator.blackListedPrograms = userDetails.blacklistedPrograms
     End Sub
 
     Public Function NewMenuItem(index As Integer, text As String, handler As EventHandler) As MenuItem
@@ -64,6 +80,9 @@
     End Sub
 
     Private Sub CloseButton_Click(sender As Object, e As EventArgs) Handles CloseButton.Click
+        If userAccountForm IsNot Nothing Then
+            userAccountForm.Hide()
+        End If
         WindowState = FormWindowState.Minimized
         ShowInTaskbar = False
         WindowMinimizedIcon.Visible = True
@@ -79,7 +98,7 @@
     End Sub
 
     Private Sub MenuItemExit(sender As Object, e As EventArgs)
-        Me.Close()
+        Application.Exit()
     End Sub
 
     Private Sub EditClick(sender As Object, e As EventArgs) Handles EditMarker.Click
@@ -168,8 +187,94 @@
     End Sub
 
     Private Sub UserClick(sender As Object, e As EventArgs) Handles PictureBox1.Click, Greeting.Click, Username.Click, UserBox.Click
-        Dim userAccount As New UserAccount
-        userAccount.Location = Me.PointToScreen(userAccount.PointToClient(New Point(0, 45)))
-        userAccount.Show()
+        userAccountForm.Show()
+    End Sub
+
+    Private Sub WriteMarkersToUser(list As CustomListBox)
+        If userDetails Is Nothing Then Exit Sub
+        Dim markerList As New List(Of MyJsonParser.User.Marker)
+        For i = list.ActualList.Controls.Count - 1 To 0 Step -1
+            Dim control As TimeMarkerItemCLB = list.ActualList.Controls(i)
+            Dim newMarker As New MyJsonParser.User.Marker
+            With newMarker
+                .Name = control.Name
+                .Title = control.Title
+                .Description = control.Description
+                .DateStart = control.FullDate
+                .DateEnd = control.FullDateEnd
+                .Points = control.Points
+                .AccomplishedPoints = control.AccomplishedPoints
+                .Priority = control.Priority
+            End With
+            markerList.Add(newMarker)
+        Next
+        userDetails.allTimeMarkers = markerList
+        MyJsonParser.User.SaveUser(userDetails)
+        userAccountForm.Markers.Text = "Currently saved markers: " & MainForm.userDetails.allTimeMarkers.Count
+    End Sub
+
+    Private Sub PopulateListBox()
+        If userDetails Is Nothing Then Exit Sub
+        Dim markerList As List(Of MyJsonParser.User.Marker) = userDetails.allTimeMarkers
+        For i = markerList.Count - 1 To 0 Step -1
+            Dim marker As MyJsonParser.User.Marker = markerList(i)
+            Dim timeMarker As New TimeMarkerItemCLB
+            With timeMarker
+                .Name = marker.name
+                .Title = marker.Title
+                .Description = marker.Description
+                .Points = marker.Points
+                .AccomplishedPoints = marker.AccomplishedPoints
+                .Priority = marker.Priority
+                .timeMarker = New TimeMarker(marker.DateStart, marker.DateEnd)
+                .FullDate = marker.DateStart
+                .FullDateEnd = marker.DateEnd
+            End With
+            CustomListBox1.Add(timeMarker)
+        Next
+    End Sub
+
+    Private Sub OnUserAccountClose(sender As Object, e As EventArgs) Handles userAccountForm.FormClosed
+        userAccountForm = Nothing
+    End Sub
+
+    Private Sub TestForMarkers(thisDate As Date)
+        Dim removed As Boolean = False
+        For i = CustomListBox1.ActualList.Controls.Count - 1 To 0 Step -1
+            Dim control As TimeMarkerItemCLB = CustomListBox1.ActualList.Controls(i)
+            If control.FullDate <= thisDate Then
+                CustomListBox1.Remove(i)
+                removed = True
+            End If
+        Next
+        If removed Then
+            MsgBox("Some time markers have become invalid and were removed", MsgBoxStyle.Information)
+        End If
+    End Sub
+
+    Public Sub CalculateFitness(accPoints As Integer, totalPoints As Integer)
+        Dim fitness As Double = userDetails.fitness
+        Dim prevAccPoints As Double = fitness * 100
+        Dim accPointsTo100 As Double = (accPoints * 100) / totalPoints
+        Dim totalAccPoints As Double = accPointsTo100 + prevAccPoints
+        Dim newFitness As Double = totalAccPoints / 200
+        userDetails.fitness = newFitness
+        MyJsonParser.User.SaveUser(userDetails)
+        userAccountForm.Text = "Fitness: " & userDetails.fitness.ToString & "%"
+    End Sub
+
+    Private Sub SetUsername(text As String)
+        Dim right As Integer = UserBox.Right
+        Username.Text = text
+        If Username.Width > 81 Then
+            UserBox.Width += PictureBox1.Width + 5
+            Dim xPos As Integer = right - UserBox.Width
+            UserBox.Location = New Point(xPos, UserBox.Location.Y)
+            Help.Location = New Point(xPos - 3 - Help.Width, Help.Location.Y)
+        End If
+    End Sub
+
+    Private Sub PhotoChanged() Handles userAccountForm.PhotoChanged
+        PictureBox1.BackgroundImage = UserAccount.picture
     End Sub
 End Class

@@ -22,6 +22,7 @@ Partial Class UserAccount
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(UserAccount))
         Me.ChangePicture = New System.Windows.Forms.Label()
         Me.UserDesc = New System.Windows.Forms.Label()
         Me.Label1 = New System.Windows.Forms.Label()
@@ -32,7 +33,7 @@ Partial Class UserAccount
         Me.AccountManagement = New System.Windows.Forms.Label()
         Me.RemoveProgram = New System.Windows.Forms.Label()
         Me.AddProgram = New System.Windows.Forms.Label()
-        Me.FlowLayoutPanel1 = New System.Windows.Forms.FlowLayoutPanel()
+        Me.Programs = New System.Windows.Forms.FlowLayoutPanel()
         Me.Management = New System.Windows.Forms.Label()
         Me.Markers = New System.Windows.Forms.Label()
         Me.Fitness = New System.Windows.Forms.Label()
@@ -47,6 +48,7 @@ Partial Class UserAccount
         '
         'ChangePicture
         '
+        Me.ChangePicture.Anchor = System.Windows.Forms.AnchorStyles.Right
         Me.ChangePicture.AutoSize = True
         Me.ChangePicture.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.ChangePicture.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(112, Byte), Integer), CType(CType(192, Byte), Integer))
@@ -58,21 +60,23 @@ Partial Class UserAccount
         '
         'UserDesc
         '
+        Me.UserDesc.Anchor = System.Windows.Forms.AnchorStyles.Right
         Me.UserDesc.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.UserDesc.ForeColor = System.Drawing.Color.FromArgb(CType(CType(200, Byte), Integer), CType(CType(200, Byte), Integer), CType(CType(200, Byte), Integer))
         Me.UserDesc.Location = New System.Drawing.Point(22, 568)
         Me.UserDesc.Name = "UserDesc"
-        Me.UserDesc.Size = New System.Drawing.Size(405, 49)
+        Me.UserDesc.Size = New System.Drawing.Size(405, 31)
         Me.UserDesc.TabIndex = 37
         Me.UserDesc.Text = "Warning: deleting a user is permanent.  This deletes all markers and settings of " &
     "a user." & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10)
         '
         'Label1
         '
+        Me.Label1.Anchor = System.Windows.Forms.AnchorStyles.Right
         Me.Label1.AutoSize = True
         Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label1.ForeColor = System.Drawing.Color.FromArgb(CType(CType(200, Byte), Integer), CType(CType(200, Byte), Integer), CType(CType(200, Byte), Integer))
-        Me.Label1.Location = New System.Drawing.Point(22, 524)
+        Me.Label1.Location = New System.Drawing.Point(22, 527)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(384, 15)
         Me.Label1.TabIndex = 38
@@ -80,6 +84,7 @@ Partial Class UserAccount
         '
         'PasswordDesc
         '
+        Me.PasswordDesc.Anchor = System.Windows.Forms.AnchorStyles.Right
         Me.PasswordDesc.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.PasswordDesc.ForeColor = System.Drawing.Color.FromArgb(CType(CType(200, Byte), Integer), CType(CType(200, Byte), Integer), CType(CType(200, Byte), Integer))
         Me.PasswordDesc.Location = New System.Drawing.Point(22, 485)
@@ -90,10 +95,11 @@ Partial Class UserAccount
         '
         'MarkerDelete
         '
+        Me.MarkerDelete.Anchor = System.Windows.Forms.AnchorStyles.Right
         Me.MarkerDelete.AutoSize = True
         Me.MarkerDelete.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.MarkerDelete.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(112, Byte), Integer), CType(CType(192, Byte), Integer))
-        Me.MarkerDelete.Location = New System.Drawing.Point(22, 508)
+        Me.MarkerDelete.Location = New System.Drawing.Point(22, 511)
         Me.MarkerDelete.Name = "MarkerDelete"
         Me.MarkerDelete.Size = New System.Drawing.Size(135, 16)
         Me.MarkerDelete.TabIndex = 35
@@ -101,6 +107,7 @@ Partial Class UserAccount
         '
         'PasswordChange
         '
+        Me.PasswordChange.Anchor = System.Windows.Forms.AnchorStyles.Right
         Me.PasswordChange.AutoSize = True
         Me.PasswordChange.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.PasswordChange.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(112, Byte), Integer), CType(CType(192, Byte), Integer))
@@ -112,6 +119,7 @@ Partial Class UserAccount
         '
         'UserDelete
         '
+        Me.UserDelete.Anchor = System.Windows.Forms.AnchorStyles.Right
         Me.UserDelete.AutoSize = True
         Me.UserDelete.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.UserDelete.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(112, Byte), Integer), CType(CType(192, Byte), Integer))
@@ -123,6 +131,7 @@ Partial Class UserAccount
         '
         'AccountManagement
         '
+        Me.AccountManagement.Anchor = System.Windows.Forms.AnchorStyles.Right
         Me.AccountManagement.AutoSize = True
         Me.AccountManagement.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.AccountManagement.ForeColor = System.Drawing.Color.White
@@ -134,6 +143,7 @@ Partial Class UserAccount
         '
         'RemoveProgram
         '
+        Me.RemoveProgram.Anchor = System.Windows.Forms.AnchorStyles.Right
         Me.RemoveProgram.AutoSize = True
         Me.RemoveProgram.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.RemoveProgram.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(112, Byte), Integer), CType(CType(192, Byte), Integer))
@@ -145,6 +155,7 @@ Partial Class UserAccount
         '
         'AddProgram
         '
+        Me.AddProgram.Anchor = System.Windows.Forms.AnchorStyles.Right
         Me.AddProgram.AutoSize = True
         Me.AddProgram.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.AddProgram.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(112, Byte), Integer), CType(CType(192, Byte), Integer))
@@ -154,20 +165,22 @@ Partial Class UserAccount
         Me.AddProgram.TabIndex = 30
         Me.AddProgram.Text = "Add program"
         '
-        'FlowLayoutPanel1
+        'Programs
         '
-        Me.FlowLayoutPanel1.AutoScroll = True
-        Me.FlowLayoutPanel1.BackColor = System.Drawing.Color.FromArgb(CType(CType(89, Byte), Integer), CType(CType(89, Byte), Integer), CType(CType(89, Byte), Integer))
-        Me.FlowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.TopDown
-        Me.FlowLayoutPanel1.Location = New System.Drawing.Point(25, 280)
-        Me.FlowLayoutPanel1.Margin = New System.Windows.Forms.Padding(15)
-        Me.FlowLayoutPanel1.Name = "FlowLayoutPanel1"
-        Me.FlowLayoutPanel1.Size = New System.Drawing.Size(402, 116)
-        Me.FlowLayoutPanel1.TabIndex = 29
-        Me.FlowLayoutPanel1.WrapContents = False
+        Me.Programs.Anchor = System.Windows.Forms.AnchorStyles.Right
+        Me.Programs.AutoScroll = True
+        Me.Programs.BackColor = System.Drawing.Color.FromArgb(CType(CType(89, Byte), Integer), CType(CType(89, Byte), Integer), CType(CType(89, Byte), Integer))
+        Me.Programs.FlowDirection = System.Windows.Forms.FlowDirection.TopDown
+        Me.Programs.Location = New System.Drawing.Point(25, 280)
+        Me.Programs.Margin = New System.Windows.Forms.Padding(15)
+        Me.Programs.Name = "Programs"
+        Me.Programs.Size = New System.Drawing.Size(402, 116)
+        Me.Programs.TabIndex = 29
+        Me.Programs.WrapContents = False
         '
         'Management
         '
+        Me.Management.Anchor = System.Windows.Forms.AnchorStyles.Right
         Me.Management.AutoSize = True
         Me.Management.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Management.ForeColor = System.Drawing.Color.White
@@ -179,6 +192,7 @@ Partial Class UserAccount
         '
         'Markers
         '
+        Me.Markers.Anchor = System.Windows.Forms.AnchorStyles.Right
         Me.Markers.AutoSize = True
         Me.Markers.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Markers.ForeColor = System.Drawing.Color.White
@@ -190,17 +204,19 @@ Partial Class UserAccount
         '
         'Fitness
         '
-        Me.Fitness.AutoSize = True
+        Me.Fitness.Anchor = System.Windows.Forms.AnchorStyles.Right
+        Me.Fitness.AutoEllipsis = True
         Me.Fitness.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Fitness.ForeColor = System.Drawing.Color.White
         Me.Fitness.Location = New System.Drawing.Point(174, 137)
         Me.Fitness.Name = "Fitness"
-        Me.Fitness.Size = New System.Drawing.Size(65, 20)
+        Me.Fitness.Size = New System.Drawing.Size(264, 20)
         Me.Fitness.TabIndex = 25
         Me.Fitness.Text = "Fitness:"
         '
         'LogOut
         '
+        Me.LogOut.Anchor = System.Windows.Forms.AnchorStyles.Right
         Me.LogOut.AutoSize = True
         Me.LogOut.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.LogOut.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(112, Byte), Integer), CType(CType(192, Byte), Integer))
@@ -212,17 +228,19 @@ Partial Class UserAccount
         '
         'Username
         '
-        Me.Username.AutoSize = True
+        Me.Username.Anchor = System.Windows.Forms.AnchorStyles.Right
+        Me.Username.AutoEllipsis = True
         Me.Username.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Username.ForeColor = System.Drawing.Color.White
         Me.Username.Location = New System.Drawing.Point(174, 69)
         Me.Username.Name = "Username"
-        Me.Username.Size = New System.Drawing.Size(87, 20)
+        Me.Username.Size = New System.Drawing.Size(264, 20)
         Me.Username.TabIndex = 23
         Me.Username.Text = "Username:"
         '
         'Title
         '
+        Me.Title.Anchor = System.Windows.Forms.AnchorStyles.Right
         Me.Title.AutoSize = True
         Me.Title.Font = New System.Drawing.Font("Microsoft Sans Serif", 18.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Title.ForeColor = System.Drawing.Color.White
@@ -234,6 +252,7 @@ Partial Class UserAccount
         '
         'Back
         '
+        Me.Back.Anchor = System.Windows.Forms.AnchorStyles.Right
         Me.Back.BackgroundImage = Global.WindowsApplication1.My.Resources.Resources.userbackbutton
         Me.Back.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
         Me.Back.Location = New System.Drawing.Point(17, 16)
@@ -244,6 +263,7 @@ Partial Class UserAccount
         '
         'Photo
         '
+        Me.Photo.Anchor = System.Windows.Forms.AnchorStyles.Right
         Me.Photo.BackColor = System.Drawing.Color.FromArgb(CType(CType(89, Byte), Integer), CType(CType(89, Byte), Integer), CType(CType(89, Byte), Integer))
         Me.Photo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
         Me.Photo.Location = New System.Drawing.Point(17, 63)
@@ -268,7 +288,7 @@ Partial Class UserAccount
         Me.Controls.Add(Me.AccountManagement)
         Me.Controls.Add(Me.RemoveProgram)
         Me.Controls.Add(Me.AddProgram)
-        Me.Controls.Add(Me.FlowLayoutPanel1)
+        Me.Controls.Add(Me.Programs)
         Me.Controls.Add(Me.Management)
         Me.Controls.Add(Me.Markers)
         Me.Controls.Add(Me.Fitness)
@@ -277,8 +297,12 @@ Partial Class UserAccount
         Me.Controls.Add(Me.Back)
         Me.Controls.Add(Me.Title)
         Me.Controls.Add(Me.Photo)
+        Me.DoubleBuffered = True
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "UserAccount"
+        Me.ShowIcon = False
+        Me.ShowInTaskbar = False
         Me.StartPosition = System.Windows.Forms.FormStartPosition.Manual
         Me.Text = "UserAccount"
         CType(Me.Back, System.ComponentModel.ISupportInitialize).EndInit()
@@ -298,7 +322,7 @@ Partial Class UserAccount
     Friend WithEvents AccountManagement As Label
     Friend WithEvents RemoveProgram As Label
     Friend WithEvents AddProgram As Label
-    Friend WithEvents FlowLayoutPanel1 As FlowLayoutPanel
+    Friend WithEvents Programs As FlowLayoutPanel
     Friend WithEvents Management As Label
     Friend WithEvents Markers As Label
     Friend WithEvents Fitness As Label

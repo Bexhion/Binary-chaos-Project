@@ -296,7 +296,11 @@ Public Class TimeMarkerItemCLB
 
     Private Sub DateClickEvent(sender As Object, e As MouseEventArgs) Handles FullDate1.MouseClick
         If EditorMode = CustomListBox.EditorMode.REMOVE Then
-            RaiseEvent MarkerSetForDeletion(Me)
+            If Not timeMarker.timer.Enabled Then
+                RaiseEvent MarkerSetForDeletion(Me)
+            Else
+                MsgBox("You cannot delete a running time marker")
+            End If
         Else
             MouseClickEvent(sender, e)
         End If
@@ -309,6 +313,9 @@ Public Class TimeMarkerItemCLB
     End Sub
 
     Private Sub TimeMarkerFinished(marker As TimeMarker) Handles timeMarker.TimerEnd
+        If AccomplishedPoints IsNot Nothing And Points IsNot Nothing Then
+            MainForm.CalculateFitness(accomplishedPointsNumber, Points.Count)
+        End If
         _updateTimer.Stop()
         _updateTimer.Dispose()
         ShowProgress = False

@@ -25,8 +25,8 @@ Public Class MyJsonParser
 
     Public Shared Sub WriteJsonToFile(json As String, jsonfile As String)
         If json Is Nothing Then Exit Sub
-        If File.Exists(IO.Path.Combine(applicationPath, jsonfile & ".json")) Then
-            Dim theFile As System.IO.StreamWriter = My.Computer.FileSystem.OpenTextFileWriter(Path.Combine(applicationPath, jsonfile & ".json"), True)
+        If File.Exists(Path.Combine(applicationPath, "users", jsonfile & "file.json")) Then
+            Dim theFile As StreamWriter = My.Computer.FileSystem.OpenTextFileWriter(Path.Combine(applicationPath, "users", jsonfile & "file.json"), False)
             theFile.WriteLine(json)
             theFile.Close()
         End If
@@ -43,20 +43,19 @@ Public Class MyJsonParser
         Public Property securityAnswer3 As String = ""
         Public Property blacklistedPrograms As List(Of String) = Nothing
         Public Property allTimeMarkers As List(Of Marker) = Nothing
-        Public Property fitness As Integer = 0
+        Public Property fitness As Double = 0
 #End Region
 
         Public Shared Function LoadUser(username As String, password As String) As User
-            If Directory.Exists(Path.Combine(MyJsonParser.applicationPath, "users")) Then
-                If File.Exists(Path.Combine(MyJsonParser.applicationPath, "users", username & "file.json")) Then
-                    Dim user As MyJsonParser.User = MyJsonParser.SetProperties(username, Path.Combine(MyJsonParser.applicationPath, "users"))
+            If Directory.Exists(Path.Combine(applicationPath, "users")) Then
+                If File.Exists(Path.Combine(applicationPath, "users", username & "file.json")) Then
+                    Dim user As User = MyJsonParser.SetProperties(username, Path.Combine(applicationPath, "users"))
                     If Not user.password = password Then
                         Return Nothing
                     Else
                         Return user
                     End If
                 Else
-                    MsgBox(Path.Combine(applicationPath, "users", username & "file.json"))
                     Return Nothing
                 End If
             Else
@@ -65,32 +64,19 @@ Public Class MyJsonParser
         End Function
 
         Public Shared Sub SaveUser(user As User)
-            If Not Directory.Exists(Path.Combine(MyJsonParser.applicationPath, "users")) Then
-                Dim dir As DirectoryInfo = Directory.CreateDirectory(Path.Combine(MyJsonParser.applicationPath, "users"))
+            If Not Directory.Exists(Path.Combine(applicationPath, "users")) Then
+                Dim dir As DirectoryInfo = Directory.CreateDirectory(Path.Combine(applicationPath, "users"))
             End If
             Dim jsonUser As String = MyJsonParser.WriteToJson(user)
-            If File.Exists(Path.Combine(MyJsonParser.applicationPath, "users", user.username & "file.json")) Then
-                MyJsonParser.WriteJsonToFile(jsonUser, Path.Combine(Dir.ToString, user.username & "file.json"))
+            If File.Exists(Path.Combine(applicationPath, "users", user.username & "file.json")) Then
+                MyJsonParser.WriteJsonToFile(jsonUser, user.username)
             Else
-                File.WriteAllText(Path.Combine(MyJsonParser.applicationPath, "users", user.username & "file.json"), jsonUser)
+                File.WriteAllText(Path.Combine(applicationPath, "users", user.username & "file.json"), jsonUser)
             End If
-        End Sub
-
-        Public Sub AddTimeMarker(marker As TimeMarkerItemCLB)
-            Dim m As New Marker
-            With m
-                .Title = marker.Title
-                .Description = marker.Description
-                .DateStart = marker.FullDate
-                .DateEnd = marker.FullDateEnd
-                .Priority = marker.Priority
-                .Points = marker.Points
-                .AccomplishedPoints = marker.AccomplishedPoints
-            End With
-            allTimeMarkers.Add(m)
         End Sub
 
         Public Class Marker
+            Public Property Name As String
             Public Property Title As String
             Public Property Description As String
             Public Property DateStart As DateTime
